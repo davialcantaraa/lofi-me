@@ -1,9 +1,16 @@
 import { useState, useEffect } from 'react';
 
-function usePlayer($audioPlayer, value, playlist) {
-	const [isPlaying, setIsPlaying] = useState(false);
-	const [currentSongIndex, setCurrentSongIndex] = useState(0);
-	const [currentSong, setCurrentSong] = useState(playlist[currentSongIndex]);
+function usePlayer($audioPlayer, value, playlist, isPlaying, setIsPlaying) {
+	const previousSong = localStorage.getItem(JSON.stringify('currentSong'));
+	const previousSongIndex = localStorage.getItem('currentSongIndex');
+	// const [isPlaying, setIsPlaying] = useState(false);
+	const [currentSongIndex, setCurrentSongIndex] = useState(
+		previousSongIndex || 0
+	);
+	const [currentSong, setCurrentSong] = useState(
+		previousSong || playlist[currentSongIndex]
+	);
+
 	useEffect(() => {
 		isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
 	}, [isPlaying, $audioPlayer]);
@@ -11,6 +18,8 @@ function usePlayer($audioPlayer, value, playlist) {
 	const ToggleAudioPlay = () => {
 		$audioPlayer.current.volume = value / 100;
 		setIsPlaying(!isPlaying);
+		localStorage.setItem('currentSong', JSON.stringify(currentSong));
+		localStorage.setItem('currentSongIndex', currentSongIndex);
 	};
 
 	const skipSong = (forwards = true) => {
@@ -22,6 +31,8 @@ function usePlayer($audioPlayer, value, playlist) {
 					temp = 0;
 				}
 				setCurrentSong(playlist[temp]);
+				localStorage.setItem('currentSong', JSON.stringify(playlist[temp]));
+				localStorage.setItem('currentSongIndex', temp);
 				$audioPlayer.current.pause();
 				$audioPlayer.current.load();
 				isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
@@ -36,21 +47,20 @@ function usePlayer($audioPlayer, value, playlist) {
 					temp = playlist.length - 1;
 				}
 				setCurrentSong(playlist[temp]);
+				localStorage.setItem('currentSong', JSON.stringify(playlist[temp]));
+				localStorage.setItem('currentSongIndex', temp);
 				$audioPlayer.current.pause();
 				$audioPlayer.current.load();
 				isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
 				return temp;
 			});
 		}
-		console.log(currentSong);
-		console.log(currentSongIndex);
 	};
 
 	const handleRandomize = () => {
 		const randomNumber = Math.floor(Math.random() * playlist.length);
 		setCurrentSong(playlist[randomNumber]);
 		setCurrentSongIndex(randomNumber);
-		console.log(currentSong);
 		$audioPlayer.current.pause();
 		$audioPlayer.current.load();
 		isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();

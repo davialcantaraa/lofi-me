@@ -17,8 +17,26 @@ function Menu(isPlaying) {
 	const $cityPlayer = useRef(null);
 	const $firePlayer = useRef(null);
 
+	const previousRainVolume = parseInt(
+		localStorage.getItem('currentRainVolume')
+	);
+	const previousCityVolume = parseInt(
+		localStorage.getItem('currentCityVolume')
+	);
+	const previousFireVolume = parseInt(
+		localStorage.getItem('currentFireVolume')
+	);
+
 	const { handleChangeCity, handleChangeFire, handleChangeRain } =
-		useMenuPlayer($rainPlayer, $cityPlayer, $firePlayer);
+		useMenuPlayer(
+			$rainPlayer,
+			$cityPlayer,
+			$firePlayer,
+			previousRainVolume,
+			previousCityVolume,
+			previousFireVolume,
+			isPlaying
+		);
 
 	useEffect(() => {
 		const buttons = document.getElementsByClassName('category-button');
@@ -40,7 +58,7 @@ function Menu(isPlaying) {
 						<BsFillCloudRainHeavyFill />
 						<Slider
 							size="small"
-							defaultValue={0}
+							defaultValue={previousRainVolume || 0}
 							aria-label="volume"
 							valueLabelDisplay="auto"
 							onChange={handleChangeRain}
@@ -50,7 +68,7 @@ function Menu(isPlaying) {
 						<FaCity />
 						<Slider
 							size="small"
-							defaultValue={0}
+							defaultValue={previousCityVolume || 0}
 							aria-label="volume"
 							valueLabelDisplay="auto"
 							onChange={handleChangeCity}
@@ -60,7 +78,7 @@ function Menu(isPlaying) {
 						<MdLocalFireDepartment />
 						<Slider
 							size="small"
-							defaultValue={0}
+							defaultValue={previousFireVolume || 0}
 							aria-label="volume"
 							valueLabelDisplay="auto"
 							onChange={handleChangeFire}

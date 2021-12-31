@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import usePlayer from '../../hooks/usePlayer';
 import Menu from '../Menu';
 import './styles.scss';
@@ -15,18 +15,28 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
 import playlist from '../../playlist.json';
+import { PlayingContext } from '../../contexts/PlayingContext';
 
 function Player() {
-	const [value, setValue] = useState(30);
+	const previousVolume = parseInt(localStorage.getItem('currentVolume'));
+	const [value, setValue] = useState(previousVolume || 50);
 	const [isOpen, setIsOpen] = useState(true);
 	const $audioPlayer = useRef(null);
 
-	const { isPlaying, ToggleAudioPlay, currentSong, skipSong, handleRandomize } =
-		usePlayer($audioPlayer, value, playlist);
+	const { isPlaying, setIsPlaying } = useContext(PlayingContext);
+
+	const { ToggleAudioPlay, currentSong, skipSong, handleRandomize } = usePlayer(
+		$audioPlayer,
+		value,
+		playlist,
+		isPlaying,
+		setIsPlaying
+	);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 		$audioPlayer.current.volume = value / 100;
+		localStorage.setItem('currentVolume', value);
 	};
 
 	const toggleMenu = () => {
@@ -72,7 +82,6 @@ function Player() {
 					<FiVolume2 size={20} />
 					<Slider
 						size="small"
-						defaultValue={70}
 						aria-label="volume"
 						valueLabelDisplay="auto"
 						value={value}
