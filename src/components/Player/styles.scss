@@ -1,5 +1,5 @@
 .player {
-	padding: 0.5rem;
+	padding: 0.7rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -16,7 +16,7 @@
 			-webkit-line-clamp: 1;
 			line-clamp: 1;
 			-webkit-box-orient: vertical;
-			font-size: 0.9rem;
+			font-size: 0.8rem;
 			word-break: break-word;
 		}
 	}
@@ -35,7 +35,11 @@
 		align-items: center;
 		gap: 10px;
 		span {
+			font-weight: 500 !important;
 			color: var(--purple-300);
+		}
+		.MuiSlider-valueLabel {
+			background: var(--white);
 		}
 	}
 }

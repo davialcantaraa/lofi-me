@@ -18,21 +18,19 @@ function usePlayerState($audioPlayer, value, playlist) {
 			setCurrentSongIndex(() => {
 				let temp = currentSongIndex;
 				temp++;
-				console.log(temp);
 				if (temp > playlist.length - 1) {
 					temp = 0;
 				}
 				setCurrentSong(playlist[temp]);
 				$audioPlayer.current.pause();
 				$audioPlayer.current.load();
-				$audioPlayer.current.play();
+				isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
 				return temp;
 			});
 		} else {
 			setCurrentSongIndex(() => {
 				let temp = currentSongIndex;
 				temp--;
-				console.log(temp);
 				setCurrentSong(temp);
 				if (temp < 0) {
 					temp = playlist.length - 1;
@@ -40,7 +38,7 @@ function usePlayerState($audioPlayer, value, playlist) {
 				setCurrentSong(playlist[temp]);
 				$audioPlayer.current.pause();
 				$audioPlayer.current.load();
-				$audioPlayer.current.play();
+				isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
 				return temp;
 			});
 		}

@@ -3,7 +3,7 @@ import './styles.scss';
 
 function Footer() {
 	return (
-		<div className="footer">
+		<div id="footer">
 			<div>
 				<p>☕ Lofi.me</p>
 				<div>

@@ -1,7 +1,6 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import usePlayer from '../../hooks/usePlayer';
 import Menu from '../Menu';
-import { motion } from 'framer-motion';
 import './styles.scss';
 import {
 	FiSkipBack,
@@ -29,18 +28,24 @@ function Player() {
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
-		console.log(newValue);
 		$audioPlayer.current.volume = value / 100;
 	};
 
 	const toggleMenu = () => {
 		if (isOpen === true) {
 			document.getElementById('toggler').style.display = 'block';
+			document.getElementById('footer').style.display = 'flex';
 		} else {
 			document.getElementById('toggler').style.display = 'none';
+			document.getElementById('footer').style.display = 'none';
 		}
 		setIsOpen(!isOpen);
 	};
+
+	useEffect(() => {
+		const currentAudio = document.getElementById('player');
+		currentAudio.onended = () => skipSong();
+	}, [skipSong]);
 
 	return (
 		<div className="player">
@@ -52,14 +57,14 @@ function Player() {
 			</div>
 			<div className="audio-container">
 				<div>
-					<button>
-						<FiSkipBack onClick={() => skipSong(false)} />
+					<button onClick={() => skipSong(false)}>
+						<FiSkipBack />
 					</button>
-					<button onClick={ToggleAudioPlay}>
+					<button id="play-pause-button" onClick={ToggleAudioPlay}>
 						{isPlaying ? <FiPause /> : <FiPlay />}
 					</button>
-					<button>
-						<FiSkipForward onClick={() => skipSong()} />
+					<button onClick={() => skipSong()}>
+						<FiSkipForward />
 					</button>
 				</div>
 				<Box className="volume-container" sx={{ width: 200 }}>
@@ -77,7 +82,7 @@ function Player() {
 					<source type="audio/mp3" src={currentSong.url} />
 				</audio>
 			</div>
-			<Menu />
+			<Menu isPlaying={isPlaying} />
 		</div>
 	);
 }

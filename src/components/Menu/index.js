@@ -11,7 +11,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import noises from '../../noises.json';
 
-function Menu() {
+function Menu(isPlaying) {
 	const $rainPlayer = useRef(null);
 	const $cityPlayer = useRef(null);
 	const $firePlayer = useRef(null);
@@ -62,7 +62,7 @@ function Menu() {
 	}, []);
 
 	return (
-		<motion.div className="menu" id="toggler">
+		<motion.div transition={{ delay: 1 }} className="menu" id="toggler">
 			<div>
 				<p>Background noises</p>
 				<div className="background-sounds-container">
@@ -103,13 +103,13 @@ function Menu() {
 				<button className="category-button">Jazz</button>
 				<button className="category-button">Chill</button>
 			</div>
-			<audio ref={$rainPlayer} id="player">
+			<audio loop ref={$rainPlayer} id="player">
 				<source type="audio/mp3" src={noises[0].url} />
 			</audio>
-			<audio ref={$cityPlayer} id="player">
+			<audio loop ref={$cityPlayer} id="player">
 				<source type="audio/mp3" src={noises[1].url} />
 			</audio>
-			<audio ref={$firePlayer} id="player">
+			<audio loop ref={$firePlayer} id="player">
 				<source type="audio/mp3" src={noises[2].url} />
 			</audio>
 		</motion.div>
