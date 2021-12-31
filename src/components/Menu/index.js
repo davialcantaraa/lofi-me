@@ -6,16 +6,20 @@ import './styles.scss';
 import { BsFillCloudRainHeavyFill } from 'react-icons/bs';
 import { MdLocalFireDepartment } from 'react-icons/md';
 import { FaCity } from 'react-icons/fa';
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
+
+import { PlayingContext } from '../../contexts/PlayingContext';
 
 import noises from '../../noises.json';
 
 import useMenuPlayer from '../../hooks/useMenuPlayer';
 
-function Menu(isPlaying) {
+function Menu() {
 	const $rainPlayer = useRef(null);
 	const $cityPlayer = useRef(null);
 	const $firePlayer = useRef(null);
+
+	const { isPlaying } = useContext(PlayingContext);
 
 	const previousRainVolume = parseInt(
 		localStorage.getItem('currentRainVolume')
@@ -58,7 +62,7 @@ function Menu(isPlaying) {
 						<BsFillCloudRainHeavyFill />
 						<Slider
 							size="small"
-							defaultValue={previousRainVolume || 0}
+							value={previousRainVolume || 0}
 							aria-label="volume"
 							valueLabelDisplay="auto"
 							onChange={handleChangeRain}
@@ -68,7 +72,7 @@ function Menu(isPlaying) {
 						<FaCity />
 						<Slider
 							size="small"
-							defaultValue={previousCityVolume || 0}
+							value={previousCityVolume || 0}
 							aria-label="volume"
 							valueLabelDisplay="auto"
 							onChange={handleChangeCity}
@@ -78,7 +82,7 @@ function Menu(isPlaying) {
 						<MdLocalFireDepartment />
 						<Slider
 							size="small"
-							defaultValue={previousFireVolume || 0}
+							value={previousFireVolume || 0}
 							aria-label="volume"
 							valueLabelDisplay="auto"
 							onChange={handleChangeFire}

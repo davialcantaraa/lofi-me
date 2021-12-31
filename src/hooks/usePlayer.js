@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 function usePlayer($audioPlayer, value, playlist, isPlaying, setIsPlaying) {
 	const previousSong = localStorage.getItem(JSON.stringify('currentSong'));
 	const previousSongIndex = localStorage.getItem('currentSongIndex');
-	// const [isPlaying, setIsPlaying] = useState(false);
 	const [currentSongIndex, setCurrentSongIndex] = useState(
 		previousSongIndex || 0
 	);
@@ -13,6 +12,7 @@ function usePlayer($audioPlayer, value, playlist, isPlaying, setIsPlaying) {
 
 	useEffect(() => {
 		isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
+		// isPlaying ? console.log('sim') : console.log('não');
 	}, [isPlaying, $audioPlayer]);
 
 	const ToggleAudioPlay = () => {

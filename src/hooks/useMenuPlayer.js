@@ -13,11 +13,12 @@ function useMenuPlayer(
 	const [cityValue, setCityValue] = useState(previousCityVolume || 0);
 	const [fireValue, setFireValue] = useState(previousFireVolume || 0);
 
-	// useEffect(() => {
-	// 	isPlaying ? $rainPlayer.current.play() : $rainPlayer.current.pause();
-	// 	isPlaying ? $cityPlayer.current.play() : $cityPlayer.current.pause();
-	// 	isPlaying ? $firePlayer.current.play() : $firePlayer.current.pause();
-	// }, [isPlaying, $rainPlayer, $cityPlayer, $firePlayer]);
+	useEffect(() => {
+		isPlaying ? console.log('sim') : console.log('não');
+		isPlaying ? $rainPlayer.current.play() : $rainPlayer.current.pause();
+		isPlaying ? $cityPlayer.current.play() : $cityPlayer.current.pause();
+		isPlaying ? $firePlayer.current.play() : $firePlayer.current.pause();
+	}, [$cityPlayer, $firePlayer, $rainPlayer, isPlaying]);
 
 	const handleChangeRain = (event, newValue) => {
 		setRainValue(newValue);
