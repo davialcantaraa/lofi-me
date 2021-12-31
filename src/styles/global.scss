@@ -7,6 +7,14 @@
 :root {
 	--white: #fff;
 	--background: #00111c;
+
+	--gray-100: rgb(112, 112, 112);
+
+	--red-100: #ff5555;
+
+	--purple-100: #bd93f9;
+	--purple-300: #7747b9;
+	--purple-700: #483c67;
 }
 
 body,
@@ -36,4 +44,11 @@ a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.wrapper {
+	width: 200px;
+	height: fit-content;
+	background: var(--background);
+	border-radius: 0.2rem;
 }

@@ -1,5 +1,7 @@
 import { useState, useRef } from 'react';
-import usePlayer from '../../hooks/usePlayerState';
+import usePlayer from '../../hooks/usePlayer';
+import Menu from '../Menu';
+import { motion } from 'framer-motion';
 import './styles.scss';
 import {
 	FiSkipBack,
@@ -16,6 +18,7 @@ import playlist from '../../playlist.json';
 
 function Player() {
 	const [value, setValue] = useState(30);
+	const [isOpen, setIsOpen] = useState(true);
 	const $audioPlayer = useRef(null);
 
 	const { isPlaying, ToggleAudioPlay, currentSong, skipSong } = usePlayer(
@@ -30,12 +33,21 @@ function Player() {
 		$audioPlayer.current.volume = value / 100;
 	};
 
+	const toggleMenu = () => {
+		if (isOpen === true) {
+			document.getElementById('toggler').style.display = 'block';
+		} else {
+			document.getElementById('toggler').style.display = 'none';
+		}
+		setIsOpen(!isOpen);
+	};
+
 	return (
 		<div className="player">
 			<div className="title-container">
 				<p title={currentSong.name}>{currentSong.name}</p>
 				<button>
-					<FiChevronDown />
+					<FiChevronDown onClick={toggleMenu} />
 				</button>
 			</div>
 			<div className="audio-container">
@@ -65,6 +77,7 @@ function Player() {
 					<source type="audio/mp3" src={currentSong.url} />
 				</audio>
 			</div>
+			<Menu />
 		</div>
 	);
 }

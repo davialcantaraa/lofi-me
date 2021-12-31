@@ -1,0 +1,36 @@
+.menu {
+	width: 80%;
+	height: fit-content;
+	background: var(--background);
+	margin-top: 10px;
+	display: none;
+	svg {
+		fill: var(--white);
+	}
+	.background-sounds-container {
+		margin-top: 10px;
+		> div + div {
+			margin-top: 10px;
+		}
+	}
+	.category-container {
+		margin-top: 10px;
+		display: flex;
+		justify-content: space-between;
+		button {
+			font-size: 0.9rem;
+			padding: 5px;
+			background: var(--white);
+			color: var(--background);
+			border-radius: 2px;
+			transition: filter 0.2s;
+			&.active {
+				color: var(--white);
+				background: var(--purple-300);
+			}
+			&:hover {
+				filter: brightness(0.7);
+			}
+		}
+	}
+}
