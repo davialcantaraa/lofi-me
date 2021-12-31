@@ -10,6 +10,7 @@ import {
 	FiPlay,
 	FiVolume2,
 } from 'react-icons/fi';
+import { FaRandom } from 'react-icons/fa';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
@@ -20,11 +21,8 @@ function Player() {
 	const [isOpen, setIsOpen] = useState(true);
 	const $audioPlayer = useRef(null);
 
-	const { isPlaying, ToggleAudioPlay, currentSong, skipSong } = usePlayer(
-		$audioPlayer,
-		value,
-		playlist
-	);
+	const { isPlaying, ToggleAudioPlay, currentSong, skipSong, handleRandomize } =
+		usePlayer($audioPlayer, value, playlist);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -65,6 +63,9 @@ function Player() {
 					</button>
 					<button onClick={() => skipSong()}>
 						<FiSkipForward />
+					</button>
+					<button onClick={handleRandomize}>
+						<FaRandom size={15} />
 					</button>
 				</div>
 				<Box className="volume-container" sx={{ width: 200 }}>

@@ -42,6 +42,18 @@ function usePlayerState($audioPlayer, value, playlist) {
 				return temp;
 			});
 		}
+		console.log(currentSong);
+		console.log(currentSongIndex);
+	};
+
+	const handleRandomize = () => {
+		const randomNumber = Math.floor(Math.random() * playlist.length);
+		setCurrentSong(playlist[randomNumber]);
+		setCurrentSongIndex(randomNumber);
+		console.log(currentSong);
+		$audioPlayer.current.pause();
+		$audioPlayer.current.load();
+		isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
 	};
 
 	return {
@@ -49,6 +61,7 @@ function usePlayerState($audioPlayer, value, playlist) {
 		ToggleAudioPlay,
 		currentSong,
 		skipSong,
+		handleRandomize,
 	};
 }
 
