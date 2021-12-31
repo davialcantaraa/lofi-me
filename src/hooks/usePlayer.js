@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function usePlayerState($audioPlayer, value, playlist) {
+function usePlayer($audioPlayer, value, playlist) {
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [currentSongIndex, setCurrentSongIndex] = useState(0);
 	const [currentSong, setCurrentSong] = useState(playlist[currentSongIndex]);
@@ -65,4 +65,4 @@ function usePlayerState($audioPlayer, value, playlist) {
 	};
 }
 
-export default usePlayerState;
+export default usePlayer;

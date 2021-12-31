@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-// import Footer from '../Footer';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import './styles.scss';
@@ -7,48 +6,19 @@ import './styles.scss';
 import { BsFillCloudRainHeavyFill } from 'react-icons/bs';
 import { MdLocalFireDepartment } from 'react-icons/md';
 import { FaCity } from 'react-icons/fa';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import noises from '../../noises.json';
+
+import useMenuPlayer from '../../hooks/useMenuPlayer';
 
 function Menu(isPlaying) {
 	const $rainPlayer = useRef(null);
 	const $cityPlayer = useRef(null);
 	const $firePlayer = useRef(null);
 
-	const [rainValue, setRainValue] = useState(0);
-	const [cityValue, setCityValue] = useState(0);
-	const [fireValue, setFireValue] = useState(0);
-
-	const handleChangeRain = (event, newValue) => {
-		setRainValue(newValue);
-		$rainPlayer.current.volume = rainValue / 500;
-		if ($rainPlayer.current.volume !== 0) {
-			$rainPlayer.current.play();
-		} else {
-			$rainPlayer.current.pause();
-		}
-	};
-
-	const handleChangeCity = (event, newValue) => {
-		setCityValue(newValue);
-		$cityPlayer.current.volume = cityValue / 100;
-		if ($cityPlayer.current.volume !== 0) {
-			$cityPlayer.current.play();
-		} else {
-			$cityPlayer.current.pause();
-		}
-	};
-
-	const handleChangeFire = (event, newValue) => {
-		setFireValue(newValue);
-		$firePlayer.current.volume = fireValue / 100;
-		if ($firePlayer.current.volume !== 0) {
-			$firePlayer.current.play();
-		} else {
-			$firePlayer.current.pause();
-		}
-	};
+	const { handleChangeCity, handleChangeFire, handleChangeRain } =
+		useMenuPlayer($rainPlayer, $cityPlayer, $firePlayer);
 
 	useEffect(() => {
 		const buttons = document.getElementsByClassName('category-button');
