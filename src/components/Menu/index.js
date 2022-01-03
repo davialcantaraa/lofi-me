@@ -1,18 +1,17 @@
+import { useContext, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
-import './styles.scss';
 
+import { PlayingContext } from '../../contexts/PlayingContext';
+import useMenuPlayer from '../../hooks/useMenuPlayer';
+
+import './styles.scss';
 import { BsFillCloudRainHeavyFill } from 'react-icons/bs';
 import { MdLocalFireDepartment } from 'react-icons/md';
 import { FaCity } from 'react-icons/fa';
-import { useContext, useEffect, useRef } from 'react';
-
-import { PlayingContext } from '../../contexts/PlayingContext';
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
 
 import noises from '../../noises.json';
-
-import useMenuPlayer from '../../hooks/useMenuPlayer';
 
 function Menu() {
 	const $rainPlayer = useRef(null);
@@ -21,15 +20,12 @@ function Menu() {
 
 	const { isPlaying } = useContext(PlayingContext);
 
-	const previousRainVolume = parseInt(
-		localStorage.getItem('currentRainVolume')
-	);
-	const previousCityVolume = parseInt(
-		localStorage.getItem('currentCityVolume')
-	);
-	const previousFireVolume = parseInt(
-		localStorage.getItem('currentFireVolume')
-	);
+	const previousRainVolume =
+		parseInt(localStorage.getItem('currentRainVolume')) || 0;
+	const previousCityVolume =
+		parseInt(localStorage.getItem('currentCityVolume')) || 0;
+	const previousFireVolume =
+		parseInt(localStorage.getItem('currentFireVolume')) || 0;
 
 	const { handleChangeCity, handleChangeFire, handleChangeRain } =
 		useMenuPlayer(
@@ -54,7 +50,7 @@ function Menu() {
 	}, []);
 
 	return (
-		<motion.div transition={{ delay: 1 }} className="menu" id="toggler">
+		<div transition={{ delay: 1 }} className="menu" id="toggler">
 			<div>
 				<p>Background noises</p>
 				<div className="background-sounds-container">
@@ -62,8 +58,8 @@ function Menu() {
 						<BsFillCloudRainHeavyFill />
 						<Slider
 							size="small"
-							value={previousRainVolume || 0}
 							aria-label="volume"
+							value={previousRainVolume}
 							valueLabelDisplay="auto"
 							onChange={handleChangeRain}
 						/>
@@ -72,7 +68,7 @@ function Menu() {
 						<FaCity />
 						<Slider
 							size="small"
-							value={previousCityVolume || 0}
+							value={previousCityVolume}
 							aria-label="volume"
 							valueLabelDisplay="auto"
 							onChange={handleChangeCity}
@@ -82,7 +78,7 @@ function Menu() {
 						<MdLocalFireDepartment />
 						<Slider
 							size="small"
-							value={previousFireVolume || 0}
+							value={previousFireVolume}
 							aria-label="volume"
 							valueLabelDisplay="auto"
 							onChange={handleChangeFire}
@@ -91,9 +87,18 @@ function Menu() {
 				</div>
 			</div>
 			<div className="category-container">
-				<button className="category-button active">Sleepy</button>
-				<button className="category-button">Jazz</button>
-				<button className="category-button">Chill</button>
+				<motion.button
+					className="category-button active"
+					whileTap={{ scale: 0.75 }}
+				>
+					Sleepy
+				</motion.button>
+				<motion.button className="category-button" whileTap={{ scale: 0.75 }}>
+					Jazz
+				</motion.button>
+				<motion.button className="category-button" whileTap={{ scale: 0.75 }}>
+					Chill
+				</motion.button>
 			</div>
 			<audio loop ref={$rainPlayer} id="player">
 				<source type="audio/mp3" src={noises[0].url} />
@@ -104,7 +109,7 @@ function Menu() {
 			<audio loop ref={$firePlayer} id="player">
 				<source type="audio/mp3" src={noises[2].url} />
 			</audio>
-		</motion.div>
+		</div>
 	);
 }
 

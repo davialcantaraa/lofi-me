@@ -1,11 +1,16 @@
 import { useState, useRef, useEffect, useContext } from 'react';
+import { motion } from 'framer-motion';
+
+import { PlayingContext } from '../../contexts/PlayingContext';
 import usePlayer from '../../hooks/usePlayer';
 import Menu from '../Menu';
+
 import './styles.scss';
 import {
 	FiSkipBack,
 	FiSkipForward,
 	FiChevronDown,
+	FiChevronUp,
 	FiPause,
 	FiPlay,
 	FiVolume2,
@@ -15,7 +20,6 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
 import playlist from '../../playlist.json';
-import { PlayingContext } from '../../contexts/PlayingContext';
 
 function Player() {
 	const previousVolume = parseInt(localStorage.getItem('currentVolume'));
@@ -59,24 +63,35 @@ function Player() {
 		<div className="player">
 			<div className="title-container">
 				<p title={currentSong.name}>{currentSong.name}</p>
-				<button>
-					<FiChevronDown onClick={toggleMenu} />
-				</button>
+				<motion.button whileTap={{ scale: 0.75 }}>
+					{isOpen ? (
+						<FiChevronDown onClick={toggleMenu} />
+					) : (
+						<FiChevronUp onClick={toggleMenu} />
+					)}
+				</motion.button>
 			</div>
 			<div className="audio-container">
 				<div>
-					<button onClick={() => skipSong(false)}>
+					<motion.button
+						onClick={() => skipSong(false)}
+						whileTap={{ scale: 0.75 }}
+					>
 						<FiSkipBack />
-					</button>
-					<button id="play-pause-button" onClick={ToggleAudioPlay}>
+					</motion.button>
+					<motion.button
+						id="play-pause-button"
+						onClick={ToggleAudioPlay}
+						whileTap={{ scale: 0.75 }}
+					>
 						{isPlaying ? <FiPause /> : <FiPlay />}
-					</button>
-					<button onClick={() => skipSong()}>
+					</motion.button>
+					<motion.button onClick={() => skipSong()} whileTap={{ scale: 0.75 }}>
 						<FiSkipForward />
-					</button>
-					<button onClick={handleRandomize}>
+					</motion.button>
+					<motion.button onClick={handleRandomize} whileTap={{ scale: 0.75 }}>
 						<FaRandom size={15} />
-					</button>
+					</motion.button>
 				</div>
 				<Box className="volume-container" sx={{ width: 200 }}>
 					<FiVolume2 size={20} />

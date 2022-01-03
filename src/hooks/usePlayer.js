@@ -12,7 +12,6 @@ function usePlayer($audioPlayer, value, playlist, isPlaying, setIsPlaying) {
 
 	useEffect(() => {
 		isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
-		// isPlaying ? console.log('sim') : console.log('não');
 	}, [isPlaying, $audioPlayer]);
 
 	const ToggleAudioPlay = () => {

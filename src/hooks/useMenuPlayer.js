@@ -18,11 +18,22 @@ function useMenuPlayer(
 		isPlaying ? $rainPlayer.current.play() : $rainPlayer.current.pause();
 		isPlaying ? $cityPlayer.current.play() : $cityPlayer.current.pause();
 		isPlaying ? $firePlayer.current.play() : $firePlayer.current.pause();
-	}, [$cityPlayer, $firePlayer, $rainPlayer, isPlaying]);
+		$rainPlayer.current.volume = previousRainVolume / 100;
+		$cityPlayer.current.volume = previousCityVolume / 100;
+		$firePlayer.current.volume = previousFireVolume / 100;
+	}, [
+		$cityPlayer,
+		$firePlayer,
+		$rainPlayer,
+		isPlaying,
+		previousCityVolume,
+		previousFireVolume,
+		previousRainVolume,
+	]);
 
 	const handleChangeRain = (event, newValue) => {
 		setRainValue(newValue);
-		$rainPlayer.current.volume = rainValue / 500;
+		$rainPlayer.current.volume = rainValue / 100;
 		localStorage.setItem('currentRainVolume', rainValue);
 		if ($rainPlayer.current.volume !== 0) {
 			$rainPlayer.current.play();

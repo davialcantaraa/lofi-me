@@ -7,8 +7,10 @@
 :root {
 	--white: #fff;
 	--background: #00111c;
+	--background-alpha: #00111cd3;
 
 	--gray-100: rgb(112, 112, 112);
+	--gray-700: #002a46;
 
 	--red-100: #ff5555;
 
@@ -51,4 +53,5 @@ a {
 	height: fit-content;
 	background: var(--background);
 	border-radius: 0.2rem;
+	position: relative;
 }
