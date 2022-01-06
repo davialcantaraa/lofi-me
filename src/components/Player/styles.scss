@@ -1,28 +1,31 @@
 .player {
 	padding: 0.7rem;
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	.title-container {
+		width: 80%;
+		gap: 1rem;
+
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 1rem;
-		width: 80%;
 		p {
-			overflow: hidden;
-			text-overflow: ellipsis;
 			display: -webkit-box;
-			-webkit-line-clamp: 1;
-			line-clamp: 1;
 			-webkit-box-orient: vertical;
+
 			font-size: 0.8rem;
+			line-clamp: 1;
+			-webkit-line-clamp: 1;
 			word-break: break-word;
+			text-overflow: ellipsis;
+			overflow: hidden;
 		}
 	}
 	.audio-container {
-		margin-top: 0.5rem;
 		width: 80%;
+		margin-top: 0.5rem;
 		> div {
 			display: flex;
 			justify-content: space-between;
@@ -30,8 +33,9 @@
 	}
 
 	.volume-container {
-		display: flex;
 		width: 95% !important;
+
+		display: flex;
 		align-items: center;
 		gap: 10px;
 		span {

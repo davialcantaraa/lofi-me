@@ -2,6 +2,7 @@
 	"name": "lofi-me",
 	"version": "0.1.0",
 	"private": true,
+	"main": "main.js",
 	"dependencies": {
 		"@emotion/react": "^11.7.1",
 		"@emotion/styled": "^11.6.0",
@@ -12,6 +13,7 @@
 		"@testing-library/user-event": "^13.2.1",
 		"axios": "^0.24.0",
 		"cors": "^2.8.5",
+		"electron": "^16.0.6",
 		"express": "^4.17.2",
 		"framer-motion": "^5.5.5",
 		"nodemon": "^2.0.15",
@@ -23,6 +25,7 @@
 		"web-vitals": "^2.1.0"
 	},
 	"scripts": {
+		"electron": "electron .",
 		"dev": "nodemon server/index.js",
 		"start": "react-scripts start",
 		"build": "react-scripts build",

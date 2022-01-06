@@ -1,18 +1,23 @@
 #footer {
 	display: none;
+
 	padding: 0.2rem 0.5rem;
 	border-top: 1px solid var(--gray-100);
+
 	font-size: 0.7rem;
 	font-weight: 400;
 	> div {
 		width: 100%;
+
 		display: flex;
-		align-items: center;
 		justify-content: space-between;
+		align-items: center;
+
 		margin-top: 2px;
 		> div {
 			svg {
 				cursor: pointer;
+
 				filter: brightness(0.5);
 				transition: filter 0.2s;
 				&:hover {
@@ -27,6 +32,7 @@
 	}
 	p {
 		cursor: pointer;
+
 		filter: brightness(0.5);
 		transition: filter 0.2s;
 		&:hover {

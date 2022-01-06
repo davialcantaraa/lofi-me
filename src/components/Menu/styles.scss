@@ -1,9 +1,10 @@
 .menu {
 	width: 80%;
 	height: fit-content;
+
+	display: none;
 	background: var(--background);
 	margin-top: 10px;
-	display: none;
 	svg {
 		fill: var(--white);
 	}
@@ -14,19 +15,22 @@
 		}
 	}
 	.category-container {
-		margin-top: 10px;
 		display: flex;
 		justify-content: space-between;
+
+		margin-top: 10px;
 		button {
-			font-size: 0.9rem;
 			padding: 5px;
 			background: var(--white);
-			color: var(--background);
 			border-radius: 2px;
+
+			font-size: 0.9rem;
+			color: var(--background);
+
 			transition: filter 0.2s;
 			&.active {
-				color: var(--white);
 				background: var(--purple-300);
+				color: var(--white);
 			}
 			&:hover {
 				filter: brightness(0.7);
