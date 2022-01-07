@@ -21,6 +21,13 @@
 			word-break: break-word;
 			text-overflow: ellipsis;
 			overflow: hidden;
+
+			-webkit-app-region: drag;
+
+			user-select: none;
+		}
+		#closeMenuButton {
+			display: none;
 		}
 	}
 	.audio-container {

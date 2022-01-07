@@ -47,9 +47,13 @@ function Player() {
 		if (isOpen === true) {
 			document.getElementById('toggler').style.display = 'block';
 			document.getElementById('footer').style.display = 'flex';
+			document.getElementById('closeMenuButton').style.display = 'inline';
+			document.getElementById('openMenuButton').style.display = 'none';
 		} else {
 			document.getElementById('toggler').style.display = 'none';
 			document.getElementById('footer').style.display = 'none';
+			document.getElementById('closeMenuButton').style.display = 'none';
+			document.getElementById('openMenuButton').style.display = 'inline';
 		}
 		setIsOpen(!isOpen);
 	};
@@ -62,13 +66,12 @@ function Player() {
 	return (
 		<div className="player">
 			<div className="title-container">
-				<p title={currentSong.name}>{currentSong.name}</p>
+				<p title={currentSong.name} data-tooltip={currentSong.name}>
+					{currentSong.name}
+				</p>
 				<motion.button whileTap={{ scale: 0.75 }}>
-					{isOpen ? (
-						<FiChevronDown onClick={toggleMenu} />
-					) : (
-						<FiChevronUp onClick={toggleMenu} />
-					)}
+					<FiChevronDown onClick={toggleMenu} id="openMenuButton" />
+					<FiChevronUp onClick={toggleMenu} id="closeMenuButton" />
 				</motion.button>
 			</div>
 			<div className="audio-container">

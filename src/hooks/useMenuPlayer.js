@@ -33,7 +33,7 @@ function useMenuPlayer(
 
 	const handleChangeRain = (event, newValue) => {
 		setRainValue(newValue);
-		$rainPlayer.current.volume = rainValue / 100;
+		$rainPlayer.current.volume = rainValue / 300;
 		localStorage.setItem('currentRainVolume', rainValue);
 		if ($rainPlayer.current.volume !== 0) {
 			$rainPlayer.current.play();
