@@ -2,7 +2,7 @@
 	"name": "lofi-me",
 	"version": "0.1.0",
 	"private": true,
-	"main": "main.js",
+	"main": "electron/main.js",
 	"dependencies": {
 		"@emotion/react": "^11.7.1",
 		"@emotion/styled": "^11.6.0",
