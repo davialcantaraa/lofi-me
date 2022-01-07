@@ -11,6 +11,7 @@ function createWindow() {
 		resizable: false,
 		alwaysOnTop: true,
 		transparent: true,
+		skipTaskbar: true,
 		webPreferences: {
 			nodeIntegration: true,
 			contextIsolation: false,
@@ -49,3 +50,7 @@ app.on('window-all-closed', () => {
 		app.quit();
 	}
 });
+
+if (process.platform === 'darwin') {
+	app.dock.hide();
+}
