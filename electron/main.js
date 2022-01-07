@@ -35,6 +35,7 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+	const tray = require('./tray');
 	createWindow();
 	app.on('activate', () => {
 		if (BrowserWindow.getAllWindows().length === 0) {
