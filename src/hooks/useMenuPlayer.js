@@ -14,31 +14,29 @@ function useMenuPlayer(
 	const [fireValue, setFireValue] = useState(previousFireVolume || 0);
 
 	useEffect(() => {
-		isPlaying ? console.log('sim') : console.log('não');
-		isPlaying ? $rainPlayer.current.play() : $rainPlayer.current.pause();
-		isPlaying ? $cityPlayer.current.play() : $cityPlayer.current.pause();
-		isPlaying ? $firePlayer.current.play() : $firePlayer.current.pause();
-		$rainPlayer.current.volume = previousRainVolume / 100;
+		if (isPlaying) {
+			$rainPlayer.current.play();
+			document.getElementById('bgVolume').style.pointerEvents = 'auto';
+			document.getElementById('bgVolume').style.filter = 'brightness(1)';
+		} else {
+			$rainPlayer.current.pause();
+			document.getElementById('bgVolume').style.pointerEvents = 'none';
+			document.getElementById('bgVolume').style.filter = 'brightness(0.3)';
+		}
+		$rainPlayer.current.volume = previousRainVolume / 300;
 		$cityPlayer.current.volume = previousCityVolume / 100;
 		$firePlayer.current.volume = previousFireVolume / 100;
-	}, [
-		$cityPlayer,
-		$firePlayer,
-		$rainPlayer,
-		isPlaying,
-		previousCityVolume,
-		previousFireVolume,
-		previousRainVolume,
-	]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isPlaying]);
 
 	const handleChangeRain = (event, newValue) => {
 		setRainValue(newValue);
 		$rainPlayer.current.volume = rainValue / 300;
 		localStorage.setItem('currentRainVolume', rainValue);
-		if ($rainPlayer.current.volume !== 0) {
-			$rainPlayer.current.play();
-		} else {
+		if (rainValue === 0) {
 			$rainPlayer.current.pause();
+		} else {
+			$rainPlayer.current.play();
 		}
 	};
 
@@ -46,10 +44,10 @@ function useMenuPlayer(
 		setCityValue(newValue);
 		$cityPlayer.current.volume = cityValue / 100;
 		localStorage.setItem('currentCityVolume', cityValue);
-		if ($cityPlayer.current.volume !== 0) {
-			$cityPlayer.current.play();
-		} else {
+		if (cityValue === 0) {
 			$cityPlayer.current.pause();
+		} else {
+			$cityPlayer.current.play();
 		}
 	};
 
@@ -57,10 +55,10 @@ function useMenuPlayer(
 		setFireValue(newValue);
 		$firePlayer.current.volume = fireValue / 100;
 		localStorage.setItem('currentFireVolume', fireValue);
-		if ($firePlayer.current.volume !== 0) {
-			$firePlayer.current.play();
-		} else {
+		if (fireValue === 0) {
 			$firePlayer.current.pause();
+		} else {
+			$firePlayer.current.play();
 		}
 	};
 

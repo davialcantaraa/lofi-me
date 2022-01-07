@@ -20,12 +20,15 @@ function Menu() {
 
 	const { isPlaying } = useContext(PlayingContext);
 
-	const previousRainVolume =
-		parseInt(localStorage.getItem('currentRainVolume')) || 0;
-	const previousCityVolume =
-		parseInt(localStorage.getItem('currentCityVolume')) || 0;
-	const previousFireVolume =
-		parseInt(localStorage.getItem('currentFireVolume')) || 0;
+	const previousRainVolume = parseInt(
+		localStorage.getItem('currentRainVolume')
+	);
+	const previousCityVolume = parseInt(
+		localStorage.getItem('currentCityVolume')
+	);
+	const previousFireVolume = parseInt(
+		localStorage.getItem('currentFireVolume')
+	);
 
 	const { handleChangeCity, handleChangeFire, handleChangeRain } =
 		useMenuPlayer(
@@ -53,7 +56,7 @@ function Menu() {
 		<div transition={{ delay: 1 }} className="menu" id="toggler">
 			<div>
 				<p>Background noises</p>
-				<div className="background-sounds-container">
+				<div className="background-sounds-container" id="bgVolume">
 					<Box className="volume-container" sx={{ width: 200 }}>
 						<BsFillCloudRainHeavyFill />
 						<Slider

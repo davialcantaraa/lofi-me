@@ -66,13 +66,7 @@ function Player() {
 	return (
 		<div className="player">
 			<div className="title-container">
-				<p title={currentSong.name} data-tooltip={currentSong.name}>
-					{currentSong.name}
-				</p>
-				<motion.button whileTap={{ scale: 0.75 }}>
-					<FiChevronDown onClick={toggleMenu} id="openMenuButton" />
-					<FiChevronUp onClick={toggleMenu} id="closeMenuButton" />
-				</motion.button>
+				<p title={currentSong.name}>{currentSong.name}</p>
 			</div>
 			<div className="audio-container">
 				<div>
@@ -105,6 +99,10 @@ function Player() {
 						value={value}
 						onChange={handleChange}
 					/>
+					<motion.button whileTap={{ scale: 0.75 }}>
+						<FiChevronDown onClick={toggleMenu} id="openMenuButton" />
+						<FiChevronUp onClick={toggleMenu} id="closeMenuButton" />
+					</motion.button>
 				</Box>
 				<audio ref={$audioPlayer} id="player">
 					<source type="audio/mp3" src={currentSong.url} />
