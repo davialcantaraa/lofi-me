@@ -1,6 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const Store = require('electron-store');
-const path = require('path');
 
 const store = new Store();
 
@@ -13,7 +12,6 @@ function createWindow() {
 		alwaysOnTop: true,
 		transparent: true,
 		webPreferences: {
-			preload: path.join(__dirname, 'preload.js'),
 			nodeIntegration: true,
 			contextIsolation: false,
 		},
