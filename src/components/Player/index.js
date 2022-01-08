@@ -15,6 +15,7 @@ import {
 	FiPlay,
 	FiVolume2,
 } from 'react-icons/fi';
+import { CgArrowsShrinkH } from 'react-icons/cg';
 import { FaRandom } from 'react-icons/fa';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
@@ -67,6 +68,9 @@ function Player() {
 		<div className="player">
 			<div className="title-container">
 				<p title={currentSong.name}>{currentSong.name}</p>
+				<motion.button whileTap={{ scale: 0.75 }} id="hideWindowButton">
+					<CgArrowsShrinkH />
+				</motion.button>
 			</div>
 			<div className="audio-container">
 				<div>

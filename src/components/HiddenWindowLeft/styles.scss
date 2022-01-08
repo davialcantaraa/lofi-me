@@ -1,0 +1,15 @@
+#hiddenWindowLeft {
+	display: none;
+
+	height: 100px;
+	width: 50px;
+	border-radius: 0.2rem 0 0 0.2rem;
+
+	align-items: center;
+	justify-content: center;
+
+	background: var(--background);
+	color: var(--white);
+
+	// -webkit-app-region: drag;
+}
