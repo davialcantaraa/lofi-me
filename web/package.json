@@ -1,0 +1,14 @@
+{
+	"name": "@lofi-me/web",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"electron": "electron .",
+		"dev": "nodemon server/index.js",
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	}
+}

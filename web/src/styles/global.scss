@@ -1,0 +1,40 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--white: #fff;
+	--background: #00111c;
+	--background-alpha: #00111cd3;
+
+	--gray-100: rgb(112, 112, 112);
+	--gray-700: #002a46;
+
+	--red-100: #ff5555;
+
+	--purple-100: #bd93f9;
+	--purple-300: #7747b9;
+	--purple-700: #483c67;
+}
+
+body,
+input,
+textarea,
+select,
+button {
+	font: 400 1rem 'Rubik', sans-serif;
+	color: var(--background);
+}
+
+button {
+	cursor: pointer;
+	background: none;
+	border: none;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
