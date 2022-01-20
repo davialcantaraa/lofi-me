@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 
 import { PlayingContext } from '../../contexts/PlayingContext';
 import useMenuPlayer from '../../hooks/useMenuPlayer';
@@ -90,18 +89,9 @@ function Menu() {
 				</div>
 			</div>
 			<div className="category-container">
-				<motion.button
-					className="category-button active"
-					whileTap={{ scale: 0.75 }}
-				>
-					Sleepy
-				</motion.button>
-				<motion.button className="category-button" whileTap={{ scale: 0.75 }}>
-					Jazz
-				</motion.button>
-				<motion.button className="category-button" whileTap={{ scale: 0.75 }}>
-					Chill
-				</motion.button>
+				<button className="category-button active">Sleepy</button>
+				<button className="category-button">Jazz</button>
+				<button className="category-button">Chill</button>
 			</div>
 			<audio loop ref={$rainPlayer} id="player">
 				<source type="audio/mp3" src={noises[0].url} />

@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect, useContext } from 'react';
-import { motion } from 'framer-motion';
 
 import { PlayingContext } from '../../contexts/PlayingContext';
 import usePlayer from '../../hooks/usePlayer';
@@ -68,31 +67,24 @@ function Player() {
 		<div className="player">
 			<div className="title-container">
 				<p title={currentSong.name}>{currentSong.name}</p>
-				<motion.button whileTap={{ scale: 0.75 }} id="hideWindowButton">
+				<button id="hideWindowButton">
 					<CgArrowsShrinkH />
-				</motion.button>
+				</button>
 			</div>
 			<div className="audio-container">
 				<div>
-					<motion.button
-						onClick={() => skipSong(false)}
-						whileTap={{ scale: 0.75 }}
-					>
+					<button onClick={() => skipSong(false)}>
 						<FiSkipBack />
-					</motion.button>
-					<motion.button
-						id="play-pause-button"
-						onClick={ToggleAudioPlay}
-						whileTap={{ scale: 0.75 }}
-					>
+					</button>
+					<button id="play-pause-button" onClick={ToggleAudioPlay}>
 						{isPlaying ? <FiPause /> : <FiPlay />}
-					</motion.button>
-					<motion.button onClick={() => skipSong()} whileTap={{ scale: 0.75 }}>
+					</button>
+					<button onClick={() => skipSong()}>
 						<FiSkipForward />
-					</motion.button>
-					<motion.button onClick={handleRandomize} whileTap={{ scale: 0.75 }}>
+					</button>
+					<button onClick={handleRandomize}>
 						<FaRandom size={15} />
-					</motion.button>
+					</button>
 				</div>
 				<Box className="volume-container" sx={{ width: 200 }}>
 					<FiVolume2 size={20} />
@@ -103,10 +95,10 @@ function Player() {
 						value={value}
 						onChange={handleChange}
 					/>
-					<motion.button whileTap={{ scale: 0.75 }}>
+					<button>
 						<FiChevronDown onClick={toggleMenu} id="openMenuButton" />
 						<FiChevronUp onClick={toggleMenu} id="closeMenuButton" />
-					</motion.button>
+					</button>
 				</Box>
 				<audio ref={$audioPlayer} id="player">
 					<source type="audio/mp3" src={currentSong.url} />
