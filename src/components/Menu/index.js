@@ -19,26 +19,26 @@ function Menu() {
 
 	const { isPlaying } = useContext(PlayingContext);
 
-	const previousRainVolume = parseInt(
-		localStorage.getItem('currentRainVolume')
-	);
-	const previousCityVolume = parseInt(
-		localStorage.getItem('currentCityVolume')
-	);
-	const previousFireVolume = parseInt(
-		localStorage.getItem('currentFireVolume')
-	);
+	// const previousRainVolume = parseInt(
+	// 	localStorage.getItem('currentRainVolume')
+	// );
+	// const previousCityVolume = parseInt(
+	// 	localStorage.getItem('currentCityVolume')
+	// );
+	// const previousFireVolume = parseInt(
+	// 	localStorage.getItem('currentFireVolume')
+	// );
 
-	const { handleChangeCity, handleChangeFire, handleChangeRain } =
-		useMenuPlayer(
-			$rainPlayer,
-			$cityPlayer,
-			$firePlayer,
-			previousRainVolume,
-			previousCityVolume,
-			previousFireVolume,
-			isPlaying
-		);
+	// const { handleChangeCity, handleChangeFire, handleChangeRain } =
+	// 	useMenuPlayer(
+	// 		$rainPlayer,
+	// 		$cityPlayer,
+	// 		$firePlayer,
+	// 		previousRainVolume,
+	// 		previousCityVolume,
+	// 		previousFireVolume,
+	// 		isPlaying
+	// 	);
 
 	useEffect(() => {
 		const buttons = document.getElementsByClassName('category-button');
@@ -61,29 +61,29 @@ function Menu() {
 						<Slider
 							size="small"
 							aria-label="volume"
-							value={previousRainVolume}
+							value={50}
 							valueLabelDisplay="auto"
-							onChange={handleChangeRain}
+							// onChange={handleChangeRain}
 						/>
 					</Box>
 					<Box className="volume-container" sx={{ width: 200 }}>
 						<FaCity />
 						<Slider
 							size="small"
-							value={previousCityVolume}
+							value={50}
 							aria-label="volume"
 							valueLabelDisplay="auto"
-							onChange={handleChangeCity}
+							// onChange={handleChangeCity}
 						/>
 					</Box>
 					<Box className="volume-container" sx={{ width: 200 }}>
 						<MdLocalFireDepartment />
 						<Slider
 							size="small"
-							value={previousFireVolume}
+							value={50}
 							aria-label="volume"
 							valueLabelDisplay="auto"
-							onChange={handleChangeFire}
+							// onChange={handleChangeFire}
 						/>
 					</Box>
 				</div>

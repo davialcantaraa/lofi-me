@@ -19,23 +19,40 @@ import { FaRandom } from 'react-icons/fa';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
-import playlist from '../../playlist.json';
+// import playlist from '../../playlist.json';
+import api from '../../services/api';
 
 function Player() {
-	const previousVolume = parseInt(localStorage.getItem('currentVolume'));
-	const [value, setValue] = useState(previousVolume || 50);
+	// const previousVolume = parseInt(localStorage.getItem('currentVolume'));
+
+	// const { ToggleAudioPlay, currentSong, skipSong, handleRandomize } = usePlayer(
+	// 	$audioPlayer,
+	// 	value,
+	// 	playlist,
+	// 	isPlaying,
+	// 	setIsPlaying
+	// );
+
+	// useEffect(() => {
+	// 	const currentAudio = document.getElementById('player');
+	// 	currentAudio.onended = () => skipSong();
+	// }, [skipSong]);
+
+	const [playlist, setPlaylist] = useState([]);
+
+	useEffect(() => {
+		api.get('/').then((response) => {
+			// console.log(response.data);
+			setPlaylist(response.data);
+		});
+		console.log(playlist);
+	}, []);
+
+	const [value, setValue] = useState(50);
 	const [isOpen, setIsOpen] = useState(true);
 	const $audioPlayer = useRef(null);
 
 	const { isPlaying, setIsPlaying } = useContext(PlayingContext);
-
-	const { ToggleAudioPlay, currentSong, skipSong, handleRandomize } = usePlayer(
-		$audioPlayer,
-		value,
-		playlist,
-		isPlaying,
-		setIsPlaying
-	);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -58,31 +75,35 @@ function Player() {
 		setIsOpen(!isOpen);
 	};
 
-	useEffect(() => {
-		const currentAudio = document.getElementById('player');
-		currentAudio.onended = () => skipSong();
-	}, [skipSong]);
-
 	return (
 		<div className="player">
 			<div className="title-container">
-				<p title={currentSong.name}>{currentSong.name}</p>
+				<p title="teste">teste</p>
 				<button id="hideWindowButton">
 					<CgArrowsShrinkH />
 				</button>
 			</div>
 			<div className="audio-container">
 				<div>
-					<button onClick={() => skipSong(false)}>
+					<button
+					// onClick={() => skipSong(false)}
+					>
 						<FiSkipBack />
 					</button>
-					<button id="play-pause-button" onClick={ToggleAudioPlay}>
+					<button
+						id="play-pause-button"
+						// onClick={ToggleAudioPlay}
+					>
 						{isPlaying ? <FiPause /> : <FiPlay />}
 					</button>
-					<button onClick={() => skipSong()}>
+					<button
+					// onClick={() => skipSong()}
+					>
 						<FiSkipForward />
 					</button>
-					<button onClick={handleRandomize}>
+					<button
+					// onClick={handleRandomize}
+					>
 						<FaRandom size={15} />
 					</button>
 				</div>
@@ -92,7 +113,7 @@ function Player() {
 						size="small"
 						aria-label="volume"
 						valueLabelDisplay="auto"
-						value={value}
+						value={50}
 						onChange={handleChange}
 					/>
 					<button>
@@ -101,7 +122,10 @@ function Player() {
 					</button>
 				</Box>
 				<audio ref={$audioPlayer} id="player">
-					<source type="audio/mp3" src={currentSong.url} />
+					<source
+						type="audio/mp3"
+						// src={currentSong.url}
+					/>
 				</audio>
 			</div>
 			<Menu isPlaying={isPlaying} />
