@@ -39,14 +39,23 @@ function Player() {
 	// }, [skipSong]);
 
 	const [playlist, setPlaylist] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+
+	const [currentSongIndex, setCurrentSongIndex] = useState(0);
+	const [currentSong, setCurrentSong] = useState({});
 
 	useEffect(() => {
-		api.get('/').then((response) => {
-			// console.log(response.data);
-			setPlaylist(response.data);
-		});
-		console.log(playlist);
+		async function getData() {
+			const response = await api.get('/');
+			setPlaylist(response.data.ytPlaylist);
+			setIsLoading(false);
+		}
+		getData();
 	}, []);
+
+	useEffect(() => {
+		setCurrentSong(playlist[currentSongIndex]);
+	}, [playlist]);
 
 	const [value, setValue] = useState(50);
 	const [isOpen, setIsOpen] = useState(true);
@@ -57,7 +66,55 @@ function Player() {
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 		$audioPlayer.current.volume = value / 100;
-		localStorage.setItem('currentVolume', value);
+		// localStorage.setItem('currentVolume', value);
+	};
+
+	const toggleAudioPlay = () => {
+		$audioPlayer.current.play();
+		$audioPlayer.current.volume = value / 100;
+		setIsPlaying(!isPlaying);
+		// localStorage.setItem('currentSong', JSON.stringify(currentSong));
+		// localStorage.setItem('currentSongIndex', currentSongIndex);
+	};
+
+	const toggleAudioPause = () => {
+		$audioPlayer.current.pause();
+		setIsPlaying(!isPlaying);
+	};
+
+	const skipSong = (forwards = true) => {
+		if (forwards) {
+			setCurrentSongIndex(() => {
+				let temp = currentSongIndex;
+				temp++;
+				if (temp > playlist.length - 1) {
+					temp = 0;
+				}
+				setCurrentSong(playlist[temp]);
+				// localStorage.setItem('currentSong', JSON.stringify(playlist[temp]));
+				// localStorage.setItem('currentSongIndex', temp);
+				$audioPlayer.current.pause();
+				$audioPlayer.current.load();
+				isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
+				return temp;
+			});
+		} else {
+			setCurrentSongIndex(() => {
+				let temp = currentSongIndex;
+				temp--;
+				setCurrentSong(temp);
+				if (temp < 0) {
+					temp = playlist.length - 1;
+				}
+				setCurrentSong(playlist[temp]);
+				// localStorage.setItem('currentSong', JSON.stringify(playlist[temp]));
+				// localStorage.setItem('currentSongIndex', temp);
+				$audioPlayer.current.pause();
+				$audioPlayer.current.load();
+				isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
+				return temp;
+			});
+		}
 	};
 
 	const toggleMenu = () => {
@@ -75,30 +132,29 @@ function Player() {
 		setIsOpen(!isOpen);
 	};
 
-	return (
+	return isLoading ? (
+		<h1>Loading...</h1>
+	) : (
 		<div className="player">
 			<div className="title-container">
-				<p title="teste">teste</p>
+				<p title="teste">{currentSong.title}</p>
 				<button id="hideWindowButton">
 					<CgArrowsShrinkH />
 				</button>
 			</div>
 			<div className="audio-container">
 				<div>
-					<button
-					// onClick={() => skipSong(false)}
-					>
+					<button onClick={() => skipSong(false)}>
 						<FiSkipBack />
 					</button>
-					<button
-						id="play-pause-button"
-						// onClick={ToggleAudioPlay}
-					>
-						{isPlaying ? <FiPause /> : <FiPlay />}
+					<button id="play-pause-button">
+						{isPlaying ? (
+							<FiPause onClick={toggleAudioPause} />
+						) : (
+							<FiPlay onClick={toggleAudioPlay} />
+						)}
 					</button>
-					<button
-					// onClick={() => skipSong()}
-					>
+					<button onClick={() => skipSong()}>
 						<FiSkipForward />
 					</button>
 					<button
@@ -113,7 +169,7 @@ function Player() {
 						size="small"
 						aria-label="volume"
 						valueLabelDisplay="auto"
-						value={50}
+						value={value}
 						onChange={handleChange}
 					/>
 					<button>
@@ -122,10 +178,7 @@ function Player() {
 					</button>
 				</Box>
 				<audio ref={$audioPlayer} id="player">
-					<source
-						type="audio/mp3"
-						// src={currentSong.url}
-					/>
+					<source type="audio/mp3" src={currentSong.uri} />
 				</audio>
 			</div>
 			<Menu isPlaying={isPlaying} />
