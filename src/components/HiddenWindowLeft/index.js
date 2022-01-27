@@ -1,5 +1,5 @@
-import { FiChevronsRight } from 'react-icons/fi';
 import './styles.scss';
+import { FiChevronsRight } from 'react-icons/fi';
 
 function HiddenWindowLeft() {
 	return (

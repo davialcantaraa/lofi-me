@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { BsHeartFill, BsGithub } from 'react-icons/bs';
 import Support from '../Support';
+
 import './styles.scss';
+import { BsHeartFill, BsGithub } from 'react-icons/bs';
 
 function Footer() {
 	const [isSupportOpen, setIsSupportOpen] = useState(true);

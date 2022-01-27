@@ -1,7 +1,7 @@
+import Player from './components/Player';
 import Footer from './components/Footer';
 import HiddenWindowRight from './components/HiddenWindowRight';
 import HiddenWindowLeft from './components/HiddenWindowLeft';
-import Player from './components/Player';
 
 import { PlayingProvider } from './contexts/PlayingContext';
 
