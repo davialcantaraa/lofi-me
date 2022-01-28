@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 
-import { PlayingContext } from '../../contexts/PlayingContext';
-import usePlayer from '../../hooks/usePlayer';
 import Menu from '../Menu';
+import { PlayingContext } from '../../contexts/PlayingContext';
+
+import api from '../../services/api';
 
 import './styles.scss';
 import {
@@ -19,25 +20,17 @@ import { FaRandom } from 'react-icons/fa';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
-// import playlist from '../../playlist.json';
-import api from '../../services/api';
-
 function Player() {
 	// const previousVolume = parseInt(localStorage.getItem('currentVolume'));
 
-	// const { ToggleAudioPlay, currentSong, skipSong, handleRandomize } = usePlayer(
-	// 	$audioPlayer,
-	// 	value,
-	// 	playlist,
-	// 	isPlaying,
-	// 	setIsPlaying
-	// );
-
+	const { isPlaying, setIsPlaying } = useContext(PlayingContext);
 	const [playlist, setPlaylist] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-
 	const [currentSongIndex, setCurrentSongIndex] = useState(0);
 	const [currentSong, setCurrentSong] = useState({});
+	const [value, setValue] = useState(50);
+	const [isOpen, setIsOpen] = useState(true);
+	const $audioPlayer = useRef(null);
 
 	useEffect(() => {
 		async function getData() {
@@ -51,12 +44,6 @@ function Player() {
 	useEffect(() => {
 		setCurrentSong(playlist[currentSongIndex]);
 	}, [playlist]);
-
-	const [value, setValue] = useState(50);
-	const [isOpen, setIsOpen] = useState(true);
-	const $audioPlayer = useRef(null);
-
-	const { isPlaying, setIsPlaying } = useContext(PlayingContext);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
