@@ -1,37 +1,36 @@
 import { useEffect, useState } from 'react';
 
-function useMenuPlayer(
-	$rainPlayer,
-	$cityPlayer,
-	$firePlayer,
-	previousRainVolume,
-	previousCityVolume,
-	previousFireVolume,
-	isPlaying
-) {
-	const [rainValue, setRainValue] = useState(previousRainVolume || 0);
-	const [cityValue, setCityValue] = useState(previousCityVolume || 0);
-	const [fireValue, setFireValue] = useState(previousFireVolume || 0);
+function useMenuPlayer($rainPlayer, $cityPlayer, $firePlayer, isPlaying) {
+	const [rainValue, setRainValue] = useState(0);
+	const [cityValue, setCityValue] = useState(0);
+	const [fireValue, setFireValue] = useState(0);
 
 	useEffect(() => {
 		if (isPlaying) {
 			$rainPlayer.current.play();
+			$rainPlayer.current.volume = rainValue / 100;
+			$cityPlayer.current.play();
+			$cityPlayer.current.volume = cityValue / 100;
+			$firePlayer.current.play();
+			$firePlayer.current.volume = fireValue / 100;
 			document.getElementById('bgVolume').style.pointerEvents = 'auto';
 			document.getElementById('bgVolume').style.filter = 'brightness(1)';
 		} else {
 			$rainPlayer.current.pause();
+			$cityPlayer.current.pause();
+			$firePlayer.current.pause();
 			document.getElementById('bgVolume').style.pointerEvents = 'none';
 			document.getElementById('bgVolume').style.filter = 'brightness(0.3)';
 		}
-		$rainPlayer.current.volume = previousRainVolume / 300;
-		$cityPlayer.current.volume = previousCityVolume / 100;
-		$firePlayer.current.volume = previousFireVolume / 100;
+		// $rainPlayer.current.volume = 100;
+		// $cityPlayer.current.volume = 100;
+		// $firePlayer.current.volume = 100;
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isPlaying]);
 
 	const handleChangeRain = (event, newValue) => {
 		setRainValue(newValue);
-		$rainPlayer.current.volume = rainValue / 300;
+		$rainPlayer.current.volume = rainValue / 100;
 		localStorage.setItem('currentRainVolume', rainValue);
 		if (rainValue === 0) {
 			$rainPlayer.current.pause();

@@ -33,11 +33,6 @@ function Player() {
 	// 	setIsPlaying
 	// );
 
-	// useEffect(() => {
-	// 	const currentAudio = document.getElementById('player');
-	// 	currentAudio.onended = () => skipSong();
-	// }, [skipSong]);
-
 	const [playlist, setPlaylist] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -82,6 +77,7 @@ function Player() {
 		setIsPlaying(!isPlaying);
 	};
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const skipSong = (forwards = true) => {
 		if (forwards) {
 			setCurrentSongIndex(() => {
@@ -116,6 +112,22 @@ function Player() {
 			});
 		}
 	};
+
+	const handleRandomize = () => {
+		const randomNumber = Math.floor(Math.random() * playlist.length);
+		setCurrentSong(playlist[randomNumber]);
+		setCurrentSongIndex(randomNumber);
+		$audioPlayer.current.pause();
+		$audioPlayer.current.load();
+		isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
+	};
+
+	useEffect(() => {
+		const currentAudio = document.getElementById('player');
+		isLoading
+			? console.log('loading')
+			: (currentAudio.onended = () => skipSong());
+	}, [skipSong]);
 
 	const toggleMenu = () => {
 		if (isOpen === true) {
@@ -157,9 +169,7 @@ function Player() {
 					<button onClick={() => skipSong()}>
 						<FiSkipForward />
 					</button>
-					<button
-					// onClick={handleRandomize}
-					>
+					<button onClick={handleRandomize}>
 						<FaRandom size={15} />
 					</button>
 				</div>

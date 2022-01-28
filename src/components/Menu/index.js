@@ -19,7 +19,7 @@ function Menu() {
 
 	const { isPlaying } = useContext(PlayingContext);
 
-	// const previousRainVolume = parseInt(
+	//  const previousRainVolume = parseInt(
 	// 	localStorage.getItem('currentRainVolume')
 	// );
 	// const previousCityVolume = parseInt(
@@ -29,16 +29,14 @@ function Menu() {
 	// 	localStorage.getItem('currentFireVolume')
 	// );
 
-	// const { handleChangeCity, handleChangeFire, handleChangeRain } =
-	// 	useMenuPlayer(
-	// 		$rainPlayer,
-	// 		$cityPlayer,
-	// 		$firePlayer,
-	// 		previousRainVolume,
-	// 		previousCityVolume,
-	// 		previousFireVolume,
-	// 		isPlaying
-	// 	);
+	const {
+		handleChangeCity,
+		handleChangeFire,
+		handleChangeRain,
+		rainValue,
+		cityValue,
+		fireValue,
+	} = useMenuPlayer($rainPlayer, $cityPlayer, $firePlayer, isPlaying);
 
 	useEffect(() => {
 		const buttons = document.getElementsByClassName('category-button');
@@ -61,29 +59,29 @@ function Menu() {
 						<Slider
 							size="small"
 							aria-label="volume"
-							value={50}
+							value={rainValue}
 							valueLabelDisplay="auto"
-							// onChange={handleChangeRain}
+							onChange={handleChangeRain}
 						/>
 					</Box>
 					<Box className="volume-container" sx={{ width: 200 }}>
 						<FaCity />
 						<Slider
 							size="small"
-							value={50}
+							value={cityValue}
 							aria-label="volume"
 							valueLabelDisplay="auto"
-							// onChange={handleChangeCity}
+							onChange={handleChangeCity}
 						/>
 					</Box>
 					<Box className="volume-container" sx={{ width: 200 }}>
 						<MdLocalFireDepartment />
 						<Slider
 							size="small"
-							value={50}
+							value={fireValue}
 							aria-label="volume"
 							valueLabelDisplay="auto"
-							// onChange={handleChangeFire}
+							onChange={handleChangeFire}
 						/>
 					</Box>
 				</div>
