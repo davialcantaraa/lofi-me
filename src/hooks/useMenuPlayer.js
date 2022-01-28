@@ -1,10 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-function useMenuPlayer($rainPlayer, $cityPlayer, $firePlayer, isPlaying) {
-	const [rainValue, setRainValue] = useState(0);
-	const [cityValue, setCityValue] = useState(0);
-	const [fireValue, setFireValue] = useState(0);
-
+function useMenuPlayer(
+	$rainPlayer,
+	$cityPlayer,
+	$firePlayer,
+	isPlaying,
+	rainValue,
+	setRainValue,
+	cityValue,
+	setCityValue,
+	fireValue,
+	setFireValue
+) {
 	useEffect(() => {
 		if (isPlaying) {
 			$rainPlayer.current.play();
@@ -22,9 +29,6 @@ function useMenuPlayer($rainPlayer, $cityPlayer, $firePlayer, isPlaying) {
 			document.getElementById('bgVolume').style.pointerEvents = 'none';
 			document.getElementById('bgVolume').style.filter = 'brightness(0.3)';
 		}
-		// $rainPlayer.current.volume = 100;
-		// $cityPlayer.current.volume = 100;
-		// $firePlayer.current.volume = 100;
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isPlaying]);
 

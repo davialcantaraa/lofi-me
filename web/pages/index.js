@@ -7,7 +7,7 @@ export default function Home() {
 				<title>Lofi.me</title>
 			</Head>
 			<main>
-				<h1>Hello world</h1>
+				<h1>Hello worlddddd</h1>
 			</main>
 		</div>
 	);

@@ -21,14 +21,18 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
 function Player() {
-	// const previousVolume = parseInt(localStorage.getItem('currentVolume'));
+	const previousVolume = parseInt(localStorage.getItem('currentVolume'));
+	const previousSong = localStorage.getItem(JSON.stringify('currentSong'));
+	const previousSongIndex = localStorage.getItem('currentSongIndex');
 
 	const { isPlaying, setIsPlaying } = useContext(PlayingContext);
 	const [playlist, setPlaylist] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-	const [currentSongIndex, setCurrentSongIndex] = useState(0);
-	const [currentSong, setCurrentSong] = useState({});
-	const [value, setValue] = useState(50);
+	const [currentSongIndex, setCurrentSongIndex] = useState(
+		previousSongIndex || 0
+	);
+	const [currentSong, setCurrentSong] = useState(previousSong || {});
+	const [value, setValue] = useState(previousVolume || 50);
 	const [isOpen, setIsOpen] = useState(true);
 	const $audioPlayer = useRef(null);
 
@@ -43,20 +47,21 @@ function Player() {
 
 	useEffect(() => {
 		setCurrentSong(playlist[currentSongIndex]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [playlist]);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 		$audioPlayer.current.volume = value / 100;
-		// localStorage.setItem('currentVolume', value);
+		localStorage.setItem('currentVolume', value);
 	};
 
 	const toggleAudioPlay = () => {
 		$audioPlayer.current.play();
 		$audioPlayer.current.volume = value / 100;
 		setIsPlaying(!isPlaying);
-		// localStorage.setItem('currentSong', JSON.stringify(currentSong));
-		// localStorage.setItem('currentSongIndex', currentSongIndex);
+		localStorage.setItem('currentSong', JSON.stringify(currentSong));
+		localStorage.setItem('currentSongIndex', currentSongIndex);
 	};
 
 	const toggleAudioPause = () => {
@@ -74,8 +79,8 @@ function Player() {
 					temp = 0;
 				}
 				setCurrentSong(playlist[temp]);
-				// localStorage.setItem('currentSong', JSON.stringify(playlist[temp]));
-				// localStorage.setItem('currentSongIndex', temp);
+				localStorage.setItem('currentSong', JSON.stringify(playlist[temp]));
+				localStorage.setItem('currentSongIndex', temp);
 				$audioPlayer.current.pause();
 				$audioPlayer.current.load();
 				isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
@@ -90,8 +95,8 @@ function Player() {
 					temp = playlist.length - 1;
 				}
 				setCurrentSong(playlist[temp]);
-				// localStorage.setItem('currentSong', JSON.stringify(playlist[temp]));
-				// localStorage.setItem('currentSongIndex', temp);
+				localStorage.setItem('currentSong', JSON.stringify(playlist[temp]));
+				localStorage.setItem('currentSongIndex', temp);
 				$audioPlayer.current.pause();
 				$audioPlayer.current.load();
 				isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
@@ -114,6 +119,7 @@ function Player() {
 		isLoading
 			? console.log('loading')
 			: (currentAudio.onended = () => skipSong());
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [skipSong]);
 
 	const toggleMenu = () => {

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 
 import { PlayingContext } from '../../contexts/PlayingContext';
 import useMenuPlayer from '../../hooks/useMenuPlayer';
@@ -17,26 +17,35 @@ function Menu() {
 	const $cityPlayer = useRef(null);
 	const $firePlayer = useRef(null);
 
+	const previousRainVolume = parseInt(
+		localStorage.getItem('currentRainVolume')
+	);
+	const previousCityVolume = parseInt(
+		localStorage.getItem('currentCityVolume')
+	);
+	const previousFireVolume = parseInt(
+		localStorage.getItem('currentFireVolume')
+	);
+
+	const [rainValue, setRainValue] = useState(previousRainVolume || 0);
+	const [cityValue, setCityValue] = useState(previousCityVolume || 0);
+	const [fireValue, setFireValue] = useState(previousFireVolume || 0);
+
 	const { isPlaying } = useContext(PlayingContext);
 
-	//  const previousRainVolume = parseInt(
-	// 	localStorage.getItem('currentRainVolume')
-	// );
-	// const previousCityVolume = parseInt(
-	// 	localStorage.getItem('currentCityVolume')
-	// );
-	// const previousFireVolume = parseInt(
-	// 	localStorage.getItem('currentFireVolume')
-	// );
-
-	const {
-		handleChangeCity,
-		handleChangeFire,
-		handleChangeRain,
-		rainValue,
-		cityValue,
-		fireValue,
-	} = useMenuPlayer($rainPlayer, $cityPlayer, $firePlayer, isPlaying);
+	const { handleChangeCity, handleChangeFire, handleChangeRain } =
+		useMenuPlayer(
+			$rainPlayer,
+			$cityPlayer,
+			$firePlayer,
+			isPlaying,
+			rainValue,
+			setRainValue,
+			cityValue,
+			setCityValue,
+			fireValue,
+			setFireValue
+		);
 
 	useEffect(() => {
 		const buttons = document.getElementsByClassName('category-button');
