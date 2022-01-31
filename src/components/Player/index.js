@@ -137,12 +137,10 @@ function Player() {
 		setIsOpen(!isOpen);
 	};
 
-	return isLoading ? (
-		<h1>Loading...</h1>
-	) : (
+	return (
 		<div className="player">
 			<div className="title-container">
-				<p title="teste">{currentSong.title}</p>
+				<p title="teste">{isLoading ? 'Loading...' : currentSong.title}</p>
 				<button id="hideWindowButton">
 					<CgArrowsShrinkH />
 				</button>
@@ -181,7 +179,10 @@ function Player() {
 					</button>
 				</Box>
 				<audio ref={$audioPlayer} id="player">
-					<source type="audio/mp3" src={currentSong.uri} />
+					<source
+						type="audio/mp3"
+						src={isLoading ? 'Loading...' : currentSong.uri}
+					/>
 				</audio>
 			</div>
 			<Menu isPlaying={isPlaying} />

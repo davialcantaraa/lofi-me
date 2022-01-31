@@ -10,19 +10,19 @@ function Support() {
 				<h3>Support me!</h3>
 				<div className="support-icons-container">
 					<div className="support-content">
-						<a href="">
+						<a href="/">
 							<SiKofi />
 							<h4>Donation</h4>
 						</a>
 					</div>
 					<div className="support-content">
-						<a href="">
+						<a href="/">
 							<MdOutlineAttachMoney />
 							<h4>Ads</h4>
 						</a>
 					</div>
 					<div className="support-content">
-						<a href="">
+						<a href="/">
 							<IoMdShirt />
 							<h4>Merch</h4>
 						</a>

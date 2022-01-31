@@ -9,9 +9,9 @@
 		]
 	},
 	"nodemonConfig": {
-    "watch": [
-      "server"
-    ]
+		"watch": [
+			"server"
+		]
 	},
 	"dependencies": {
 		"@emotion/react": "^11.7.1",
