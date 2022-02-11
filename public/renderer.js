@@ -29,4 +29,9 @@ window.onload = function () {
 		hiddenWindowLeft.style.display = 'none';
 		hiddenWindowRight.style.display = 'none';
 	});
+
+	ipcRenderer.on('removeButtons', (event, arg) => {
+		hiddenWindowLeft.style.display = 'none';
+		hiddenWindowRight.style.display = 'none';
+	});
 };

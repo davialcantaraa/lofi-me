@@ -38,6 +38,7 @@ function createWindow() {
 			label: 'Reset position',
 			click: () => {
 				win.center();
+				win.webContents.send('removeButtons');
 			},
 		},
 		{
