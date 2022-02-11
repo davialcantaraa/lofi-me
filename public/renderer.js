@@ -7,8 +7,6 @@ window.onload = function () {
 	const hiddenWindowRight = document.getElementById('hiddenWindowRight');
 	const hiddenWindowLeft = document.getElementById('hiddenWindowLeft');
 
-	console.log(openMenuButton);
-
 	openMenuButton.addEventListener('click', function () {
 		ipcRenderer.send('openMenu');
 	});

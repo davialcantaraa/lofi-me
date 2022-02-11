@@ -60,3 +60,15 @@ a {
 
 	position: relative;
 }
+
+.play-loading {
+	animation: rotate 1s infinite ease;
+}
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}

@@ -1,18 +1,7 @@
 {
 	"name": "lofi-me",
 	"version": "0.1.0",
-	"private": true,
 	"main": "electron/main.js",
-	"workspaces": {
-		"packages": [
-			"web"
-		]
-	},
-	"nodemonConfig": {
-		"watch": [
-			"server"
-		]
-	},
 	"dependencies": {
 		"@emotion/react": "^11.7.1",
 		"@emotion/styled": "^11.6.0",
@@ -22,11 +11,7 @@
 		"@testing-library/react": "^12.0.0",
 		"@testing-library/user-event": "^13.2.1",
 		"axios": "^0.24.0",
-		"cors": "^2.8.5",
 		"electron-store": "^8.0.1",
-		"express": "^4.17.2",
-		"nodemon": "^2.0.15",
-		"play-dl": "^1.7.8",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"react-icons": "^4.3.1",
@@ -39,9 +24,7 @@
 	},
 	"scripts": {
 		"electron": "electron .",
-		"dev": "nodemon server/index.js",
 		"start": "react-scripts start",
-		"web": "cd web && next dev",
 		"package": "npx electron-packager . --icon assets/iconTemplate.ico --out=packages",
 		"build": "react-scripts build",
 		"test": "react-scripts test",

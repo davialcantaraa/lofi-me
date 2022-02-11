@@ -29,3 +29,7 @@ yarn-error.log*
 playlist.json
 noises.json
 /server/routes
+
+# repos
+/lofi-me-server
+/lofi-me-website

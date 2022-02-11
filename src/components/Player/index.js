@@ -15,6 +15,7 @@ import {
 	FiPlay,
 	FiVolume2,
 } from 'react-icons/fi';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { CgArrowsShrinkH } from 'react-icons/cg';
 import { FaRandom } from 'react-icons/fa';
 import Box from '@mui/material/Box';
@@ -38,8 +39,8 @@ function Player() {
 
 	useEffect(() => {
 		async function getData() {
-			const response = await api.get('/');
-			setPlaylist(response.data.ytPlaylist);
+			const response = await api.get('/relax');
+			setPlaylist(response.data);
 			setIsLoading(false);
 		}
 		getData();
@@ -151,7 +152,9 @@ function Player() {
 						<FiSkipBack />
 					</button>
 					<button id="play-pause-button">
-						{isPlaying ? (
+						{isLoading ? (
+							<AiOutlineLoading3Quarters className="play-loading" />
+						) : isPlaying ? (
 							<FiPause onClick={toggleAudioPause} />
 						) : (
 							<FiPlay onClick={toggleAudioPlay} />
@@ -178,12 +181,13 @@ function Player() {
 						<FiChevronUp onClick={toggleMenu} id="closeMenuButton" />
 					</button>
 				</Box>
-				<audio ref={$audioPlayer} id="player">
-					<source
-						type="audio/mp3"
-						src={isLoading ? 'Loading...' : currentSong.uri}
-					/>
-				</audio>
+				{isLoading ? (
+					<AiOutlineLoading3Quarters className="play-loading" />
+				) : (
+					<audio ref={$audioPlayer} id="player">
+						<source type="audio/mp3" src={currentSong.uri} />
+					</audio>
+				)}
 			</div>
 			<Menu isPlaying={isPlaying} />
 		</div>
