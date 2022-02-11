@@ -34,7 +34,7 @@ function Player() {
 	);
 	const [currentSong, setCurrentSong] = useState(previousSong || {});
 	const [value, setValue] = useState(previousVolume || 50);
-	const [isOpen, setIsOpen] = useState(true);
+	const [isOpen, setIsOpen] = useState(false);
 	const $audioPlayer = useRef(null);
 
 	useEffect(() => {
@@ -124,7 +124,7 @@ function Player() {
 	}, [skipSong]);
 
 	const toggleMenu = () => {
-		if (isOpen === true) {
+		if (isOpen === false) {
 			document.getElementById('toggler').style.display = 'block';
 			document.getElementById('footer').style.display = 'flex';
 			document.getElementById('closeMenuButton').style.display = 'inline';
@@ -138,11 +138,22 @@ function Player() {
 		setIsOpen(!isOpen);
 	};
 
+	const toggleMenuClose = () => {
+		if (isOpen === true) {
+			document.getElementById('toggler').style.display = 'none';
+			document.getElementById('footer').style.display = 'none';
+			document.getElementById('closeMenuButton').style.display = 'none';
+			document.getElementById('openMenuButton').style.display = 'inline';
+			setIsOpen(false);
+		}
+		console.log(isOpen);
+	};
+
 	return (
 		<div className="player">
 			<div className="title-container">
 				<p title="teste">{isLoading ? 'Loading...' : currentSong.title}</p>
-				<button id="hideWindowButton">
+				<button id="hideWindowButton" onClick={toggleMenuClose}>
 					<CgArrowsShrinkH />
 				</button>
 			</div>
