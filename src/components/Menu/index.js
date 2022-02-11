@@ -69,9 +69,12 @@ function Menu() {
 		const buttons = document.getElementsByClassName('category-button');
 		for (var i = 0; i < buttons.length; i++) {
 			buttons[i].addEventListener('click', function () {
-				var current = document.getElementsByClassName('active');
-				current[0].className = current[0].className.replace(' active', '');
-				this.className += ' active';
+				var current = document.getElementsByClassName('active-playlist');
+				current[0].className = current[0].className.replace(
+					' active-playlist',
+					''
+				);
+				this.className += ' active-playlist';
 			});
 		}
 	}, []);
@@ -147,9 +150,15 @@ function Menu() {
 				</div>
 			</div>
 			<div className="category-container">
-				<button className="category-button active">Sleepy</button>
-				<button className="category-button">Jazz</button>
-				<button className="category-button">Chill</button>
+				<button className="category-button active-playlist" id="relax">
+					Relax
+				</button>
+				<button className="category-button" id="jazz">
+					Jazz
+				</button>
+				<button className="category-button" id="sleepy">
+					Sleepy
+				</button>
 			</div>
 
 			{isLoading ? (

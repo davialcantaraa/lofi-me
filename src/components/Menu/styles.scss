@@ -28,7 +28,7 @@
 			color: var(--background);
 
 			transition: filter 0.2s;
-			&.active {
+			&.active-playlist {
 				background: var(--purple-300);
 				color: var(--white);
 			}
