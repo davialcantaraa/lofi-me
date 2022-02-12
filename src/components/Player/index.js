@@ -159,10 +159,14 @@ function Player() {
 	};
 
 	useEffect(() => {
-		$audioPlayer.current.volume = value / 100;
-		$audioPlayer.current.pause();
-		$audioPlayer.current.load();
-		isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
+		if (isLoading) {
+			console.log('loading');
+		} else {
+			$audioPlayer.current.volume = value / 100;
+			$audioPlayer.current.pause();
+			$audioPlayer.current.load();
+			isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentSong]);
 
@@ -225,9 +229,6 @@ function Player() {
 				{isLoading ? (
 					<>
 						<AiOutlineLoading3Quarters className="play-loading" />
-						<audio ref={$audioPlayer} id="player">
-							<source type="audio/mp3" />
-						</audio>
 					</>
 				) : (
 					<audio ref={$audioPlayer} id="player">

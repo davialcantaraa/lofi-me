@@ -8,9 +8,11 @@ window.onload = function () {
 	const hiddenWindowLeft = document.getElementById('hiddenWindowLeft');
 
 	openMenuButton.addEventListener('click', function () {
+		console.log('abriu');
 		ipcRenderer.send('openMenu');
 	});
 	closeMenuButton.addEventListener('click', function () {
+		console.log('fechou');
 		ipcRenderer.send('closeMenu');
 	});
 
