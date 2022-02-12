@@ -25,6 +25,7 @@ function Player() {
 	const previousVolume = parseInt(localStorage.getItem('currentVolume'));
 	const previousSong = localStorage.getItem(JSON.stringify('currentSong'));
 	const previousSongIndex = localStorage.getItem('currentSongIndex');
+	const previousPlaylist = localStorage.getItem('currentPlaylist') || 'relax';
 
 	const { isPlaying, setIsPlaying } = useContext(PlayingContext);
 	const [playlist, setPlaylist] = useState([]);
@@ -38,32 +39,19 @@ function Player() {
 	const $audioPlayer = useRef(null);
 
 	useEffect(() => {
-		async function getData() {
-			const response = await api.get('/relax');
-			// const responseTwo = await api.get('/jazz');
-			// const responseThree = await api.get('/sleepy');
+		async function getData(previousPlaylist) {
+			const response = await api.get(`${previousPlaylist}`);
 			setPlaylist(response.data);
-			// setPlaylistTwo(responseTwo.data);
-			// setPlaylistThree(responseThree.data);
 			setIsLoading(false);
 		}
-		getData();
+		getData(previousPlaylist);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
 		setCurrentSong(playlist[currentSongIndex]);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [playlist]);
-
-	// const changePlaylist = async (playlist) => {
-	// 	console.log(playlist);
-	// 	setIsLoading(true);
-	// 	const response = await api.get(`${playlist}`);
-	// 	setPlaylist(response.data);
-	// 	console.log(response.data);
-	// 	$audioPlayer.current.load();
-	// 	isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
-	// };
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -96,9 +84,6 @@ function Player() {
 				setCurrentSong(playlist[temp]);
 				localStorage.setItem('currentSong', JSON.stringify(playlist[temp]));
 				localStorage.setItem('currentSongIndex', temp);
-				$audioPlayer.current.pause();
-				$audioPlayer.current.load();
-				isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
 				return temp;
 			});
 		} else {
@@ -112,9 +97,6 @@ function Player() {
 				setCurrentSong(playlist[temp]);
 				localStorage.setItem('currentSong', JSON.stringify(playlist[temp]));
 				localStorage.setItem('currentSongIndex', temp);
-				$audioPlayer.current.pause();
-				$audioPlayer.current.load();
-				isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
 				return temp;
 			});
 		}
@@ -126,9 +108,6 @@ function Player() {
 		setCurrentSongIndex(randomNumber);
 		localStorage.setItem('currentSong', JSON.stringify(currentSong));
 		localStorage.setItem('currentSongIndex', currentSongIndex);
-		$audioPlayer.current.pause();
-		$audioPlayer.current.load();
-		isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
 	};
 
 	useEffect(() => {
@@ -154,23 +133,38 @@ function Player() {
 		setIsOpen(!isOpen);
 	};
 
-	// window.onload = () => {
-	// 	document.getElementById('relax').addEventListener('click', () => {
-	// 		$audioPlayer.current.pause();
-	// 		changePlaylist('relax');
-	// 		setIsLoading(false);
-	// 	});
-	// 	document.getElementById('jazz').addEventListener('click', () => {
-	// 		$audioPlayer.current.pause();
-	// 		changePlaylist('jazz');
-	// 		setIsLoading(false);
-	// 	});
-	// 	document.getElementById('sleepy').addEventListener('click', () => {
-	// 		$audioPlayer.current.pause();
-	// 		changePlaylist('sleepy');
-	// 		setIsLoading(false);
-	// 	});
-	// };
+	const changePlaylist = async (playlist) => {
+		console.log(playlist);
+		setIsLoading(true);
+		localStorage.setItem('currentPlaylist', playlist);
+		localStorage.setItem('currentSong', JSON.stringify(currentSong));
+		localStorage.setItem('currentSongIndex', currentSongIndex);
+		const response = await api.get(`${playlist}`);
+		setPlaylist(response.data);
+	};
+
+	window.onload = () => {
+		document.getElementById('relax').addEventListener('click', async () => {
+			await changePlaylist('relax');
+			setIsLoading(false);
+		});
+		document.getElementById('jazz').addEventListener('click', async () => {
+			await changePlaylist('jazz');
+			setIsLoading(false);
+		});
+		document.getElementById('sleepy').addEventListener('click', async () => {
+			await changePlaylist('sleepy');
+			setIsLoading(false);
+		});
+	};
+
+	useEffect(() => {
+		$audioPlayer.current.volume = value / 100;
+		$audioPlayer.current.pause();
+		$audioPlayer.current.load();
+		isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [currentSong]);
 
 	const toggleMenuClose = () => {
 		if (isOpen === true) {
@@ -186,7 +180,9 @@ function Player() {
 	return (
 		<div className="player">
 			<div className="title-container">
-				<p title="teste">{isLoading ? 'Loading...' : currentSong.title}</p>
+				<p title={isLoading ? 'Loading...' : currentSong.title}>
+					{isLoading ? 'Loading...' : currentSong.title}
+				</p>
 				<button id="hideWindowButton" onClick={toggleMenuClose}>
 					<CgArrowsShrinkH />
 				</button>
@@ -227,7 +223,12 @@ function Player() {
 					</button>
 				</Box>
 				{isLoading ? (
-					<AiOutlineLoading3Quarters className="play-loading" />
+					<>
+						<AiOutlineLoading3Quarters className="play-loading" />
+						<audio ref={$audioPlayer} id="player">
+							<source type="audio/mp3" />
+						</audio>
+					</>
 				) : (
 					<audio ref={$audioPlayer} id="player">
 						<source type="audio/mp3" src={currentSong.uri} />

@@ -15,6 +15,8 @@ import api from '../../services/api';
 function Menu() {
 	const [noises, setNoises] = useState([]);
 	const [isLoading, setisLoading] = useState(true);
+	const previousPlaylist = localStorage.getItem('currentPlaylist') || 'relax';
+	console.log(previousPlaylist);
 
 	useEffect(() => {
 		async function getData() {
@@ -150,13 +152,22 @@ function Menu() {
 				</div>
 			</div>
 			<div className="category-container">
-				<button className="category-button active-playlist" id="relax">
+				<button
+					className={previousPlaylist === 'relax' ? 'active-playlist' : null}
+					id="relax"
+				>
 					Relax
 				</button>
-				<button className="category-button" id="jazz">
+				<button
+					className={previousPlaylist === 'jazz' ? 'active-playlist' : null}
+					id="jazz"
+				>
 					Jazz
 				</button>
-				<button className="category-button" id="sleepy">
+				<button
+					className={previousPlaylist === 'sleepy' ? 'active-playlist' : null}
+					id="sleepy"
+				>
 					Sleepy
 				</button>
 			</div>
