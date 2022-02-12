@@ -28,8 +28,6 @@ function Player() {
 
 	const { isPlaying, setIsPlaying } = useContext(PlayingContext);
 	const [playlist, setPlaylist] = useState([]);
-	const [playlistTwo, setPlaylistTwo] = useState([]);
-	const [playlistThree, setPlaylistThree] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [currentSongIndex, setCurrentSongIndex] = useState(
 		previousSongIndex || 0
