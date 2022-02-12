@@ -16,7 +16,6 @@ function Menu() {
 	const [noises, setNoises] = useState([]);
 	const [isLoading, setisLoading] = useState(true);
 	const previousPlaylist = localStorage.getItem('currentPlaylist') || 'relax';
-	console.log(previousPlaylist);
 
 	useEffect(() => {
 		async function getData() {

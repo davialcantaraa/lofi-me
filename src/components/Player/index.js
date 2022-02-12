@@ -134,7 +134,6 @@ function Player() {
 	};
 
 	const changePlaylist = async (playlist) => {
-		console.log(playlist);
 		setIsLoading(true);
 		localStorage.setItem('currentPlaylist', playlist);
 		localStorage.setItem('currentSong', JSON.stringify(currentSong));
@@ -143,7 +142,15 @@ function Player() {
 		setPlaylist(response.data);
 	};
 
-	window.onload = () => {
+	useEffect(() => {
+		$audioPlayer.current.volume = value / 100;
+		$audioPlayer.current.pause();
+		$audioPlayer.current.load();
+		isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [currentSong]);
+
+	window.addEventListener('load', () => {
 		document.getElementById('relax').addEventListener('click', async () => {
 			await changePlaylist('relax');
 			setIsLoading(false);
@@ -156,19 +163,22 @@ function Player() {
 			await changePlaylist('sleepy');
 			setIsLoading(false);
 		});
-	};
+	});
 
-	useEffect(() => {
-		if (isLoading) {
-			console.log('loading');
-		} else {
-			$audioPlayer.current.volume = value / 100;
-			$audioPlayer.current.pause();
-			$audioPlayer.current.load();
-			isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [currentSong]);
+	// window.onload = () => {
+	// 	document.getElementById('relax').addEventListener('click', async () => {
+	// 		await changePlaylist('relax');
+	// 		setIsLoading(false);
+	// 	});
+	// 	document.getElementById('jazz').addEventListener('click', async () => {
+	// 		await changePlaylist('jazz');
+	// 		setIsLoading(false);
+	// 	});
+	// 	document.getElementById('sleepy').addEventListener('click', async () => {
+	// 		await changePlaylist('sleepy');
+	// 		setIsLoading(false);
+	// 	});
+	// };
 
 	const toggleMenuClose = () => {
 		if (isOpen === true) {
@@ -178,15 +188,18 @@ function Player() {
 			document.getElementById('openMenuButton').style.display = 'inline';
 			setIsOpen(false);
 		}
-		console.log(isOpen);
 	};
 
 	return (
 		<div className="player">
 			<div className="title-container">
-				<p title={isLoading ? 'Loading...' : currentSong.title}>
-					{isLoading ? 'Loading...' : currentSong.title}
-				</p>
+				<a
+					target="_blank"
+					href={isLoading ? 'Loading...' : currentSong.url}
+					rel="noreferrer"
+				>
+					<p>{isLoading ? 'Loading...' : currentSong.title}</p>
+				</a>
 				<button id="hideWindowButton" onClick={toggleMenuClose}>
 					<CgArrowsShrinkH />
 				</button>
@@ -229,6 +242,9 @@ function Player() {
 				{isLoading ? (
 					<>
 						<AiOutlineLoading3Quarters className="play-loading" />
+						<audio ref={$audioPlayer} id="player">
+							<source type="audio/mp3" />
+						</audio>
 					</>
 				) : (
 					<audio ref={$audioPlayer} id="player">
