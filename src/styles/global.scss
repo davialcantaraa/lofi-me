@@ -6,17 +6,14 @@
 
 :root {
 	--white: #fff;
-	--background: #00111c;
-	--background-alpha: #00111cd3;
+	--background: #000;
 
 	--gray-100: rgb(112, 112, 112);
-	--gray-700: #002a46;
 
 	--red-100: #ff5555;
 
-	--purple-100: #bd93f9;
 	--purple-300: #7747b9;
-	--purple-700: #483c67;
+	// --purple-300: #007bff;
 }
 
 body {
@@ -28,7 +25,7 @@ input,
 textarea,
 select,
 button {
-	font: 400 1rem 'Rubik', sans-serif;
+	font: 400 1rem 'Inter', sans-serif;
 	color: var(--white);
 }
 
@@ -56,7 +53,7 @@ a {
 	height: fit-content;
 
 	background: var(--background);
-	border-radius: 0.2rem;
+	border-radius: 1rem;
 
 	position: relative;
 }

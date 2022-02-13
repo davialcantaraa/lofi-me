@@ -19,10 +19,21 @@
 		justify-content: space-between;
 
 		margin-top: 10px;
+
+		.trend {
+			position: absolute;
+			z-index: 3;
+			top: -40%;
+			right: -15%;
+
+			fill: var(--red-100);
+		}
+
 		button {
 			padding: 5px;
 			background: var(--white);
-			border-radius: 2px;
+			border-radius: 0.4rem;
+			position: relative;
 
 			font-size: 0.9rem;
 			color: var(--background);

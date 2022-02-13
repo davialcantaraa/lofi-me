@@ -7,17 +7,16 @@ import api from '../../services/api';
 
 import './styles.scss';
 import {
-	FiSkipBack,
-	FiSkipForward,
-	FiChevronDown,
-	FiChevronUp,
-	FiPause,
-	FiPlay,
-	FiVolume2,
-} from 'react-icons/fi';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+	FaAngleDoubleLeft,
+	FaAngleDoubleRight,
+	FaAngleDown,
+	FaAngleUp,
+	FaPause,
+	FaPlay,
+	FaVolumeUp,
+	FaRandom,
+} from 'react-icons/fa';
 import { CgArrowsShrinkH } from 'react-icons/cg';
-import { FaRandom } from 'react-icons/fa';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
@@ -165,21 +164,6 @@ function Player() {
 		});
 	});
 
-	// window.onload = () => {
-	// 	document.getElementById('relax').addEventListener('click', async () => {
-	// 		await changePlaylist('relax');
-	// 		setIsLoading(false);
-	// 	});
-	// 	document.getElementById('jazz').addEventListener('click', async () => {
-	// 		await changePlaylist('jazz');
-	// 		setIsLoading(false);
-	// 	});
-	// 	document.getElementById('sleepy').addEventListener('click', async () => {
-	// 		await changePlaylist('sleepy');
-	// 		setIsLoading(false);
-	// 	});
-	// };
-
 	const toggleMenuClose = () => {
 		if (isOpen === true) {
 			document.getElementById('toggler').style.display = 'none';
@@ -190,43 +174,53 @@ function Player() {
 		}
 	};
 
+	// useEffect(() => {
+	// 	if (isLoading) {
+	// 		document.getElementById('audio-container').style.pointerEvents = 'none';
+	// 		document.getElementById('audio-container').style.filter =
+	// 			'brightness(0.3)';
+	// 	} else {
+	// 		document.getElementById('audio-container').style.pointerEvents = 'auto';
+	// 		document.getElementById('audio-container').style.filter = 'brightness(1)';
+	// 	}
+	// }, [isLoading]);
+
 	return (
 		<div className="player">
 			<div className="title-container">
-				<a
-					target="_blank"
-					href={isLoading ? 'Loading...' : currentSong.url}
-					rel="noreferrer"
-				>
-					<p>{isLoading ? 'Loading...' : currentSong.title}</p>
-				</a>
+				<p>{isLoading ? 'Loading...' : currentSong.title}</p>
 				<button id="hideWindowButton" onClick={toggleMenuClose}>
 					<CgArrowsShrinkH />
 				</button>
 			</div>
-			<div className="audio-container">
+			<div id="audio-container">
 				<div>
 					<button onClick={() => skipSong(false)}>
-						<FiSkipBack />
+						<FaAngleDoubleLeft />
 					</button>
 					<button id="play-pause-button">
-						{isLoading ? (
+						{isPlaying ? (
+							<FaPause onClick={toggleAudioPause} />
+						) : (
+							<FaPlay onClick={toggleAudioPlay} />
+						)}
+						{/* {isLoading ? (
 							<AiOutlineLoading3Quarters className="play-loading" />
 						) : isPlaying ? (
-							<FiPause onClick={toggleAudioPause} />
+							<FaPause onClick={toggleAudioPause} />
 						) : (
-							<FiPlay onClick={toggleAudioPlay} />
-						)}
+							<FaPlay onClick={toggleAudioPlay} />
+						)} */}
 					</button>
 					<button onClick={() => skipSong()}>
-						<FiSkipForward />
+						<FaAngleDoubleRight />
 					</button>
 					<button onClick={handleRandomize}>
 						<FaRandom size={15} />
 					</button>
 				</div>
 				<Box className="volume-container" sx={{ width: 200 }}>
-					<FiVolume2 size={20} />
+					<FaVolumeUp size={20} />
 					<Slider
 						size="small"
 						aria-label="volume"
@@ -235,13 +229,12 @@ function Player() {
 						onChange={handleChange}
 					/>
 					<button>
-						<FiChevronDown onClick={toggleMenu} id="openMenuButton" />
-						<FiChevronUp onClick={toggleMenu} id="closeMenuButton" />
+						<FaAngleDown onClick={toggleMenu} id="openMenuButton" />
+						<FaAngleUp onClick={toggleMenu} id="closeMenuButton" />
 					</button>
 				</Box>
 				{isLoading ? (
 					<>
-						<AiOutlineLoading3Quarters className="play-loading" />
 						<audio ref={$audioPlayer} id="player">
 							<source type="audio/mp3" />
 						</audio>
