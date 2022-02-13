@@ -21,6 +21,7 @@ function createWindow() {
 		width: 200,
 		height: 100,
 		frame: false,
+		show: false,
 		resizable: false,
 		fullscreenable: false,
 		alwaysOnTop: true,
@@ -31,6 +32,23 @@ function createWindow() {
 			contextIsolation: false,
 		},
 	});
+
+	var loading = new BrowserWindow({
+		width: 500,
+		height: 300,
+		transparent: true,
+		frame: false,
+		alwaysOnTop: true,
+		skipTaskbar: true,
+	});
+
+	loading.loadFile(resolve(__dirname, './loading.html'));
+	loading.center();
+	setTimeout(function () {
+		loading.close();
+		win.center();
+		win.show();
+	}, 5000);
 
 	const contextMenu = Menu.buildFromTemplate([
 		{ label: 'Support' },
