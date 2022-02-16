@@ -2,6 +2,12 @@
 	"name": "lofi-me",
 	"version": "0.1.0",
 	"main": "electron/main.js",
+	"private": "true",
+	"workspaces": {
+		"packages": [
+			"web"
+		]
+	},
 	"dependencies": {
 		"@emotion/react": "^11.7.1",
 		"@emotion/styled": "^11.6.0",
@@ -25,6 +31,7 @@
 	"scripts": {
 		"electron": "electron .",
 		"start": "react-scripts start",
+		"web": "cd web && next dev",
 		"package": "npx electron-packager . --icon assets/iconTemplate.ico --out=packages",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
