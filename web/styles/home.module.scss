@@ -1,0 +1,219 @@
+.main {
+	background: var(--background);
+	display: flex;
+	justify-content: center;
+
+	.container {
+		width: 95vw;
+		height: 90vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		font-size: 2rem;
+	}
+
+	h1 {
+		margin-bottom: 1.5rem;
+		span {
+			color: var(--green);
+		}
+	}
+
+	p {
+		color: var(--gray-600);
+		span {
+			color: var(--purple);
+			&:nth-child(2) {
+				color: var(--green);
+			}
+		}
+	}
+
+	.githubContainer {
+		margin-top: 1.5rem;
+		display: flex;
+		gap: 1rem;
+
+		button {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+
+			padding: 1rem 1.5rem;
+			border: 1px solid var(--purple);
+			border-radius: 1rem;
+			box-shadow: var(--purple) 0px 0px 2px;
+			&:nth-child(2) {
+				border: 1px solid var(--green);
+				box-shadow: var(--green) 0px 0px 2px;
+			}
+
+			color: var(--white);
+
+			transition: 0.3s ease;
+
+			&:hover {
+				background: var(--purple);
+				color: var(--background);
+				&:nth-child(2) {
+					background: var(--green);
+				}
+			}
+		}
+	}
+}
+.goDown {
+	fill: var(--purple);
+
+	animation: bump 1.5s ease-in-out infinite alternate;
+
+	@keyframes bump {
+		from {
+			transform: translateY(-5px);
+		}
+		to {
+			transform: translateY(5px);
+		}
+	}
+}
+.preview {
+	height: 90vh;
+	background: var(--gray-900);
+	padding-top: 5rem;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1.5rem;
+
+	h1 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+
+		color: var(--gray-600);
+	}
+
+	section {
+		width: 70%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2rem;
+
+		> div {
+			> p {
+				margin-top: 0.5rem;
+				font-size: 1.2rem;
+				color: var(--green);
+			}
+			text-align: center;
+		}
+	}
+
+	.desktopContainer {
+		width: 90%;
+		height: 30rem;
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-direction: column;
+		overflow: hidden;
+
+		position: relative;
+
+		border-radius: 1rem;
+
+		background: var(--background);
+
+		.window {
+			width: 100%;
+			display: flex;
+			justify-content: start;
+			padding: 1rem;
+			gap: 0.3rem;
+
+			> div {
+				width: 0.7rem;
+				height: 0.7rem;
+				border-radius: 100%;
+				background: var(--purple);
+
+				&:nth-child(1) {
+					background: var(--red);
+				}
+				&:nth-child(2) {
+					background: var(--yellow);
+				}
+				&:nth-child(3) {
+					background: var(--green);
+				}
+			}
+		}
+
+		.taskbar {
+			width: 100%;
+
+			padding: 1rem 1rem 0.7rem;
+			> div {
+				display: flex;
+				justify-content: center;
+				gap: 1rem;
+
+				> div {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					> div {
+						width: 3rem;
+						height: 3rem;
+						background: var(--gray-800);
+
+						border-radius: 1rem;
+					}
+					> span {
+						height: 5px;
+						width: 5px;
+						background: var(--white);
+						border-radius: 100%;
+						display: block;
+
+						margin-top: 5px;
+					}
+				}
+			}
+		}
+		.menuContainer {
+			width: 200px;
+			height: fit-content;
+
+			background: var(--purple);
+
+			border-radius: 1rem;
+
+			position: absolute;
+			top: 20%;
+		}
+	}
+}
+
+.features {
+	background: var(--background);
+
+	.featureItems {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		justify-content: center;
+		width: 80%;
+		height: 100%;
+		> div {
+			height: 100%;
+			width: 100%;
+			border-radius: 1rem;
+			background: var(--gray-900);
+		}
+	}
+}

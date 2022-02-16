@@ -1,0 +1,41 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--white: #fff;
+	--background: #111;
+
+	--gray-600: #707070;
+	--gray-700: #575757;
+	--gray-800: #252525;
+	--gray-900: #161616;
+
+	--purple: #9345d3;
+	--green: #00a375;
+	--green-200: #36e2b2;
+	--red: #fd585b;
+	--yellow: #ffb01f;
+}
+
+body,
+input,
+textarea,
+select,
+button {
+	font: 400 1rem 'Inter', sans-serif;
+	color: var(--white);
+}
+
+button {
+	cursor: pointer;
+	background: none;
+	border: none;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
