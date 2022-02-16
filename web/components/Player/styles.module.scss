@@ -1,0 +1,63 @@
+.playerContainer {
+	border-radius: 1rem;
+
+	background: var(--purple);
+
+	button {
+		cursor: auto;
+	}
+
+	.player {
+		padding: 0.7rem;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		.titleContainer {
+			width: 90%;
+			gap: 1rem;
+
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			p {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+
+				font-size: 0.8rem;
+				line-clamp: 1;
+				-webkit-line-clamp: 1;
+				overflow: hidden;
+
+				user-select: none;
+			}
+		}
+		.audioContainer {
+			width: 90%;
+			margin-top: 0.5rem;
+			> div {
+				display: flex;
+				justify-content: space-between;
+			}
+		}
+		.volumeContainer {
+			width: 100%;
+
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			> span {
+				font-weight: 500 !important;
+				color: var(--white);
+			}
+			.MuiSlider-valueLabel {
+				background: var(--white);
+				color: var(--background);
+			}
+			.closeMenuButton {
+				display: none;
+			}
+		}
+	}
+}

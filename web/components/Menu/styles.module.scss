@@ -1,0 +1,109 @@
+.menu {
+	width: 100%;
+	height: fit-content;
+
+	display: none;
+	background: var(--purple);
+
+	flex-direction: column;
+	align-items: center;
+
+	border-radius: 1rem;
+
+	padding-bottom: 0.7rem;
+	svg {
+		fill: var(--white);
+	}
+	.backgroundSoundsContainer {
+		width: 100%;
+		margin-top: 10px;
+		> div + div {
+			margin-top: 10px;
+		}
+		.volumeContainer {
+			width: 100%;
+
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			> span {
+				font-weight: 500 !important;
+				color: var(--white);
+			}
+			.MuiSlider-valueLabel {
+				background: var(--white);
+				color: var(--background);
+			}
+			.closeMenuButton {
+				display: none;
+			}
+		}
+	}
+	.categoryContainer {
+		display: flex;
+		justify-content: space-between;
+
+		margin-top: 10px;
+		gap: 5px;
+
+		button {
+			padding: 5px;
+			background: var(--white);
+			border-radius: 0.4rem;
+			position: relative;
+
+			font-size: 0.9rem;
+			color: var(--background);
+
+			transition: filter 0.2s;
+			&.activePlaylist {
+				background: var(--background);
+				color: var(--white);
+			}
+			&:hover {
+				filter: brightness(0.7);
+			}
+		}
+	}
+}
+.footer {
+	display: flex;
+	justify-content: center;
+
+	padding: 0.3rem 0.5rem;
+	border-top: 0.5px solid var(--white);
+
+	font-size: 0.7rem;
+	font-weight: 400;
+
+	color: var(--white);
+	> div {
+		width: 90%;
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		margin-top: 2px;
+		> div {
+			svg {
+				cursor: pointer;
+
+				filter: brightness(0.5);
+				transition: filter 0.2s;
+				&:hover {
+					filter: brightness(1);
+				}
+			}
+		}
+	}
+	p {
+		cursor: pointer;
+
+		filter: brightness(0.5);
+		transition: filter 0.2s;
+		&:hover {
+			filter: brightness(1);
+		}
+	}
+}
