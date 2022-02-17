@@ -6,7 +6,9 @@ import {
 	BsCloudDownloadFill,
 	BsGithub,
 	BsFillCaretDownFill,
+	BsFillHouseDoorFill,
 } from 'react-icons/bs';
+import { CgArrowsShrinkH } from 'react-icons/cg';
 import Player from '../components/Player/Player';
 import { motion } from 'framer-motion';
 
@@ -81,12 +83,12 @@ export default function Home() {
 			</main>
 			<section className={styles.preview}>
 				{/* <BsFillCaretDownFill size={60} className={styles.goDown} /> */}
-				<motion.section ref={constraintsRef}>
+				<section>
 					<div>
 						<h1>simple functional player</h1>
 						<p>mouse over elements to show the description</p>
 					</div>
-					<div className={styles.desktopContainer}>
+					<motion.div ref={constraintsRef} className={styles.desktopContainer}>
 						<div className={styles.window}>
 							<div></div>
 							<div></div>
@@ -119,8 +121,8 @@ export default function Home() {
 								</div>
 							</div>
 						</div>
-					</div>
-				</motion.section>
+					</motion.div>
+				</section>
 			</section>
 			<section className={`${styles.preview} ${styles.features}`}>
 				{/* <BsFillCaretDownFill size={60} className={styles.goDown} /> */}
@@ -133,9 +135,28 @@ export default function Home() {
 					</div>
 				</section>
 				<section className={styles.featureItems}>
-					<div></div>
-					<div></div>
-					<div></div>
+					<div>
+						<div>
+							<CgArrowsShrinkH />
+							<h3>hide window whenever you want</h3>
+							<p>you can hide window to avoid distractions</p>
+						</div>
+					</div>
+					<div>
+						<div>
+							<BsFillHouseDoorFill />
+							<h3>build your perfect environment</h3>
+							<p>3 playlist according to your mood</p>
+							<p>3 background noises to perfect vibe</p>
+						</div>
+					</div>
+					<div>
+						<div>
+							<BsGithub />
+							<h3>Open Source</h3>
+							<p>dsfhdkj</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
