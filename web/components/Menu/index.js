@@ -14,34 +14,34 @@ function Menu() {
 				<div className={styles.backgroundSoundsContainer} id="bgVolume">
 					<Box className={styles.volumeContainer} sx={{ width: 200 }}>
 						<BsFillCloudRainHeavyFill />
-						<Tooltip title="rain noise">
+						<Tooltip placement="top" title="rain noise">
 							<Slider size="small" aria-label="volume" value={10} />
 						</Tooltip>
 					</Box>
 					<Box className={styles.volumeContainer} sx={{ width: 200 }}>
 						<FaCity />
-						<Tooltip title="city traffic noise">
+						<Tooltip placement="top" title="city traffic noise">
 							<Slider size="small" value={50} aria-label="volume" />
 						</Tooltip>
 					</Box>
 					<Box className={styles.volumeContainer} sx={{ width: 200 }}>
 						<MdLocalFireDepartment />
-						<Tooltip title="fireplace noise">
+						<Tooltip placement="top" title="fireplace noise">
 							<Slider size="small" value={30} aria-label="volume" />
 						</Tooltip>
 					</Box>
 				</div>
 			</div>
 			<div className={styles.categoryContainer}>
-				<Tooltip title="relax beats">
+				<Tooltip placement="top" title="relax beats">
 					<button className={styles.activePlaylist} id="relax">
 						relax
 					</button>
 				</Tooltip>
-				<Tooltip title="jazzy beats">
+				<Tooltip placement="top" title="jazzy beats">
 					<button id="jazz">jazz</button>
 				</Tooltip>
-				<Tooltip title="sleepy beats">
+				<Tooltip placement="top" title="sleepy beats">
 					<button id="sleepy">sleepy</button>
 				</Tooltip>
 			</div>

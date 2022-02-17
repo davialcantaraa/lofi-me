@@ -40,10 +40,10 @@ function Player() {
 		<div className={styles.playerContainer}>
 			<div className={styles.player}>
 				<div className={styles.titleContainer}>
-					<Tooltip title="click and hold to grab window">
+					<Tooltip placement="top" title="click and hold to grab window">
 						<p>WYS – Snowman</p>
 					</Tooltip>
-					<Tooltip title="click me to hide window">
+					<Tooltip placement="top" title="click me to hide window">
 						<button onClick={hideWindow}>
 							<CgArrowsShrinkH />
 						</button>
@@ -51,22 +51,26 @@ function Player() {
 				</div>
 				<div className={styles.audioContainer}>
 					<div>
-						<Tooltip title="previous beat">
+						<Tooltip placement="top" title="previous beat">
 							<button>
 								<FaAngleDoubleLeft />
 							</button>
 						</Tooltip>
-						<Tooltip title="play/pause" className={styles.tooltip}>
+						<Tooltip
+							placement="top"
+							title="play/pause"
+							className={styles.tooltip}
+						>
 							<button>
 								<FaPlay />
 							</button>
 						</Tooltip>
-						<Tooltip title="next beat">
+						<Tooltip placement="top" title="next beat">
 							<button>
 								<FaAngleDoubleRight />
 							</button>
 						</Tooltip>
-						<Tooltip title="randomize beat">
+						<Tooltip placement="top" title="randomize beat">
 							<button>
 								<FaRandom size={15} />
 							</button>
@@ -74,7 +78,7 @@ function Player() {
 					</div>
 					<Box className={styles.volumeContainer}>
 						<FaVolumeUp size={20} />
-						<Tooltip title="increase/ decrease volume">
+						<Tooltip placement="top" title="increase/ decrease volume">
 							<Slider
 								size="small"
 								aria-label="volume"
@@ -82,7 +86,7 @@ function Player() {
 								value={50}
 							/>
 						</Tooltip>
-						<Tooltip title="click me to open/ close menu">
+						<Tooltip placement="top" title="click me to open/ close menu">
 							<button>
 								<FaAngleDown
 									onClick={toggleMenu}
