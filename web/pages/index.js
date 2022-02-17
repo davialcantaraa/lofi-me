@@ -6,9 +6,13 @@ import {
 	BsCloudDownloadFill,
 	BsGithub,
 	BsFillHouseDoorFill,
+	BsWindows,
+	BsFileMusicFill,
 } from 'react-icons/bs';
+import { GiVampireDracula } from 'react-icons/gi';
+import { SiSupabase } from 'react-icons/si';
 import { FiChevronsLeft } from 'react-icons/fi';
-import { CgArrowsShrinkH } from 'react-icons/cg';
+import { CgArrowsShrinkH, CgPlayList } from 'react-icons/cg';
 import Player from '../components/Player/Player';
 import { motion } from 'framer-motion';
 
@@ -79,7 +83,7 @@ export default function Home() {
 					</p>
 					<div className={styles.githubContainer}>
 						<button>
-							<BsCloudDownloadFill size={25} />
+							<BsWindows size={25} />
 							Download
 						</button>
 						<button>
@@ -153,24 +157,92 @@ export default function Home() {
 				<section className={styles.featureItems}>
 					<div>
 						<div>
-							<CgArrowsShrinkH />
-							<h3>hide window whenever you want</h3>
-							<p>you can hide window to avoid distractions</p>
+							<CgArrowsShrinkH size={30} />
+							<h3>hide whenever you want</h3>
+							<p>
+								you can hide window to <span>avoid distractions</span>
+							</p>
+							<a href="/">learn how to use</a>
 						</div>
 					</div>
 					<div>
 						<div>
-							<BsFillHouseDoorFill />
-							<h3>build your perfect environment</h3>
-							<p>3 playlist according to your mood</p>
-							<p>3 background noises to perfect vibe</p>
+							<CgPlayList size={30} />
+							<h3>choose your mood</h3>
+							<p>
+								3 options based on <span>popular lofi playlists</span> from
+								youtube
+							</p>
+							<a href="/">learn more about playlists</a>
 						</div>
 					</div>
 					<div>
 						<div>
-							<BsGithub />
-							<h3>Open Source</h3>
-							<p>dsfhdkj</p>
+							<BsGithub size={30} />
+							<h3>open Source</h3>
+							<p>
+								built with popular <span>javascript</span> frameworks, libraries
+								and tools
+							</p>
+							<a href="/">learn more about the creation process</a>
+						</div>
+					</div>
+				</section>
+				<section className={styles.upcomingFeatures}>
+					<div>
+						<h1>upcoming features</h1>
+						<p>stay in touch! give us your e-mail </p>
+						<a href="/">here</a>
+						<p>.</p>
+					</div>
+				</section>
+				<section className={styles.featureItems}>
+					<div>
+						<div>
+							<BsFileMusicFill size={30} />
+							<h3>new playlists</h3>
+							<ul>
+								<li>piano lofi</li>
+								<li>anime lofi</li>
+								<li>games lofi</li>
+							</ul>
+							<a href="/" className={styles.upcomingAnchor}>
+								contribute here
+							</a>
+						</div>
+					</div>
+					<div>
+						<div>
+							<SiSupabase size={30} />
+							<h3>new background noises</h3>
+							<ul>
+								<li>thunders</li>
+								<li>ocean</li>
+								<li>forest</li>
+							</ul>
+							<a href="/" className={styles.upcomingAnchor}>
+								contribute here
+							</a>
+						</div>
+					</div>
+					<div>
+						<div>
+							<GiVampireDracula size={30} />
+							<h3>themes</h3>
+							<ul>
+								<li>
+									<a href="/">dracula</a>
+								</li>
+								<li>
+									<a href="/">omni</a>
+								</li>
+								<li>
+									<a href="/">aura</a>
+								</li>
+							</ul>
+							<a href="/" className={styles.upcomingAnchor}>
+								contribute here
+							</a>
 						</div>
 					</div>
 				</section>
