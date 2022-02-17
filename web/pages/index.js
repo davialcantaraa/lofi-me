@@ -5,15 +5,17 @@ import { useEffect, useRef } from 'react';
 import {
 	BsCloudDownloadFill,
 	BsGithub,
-	BsFillCaretDownFill,
 	BsFillHouseDoorFill,
 } from 'react-icons/bs';
+import { FiChevronsLeft } from 'react-icons/fi';
 import { CgArrowsShrinkH } from 'react-icons/cg';
 import Player from '../components/Player/Player';
 import { motion } from 'framer-motion';
 
 export default function Home() {
 	const constraintsRef = useRef(null);
+	const showWindowButton = useRef(null);
+
 	useEffect(() => {
 		const element = document.querySelector('.typewriter');
 		function callback(text) {
@@ -45,6 +47,12 @@ export default function Home() {
 			.pause()
 			.delete();
 	}, []);
+
+	const showWindow = () => {
+		document.getElementById('menu-container').style.right = 'auto';
+		document.getElementById('menu-container').style.display = 'block';
+		document.getElementById('showWindow').style.display = 'none';
+	};
 
 	return (
 		<div>
@@ -94,10 +102,18 @@ export default function Home() {
 							<div></div>
 							<div></div>
 						</div>
+						<div className={styles.showWindowContainer}>
+							<div className={styles.hideWindow} id="showWindow">
+								<button ref={showWindowButton} onClick={showWindow}>
+									<FiChevronsLeft size={30} />
+								</button>
+							</div>
+						</div>
 						<motion.div
 							drag
 							dragConstraints={constraintsRef}
 							className={styles.menuContainer}
+							id="menu-container"
 						>
 							<Player />
 						</motion.div>

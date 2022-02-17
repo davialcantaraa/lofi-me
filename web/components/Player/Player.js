@@ -31,6 +31,11 @@ function Player() {
 		setIsOpen(!isOpen);
 	};
 
+	const hideWindow = () => {
+		document.getElementById('menu-container').style.display = 'none';
+		document.getElementById('showWindow').style.display = 'flex';
+	};
+
 	return (
 		<div className={styles.playerContainer}>
 			<div className={styles.player}>
@@ -38,8 +43,8 @@ function Player() {
 					<Tooltip title="click and hold to grab window">
 						<p>WYS – Snowman</p>
 					</Tooltip>
-					<Tooltip title="hide window">
-						<button>
+					<Tooltip title="click me to hide window">
+						<button onClick={hideWindow}>
 							<CgArrowsShrinkH />
 						</button>
 					</Tooltip>
@@ -51,7 +56,7 @@ function Player() {
 								<FaAngleDoubleLeft />
 							</button>
 						</Tooltip>
-						<Tooltip title="play/pause beat" className={styles.tooltip}>
+						<Tooltip title="play/pause" className={styles.tooltip}>
 							<button>
 								<FaPlay />
 							</button>
@@ -77,7 +82,7 @@ function Player() {
 								value={50}
 							/>
 						</Tooltip>
-						<Tooltip title="click me">
+						<Tooltip title="click me to open/ close menu">
 							<button>
 								<FaAngleDown
 									onClick={toggleMenu}

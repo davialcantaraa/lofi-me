@@ -186,9 +186,30 @@
 				}
 			}
 		}
+
+		.showWindowContainer {
+			width: 100%;
+			display: flex;
+			justify-content: end;
+			.hideWindow {
+				display: none;
+				right: 0;
+				height: 100px;
+				width: 50px;
+				border-radius: 1rem 0 0 1rem;
+
+				align-items: center;
+				justify-content: center;
+
+				background: var(--purple);
+				color: var(--white);
+			}
+		}
+
 		.menuContainer {
 			width: 200px;
 			height: fit-content;
+			// display: flex;
 
 			background: var(--purple);
 
