@@ -2,19 +2,14 @@ import Head from 'next/head';
 import malarkey from 'malarkey';
 import styles from '../styles/home.module.scss';
 import { useEffect, useRef } from 'react';
-import {
-	BsCloudDownloadFill,
-	BsGithub,
-	BsFillHouseDoorFill,
-	BsWindows,
-	BsFileMusicFill,
-} from 'react-icons/bs';
+import { BsGithub, BsWindows, BsFileMusicFill } from 'react-icons/bs';
 import { GiVampireDracula } from 'react-icons/gi';
 import { SiSupabase } from 'react-icons/si';
 import { FiChevronsLeft } from 'react-icons/fi';
 import { CgArrowsShrinkH, CgPlayList } from 'react-icons/cg';
 import Player from '../components/Player/Player';
 import { motion } from 'framer-motion';
+import Footer from '../components/Footer';
 
 export default function Home() {
 	const constraintsRef = useRef(null);
@@ -84,11 +79,11 @@ export default function Home() {
 					<div className={styles.githubContainer}>
 						<button>
 							<BsWindows size={25} />
-							Download
+							download
 						</button>
 						<button>
 							<BsGithub size={25} />
-							Source
+							source
 						</button>
 					</div>
 				</div>
@@ -179,7 +174,7 @@ export default function Home() {
 					<div>
 						<div>
 							<BsGithub size={30} />
-							<h3>open Source</h3>
+							<h3>open source</h3>
 							<p>
 								built with popular <span>javascript</span> frameworks, libraries
 								and tools
@@ -247,6 +242,7 @@ export default function Home() {
 					</div>
 				</section>
 			</section>
+			<Footer />
 		</div>
 	);
 }
