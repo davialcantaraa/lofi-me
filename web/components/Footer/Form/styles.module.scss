@@ -1,0 +1,81 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	> div {
+		width: 100%;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		.sending {
+			color: var(--purple);
+		}
+
+		.error {
+			color: var(--red);
+		}
+
+		.success {
+			color: var(--green);
+		}
+		p {
+			margin: 0.5rem 0;
+		}
+	}
+
+	input {
+		width: 20rem;
+		padding: 0.5rem;
+		background: var(--gray-900);
+		border: 1px solid var(--gray-600);
+		color: var(--white);
+		border-radius: 0.5rem;
+		&:focus {
+			outline: 1px solid var(--green);
+		}
+		&::placeholder {
+			color: var(--gray-600);
+		}
+	}
+
+	button {
+		width: 6rem;
+		margin-top: 1rem;
+		padding: 0.5rem;
+		border-radius: 0.5rem;
+		// background: var(--purple);
+		border: 1px solid var(--purple);
+		box-shadow: var(--purple) 0px 0px 2px;
+		transition: 0.3s ease;
+
+		&:hover {
+			background: var(--purple);
+			color: var(--background);
+		}
+	}
+}
+
+.toastError {
+	background: var(--gray-900) !important;
+	color: var(--red) !important;
+	fill: var(--red);
+	box-shadow: var(--red) 0px 0px 2px;
+}
+
+.toastErrorProgress {
+	background: var(--red) !important;
+}
+
+.toastSuccess {
+	background: var(--gray-900) !important;
+	color: var(--green) !important;
+	fill: var(--green);
+	box-shadow: var(--green) 0px 0px 1px;
+}
+
+.toastSuccessProgress {
+	background: var(--green) !important;
+}

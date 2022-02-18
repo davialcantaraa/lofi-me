@@ -1,57 +1,75 @@
-import { useState } from 'react';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
+import styles from './styles.module.scss';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { MdOutlineError, MdCheckCircle } from 'react-icons/md';
+
+const toastErrorIcon = () => {
+	return <MdOutlineError size={40} />;
+};
+const toastSuccessIcon = () => {
+	return <MdCheckCircle size={40} />;
+};
+
+const toastOptions = {
+	errorOption: {
+		className: styles.toastError,
+		progressClassName: styles.toastErrorProgress,
+		icon: toastErrorIcon,
+	},
+	successOption: {
+		className: styles.toastSuccess,
+		progressClassName: styles.toastSuccessProgress,
+		icon: toastSuccessIcon,
+	},
+};
 
 function Form() {
 	const mailchimpURL = process.env.NEXT_PUBLIC_MAILCHIMP_URL;
-	const [error, setError] = useState('');
-	const mail_format = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	// eslint-disable-next-line no-useless-escape
+	const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+	const formPreventDefault = (e) => {
+		e.preventDefault();
+	};
 
 	const CustomInput = ({ status, message, onValidated }) => {
 		let email;
-		const submit = () => {
-			if (email.value.match(mail_format)) {
+		console.log(status);
+		const submit = async () => {
+			if (email.value.match(mailFormat)) {
 				email &&
 					email.value.indexOf('@') > -1 &&
-					onValidated({
+					(await onValidated({
 						EMAIL: email.value,
-					});
-				setError('');
+					}));
+				status === 'error' &&
+					toast.error('this e-mail is already subscribed, try another one');
+				status === 'success' && toast.success('done!');
 			} else {
-				setError('invalid e-mail');
+				toast.error('invalid email', toastOptions.errorOption);
 			}
 		};
 
 		return (
-			<div>
-				{status === 'sending' && (
-					<div style={{ color: 'blue' }}>sending...</div>
-				)}
-				{status === 'error' && (
-					<div
-						style={{ color: 'red' }}
-						dangerouslySetInnerHTML={{ __html: message }}
+			<>
+				<form className={styles.form} onSubmit={formPreventDefault}>
+					<input
+						ref={(node) => (email = node)}
+						type="email"
+						placeholder="your favorite e-mail"
 					/>
-				)}
-				{status === 'success' && (
-					<div
-						style={{ color: 'green' }}
-						dangerouslySetInnerHTML={{ __html: message }}
-					/>
-				)}
-				{error && <div style={{ color: 'red' }}>{error}</div>}
-				<input
-					style={{ color: 'black' }}
-					ref={(node) => (email = node)}
-					type="email"
-					placeholder="Your email"
-				/>
-				<button onClick={submit}>Submit</button>
-			</div>
+					<button type="submit" onClick={submit}>
+						Submit
+					</button>
+				</form>
+				<div style={{ display: 'none' }}></div>
+			</>
 		);
 	};
 
 	return (
-		<div>
+		<>
 			<MailchimpSubscribe
 				url={mailchimpURL}
 				render={({ subscribe, status, message }) => (
@@ -62,7 +80,8 @@ function Form() {
 					/>
 				)}
 			/>
-		</div>
+			<ToastContainer limit={1} autoClose={2000} />
+		</>
 	);
 }
 

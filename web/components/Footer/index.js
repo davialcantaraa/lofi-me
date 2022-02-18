@@ -13,7 +13,9 @@ function Footer() {
 			</div>
 			<div>
 				<IoMail size={40} />
-				<Form />
+				<div className={styles.formContainer}>
+					<Form />
+				</div>
 			</div>
 			<div>
 				<BsGithub size={40} />
