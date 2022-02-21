@@ -1,0 +1,36 @@
+.container {
+	.text {
+		margin-top: 3rem;
+		width: 55%;
+		text-align: start;
+		align-items: flex-start;
+		gap: 1rem;
+
+		h1 {
+			color: var(--purple);
+		}
+
+		p {
+			font-size: 1.2rem;
+			font-weight: 300;
+			line-height: 1.7rem;
+			color: var(--white);
+			span {
+				color: var(--purple);
+			}
+			strong {
+				color: var(--green);
+			}
+		}
+	}
+	section {
+		> div {
+			h1 {
+				color: var(--white);
+			}
+			p {
+				color: var(--gray-600);
+			}
+		}
+	}
+}

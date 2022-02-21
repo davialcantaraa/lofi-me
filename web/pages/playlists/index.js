@@ -22,7 +22,13 @@ export default function Playlists() {
 									<p>Relax</p>
 								</div>
 								<h3>lofi hip hop radio - beats to relax/study to</h3>
-								<a href="/">see all songs here</a>
+								<a
+									target="_blank"
+									href="https://www.youtube.com/playlist?list=PLofht4PTcKYnaH8w5olJCI-wUVxuoMHqM"
+									rel="noreferrer"
+								>
+									see all songs here
+								</a>
 							</div>
 							<div className={playlistStyles.playlistImageContainer}></div>
 						</div>
@@ -32,7 +38,13 @@ export default function Playlists() {
 									<p>Jazz</p>
 								</div>
 								<h3>Jazz Fruits Music 🎺 - Lofi Hip Hop/Jazz Beats</h3>
-								<a href="/">see all songs here</a>
+								<a
+									target="_blank"
+									href="https://www.youtube.com/playlist?list=PL6fhs6TSspZs8DY0KMvEmsbGFCZrg3n_T"
+									rel="noreferrer"
+								>
+									see all songs here
+								</a>
 							</div>
 							<div className={playlistStyles.playlistImageContainer}></div>
 						</div>
@@ -42,7 +54,13 @@ export default function Playlists() {
 									<p>Sleepy</p>
 								</div>
 								<h3>lofi hip hop radio - beats to sleep/chill to</h3>
-								<a href="/">see all songs here</a>
+								<a
+									target="_blank"
+									href="https://www.youtube.com/playlist?list=PLofht4PTcKYkwt9NTxtpfw8VPllgfe-sm"
+									rel="noreferrer"
+								>
+									see all songs here
+								</a>
 							</div>
 							<div className={playlistStyles.playlistImageContainer}></div>
 						</div>

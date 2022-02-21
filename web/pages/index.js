@@ -10,6 +10,7 @@ import { GiVampireDracula } from 'react-icons/gi';
 import { SiSupabase } from 'react-icons/si';
 import { FiChevronsLeft } from 'react-icons/fi';
 import { CgArrowsShrinkH, CgPlayList } from 'react-icons/cg';
+import Link from 'next/link';
 
 export default function Home() {
 	const constraintsRef = useRef(null);
@@ -60,9 +61,7 @@ export default function Home() {
 			</Head>
 			<main className={styles.main}>
 				<div className={styles.container}>
-					<h1>
-						☕lofi me<span>.</span>
-					</h1>
+					<h1>☕lofi me</h1>
 					<p>a simple lofi player for desktop.</p>
 					<p>
 						beats to <span className="typewriter"></span> to
@@ -130,6 +129,9 @@ export default function Home() {
 						</div>
 					</motion.div>
 				</section>
+				<p className={styles.disclaimer}>
+					this is just an example, <a href="/">download</a> for all the features
+				</p>
 			</section>
 			<section className={`${styles.preview} ${styles.features}`}>
 				{/* <BsFillCaretDownFill size={60} className={styles.goDown} /> */}
@@ -149,7 +151,9 @@ export default function Home() {
 							<p>
 								you can hide window to <span>avoid distractions</span>
 							</p>
-							<a href="/">learn how to use</a>
+							<Link href="/how-to-use">
+								<a>learn how to use</a>
+							</Link>
 						</div>
 					</div>
 					<div>
@@ -160,7 +164,9 @@ export default function Home() {
 								3 options based on <span>popular lofi playlists</span> from
 								youtube
 							</p>
-							<a href="/">learn more about playlists</a>
+							<Link href="/playlists">
+								<a>learn more about playlists</a>
+							</Link>
 						</div>
 					</div>
 					<div>
@@ -171,7 +177,9 @@ export default function Home() {
 								built with popular <span>javascript</span> frameworks, libraries
 								and tools
 							</p>
-							<a href="/">learn more about the creation process</a>
+							<Link href="/about">
+								<a>learn more about the creation process</a>
+							</Link>
 						</div>
 					</div>
 				</section>

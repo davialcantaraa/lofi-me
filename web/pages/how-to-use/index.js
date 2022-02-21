@@ -78,6 +78,10 @@ function HowToUse() {
 							</div>
 						</motion.div>
 					</section>
+					<p className={styles.disclaimer}>
+						this is just an example, <a href="/">download</a> for all the
+						features
+					</p>
 				</section>
 				<section className={`${styles.preview} ${howToUseStyles.usageSection}`}>
 					<section>
