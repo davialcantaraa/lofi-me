@@ -13,7 +13,7 @@ import Slider from '@mui/material/Slider';
 import Tooltip from '@mui/material/Tooltip';
 import styles from './styles.module.scss';
 import { useState } from 'react';
-import Menu from '../Menu';
+import Menu from './Menu';
 
 function Player() {
 	const [isOpen, setIsOpen] = useState(false);

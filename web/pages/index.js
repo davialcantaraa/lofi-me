@@ -1,15 +1,15 @@
+import { useEffect, useRef } from 'react';
 import Head from 'next/head';
 import malarkey from 'malarkey';
 import styles from '../styles/home.module.scss';
-import { useEffect, useRef } from 'react';
+import Player from '../components/Player/Player';
+import { motion } from 'framer-motion';
+import Footer from '../components/Footer';
 import { BsGithub, BsWindows, BsFileMusicFill } from 'react-icons/bs';
 import { GiVampireDracula } from 'react-icons/gi';
 import { SiSupabase } from 'react-icons/si';
 import { FiChevronsLeft } from 'react-icons/fi';
 import { CgArrowsShrinkH, CgPlayList } from 'react-icons/cg';
-import Player from '../components/Player/Player';
-import { motion } from 'framer-motion';
-import Footer from '../components/Footer';
 
 export default function Home() {
 	const constraintsRef = useRef(null);
@@ -54,17 +54,9 @@ export default function Home() {
 	};
 
 	return (
-		<div>
+		<>
 			<Head>
-				<title>lofi me</title>
-				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-				<link rel="preconnect" href="https://fonts.googleapis.com" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<meta charset="utf-8" />
-				<link
-					href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
-					rel="stylesheet"
-				/>
+				<title>☕lofi me</title>
 			</Head>
 			<main className={styles.main}>
 				<div className={styles.container}>
@@ -243,6 +235,6 @@ export default function Home() {
 				</section>
 			</section>
 			<Footer />
-		</div>
+		</>
 	);
 }

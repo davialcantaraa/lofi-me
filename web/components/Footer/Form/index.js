@@ -35,19 +35,23 @@ function Form() {
 
 	const CustomInput = ({ status, message, onValidated }) => {
 		let email;
-		console.log(status);
 		const submit = async () => {
 			if (email.value.match(mailFormat)) {
-				email &&
-					email.value.indexOf('@') > -1 &&
-					(await onValidated({
-						EMAIL: email.value,
-					}));
+				const sendMail = async () => {
+					email &&
+						email.value.indexOf('@') > -1 &&
+						(await onValidated({
+							EMAIL: email.value,
+						}));
+				};
+				await sendMail();
 				status === 'error' &&
 					toast.error('this e-mail is already subscribed, try another one');
 				status === 'success' && toast.success('done!');
+				status = null;
 			} else {
 				toast.error('invalid email', toastOptions.errorOption);
+				status = null;
 			}
 		};
 

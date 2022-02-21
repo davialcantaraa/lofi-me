@@ -1,109 +1,98 @@
-.menu {
-	width: 100%;
-	height: fit-content;
+.navbar {
+	position: absolute;
+	padding: 1rem;
+	left: 0;
 
-	display: none;
-	background: var(--purple);
+	> button {
+		margin-right: 1rem;
 
-	flex-direction: column;
-	align-items: center;
+		// svg {
+		// 	animation: out 0.8s ease-in-out;
+		// }
 
-	border-radius: 1rem;
+		// @keyframes in {
+		// 	from {
+		// 		transform: rotate(0deg);
+		// 	}
+		// 	to {
+		// 		transform: rotate(360deg);
+		// 	}
+		// }
+		// @keyframes out {
+		// 	from {
+		// 		transform: rotate(360deg);
+		// 	}
+		// 	to {
+		// 		transform: rotate(0deg);
+		// 	}
+		// }
 
-	padding-bottom: 0.7rem;
-	svg {
-		fill: var(--white);
-	}
-	.backgroundSoundsContainer {
-		width: 100%;
-		margin-top: 10px;
-		> div + div {
-			margin-top: 10px;
-		}
-		.volumeContainer {
-			width: 100%;
-
-			display: flex;
-			align-items: center;
-			gap: 10px;
-			> span {
-				font-weight: 500 !important;
-				color: var(--white);
-			}
-			.MuiSlider-valueLabel {
-				background: var(--white);
-				color: var(--background);
-			}
-			.closeMenuButton {
-				display: none;
-			}
-		}
-	}
-	.categoryContainer {
-		display: flex;
-		justify-content: space-between;
-
-		margin-top: 10px;
-		gap: 5px;
-
-		button {
-			padding: 5px;
-			background: var(--white);
-			border-radius: 0.4rem;
-			position: relative;
-
-			font-size: 0.9rem;
-			color: var(--background);
-
-			transition: filter 0.2s;
-			&.activePlaylist {
-				background: var(--background);
-				color: var(--white);
-			}
-			&:hover {
-				filter: brightness(0.7);
-			}
-		}
-	}
-}
-.footer {
-	display: flex;
-	justify-content: center;
-
-	padding: 0.3rem 0.5rem;
-	border-top: 0.5px solid var(--white);
-
-	font-size: 0.7rem;
-	font-weight: 400;
-
-	color: var(--white);
-	> div {
-		width: 90%;
-
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-
-		margin-top: 2px;
-		> div {
+		&:hover {
 			svg {
-				cursor: pointer;
+				animation: in 0.8s ease-in-out;
+			}
+		}
+	}
 
-				filter: brightness(0.5);
-				transition: filter 0.2s;
+	.active {
+		transform: scale(1);
+	}
+
+	ul {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		height: fit-content;
+		background: var(--gray-900);
+		padding: 1rem;
+		border-radius: 0.5rem;
+		transition: all 0.3s ease;
+		transform: scale(0);
+		transform-origin: top left;
+
+		gap: 0.7rem;
+		li {
+			// animation: slideIn 0.5s ease;
+
+			.support {
 				&:hover {
-					filter: brightness(1);
+					color: var(--red);
+					fill: var(--red);
 				}
 			}
-		}
-	}
-	p {
-		cursor: pointer;
 
-		filter: brightness(0.5);
-		transition: filter 0.2s;
-		&:hover {
-			filter: brightness(1);
+			a {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+
+				transition: 0.3s ease;
+
+				&:hover {
+					color: var(--purple);
+				}
+			}
+
+			// &:nth-child(2) {
+			// 	animation-delay: 0.2s;
+			// }
+			// &:nth-child(3) {
+			// 	animation-delay: 0.3s;
+			// }
+			// &:nth-child(4) {
+			// 	animation-delay: 0.5s;
+			// }
+
+			// @keyframes slideIn {
+			// 	from {
+			// 		opacity: 0;
+			// 		transform: translateX(-100px);
+			// 	}
+			// 	to {
+			// 		opacity: 1;
+			// 		transform: translateX(100);
+			// 	}
+			// }
 		}
 	}
 }
