@@ -26,7 +26,7 @@ function Menu() {
 		<>
 			<nav className={styles.navbar} ref={menuRef}>
 				<button onClick={toggleMenu}>
-					<RiCommandLine size={30} />
+					<RiCommandLine size={25} />
 				</button>
 				<ul className={isOpen ? styles.active : undefined}>
 					<li>
