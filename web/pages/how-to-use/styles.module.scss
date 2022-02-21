@@ -1,0 +1,35 @@
+.usageSection {
+	background: var(--background);
+	section {
+		width: 60%;
+		align-items: flex-start;
+		gap: 4rem;
+		> div {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			text-align: start;
+			gap: 1rem;
+			> div {
+				display: flex;
+				align-items: flex-start;
+				align-items: center;
+				gap: 1rem;
+
+				svg {
+					fill: var(--gray-600);
+					color: var(--gray-600);
+				}
+
+				h1 {
+					margin: 0;
+					padding: 0;
+				}
+			}
+			p {
+				color: var(--white);
+				margin: 0;
+			}
+		}
+	}
+}
