@@ -102,18 +102,10 @@ function createWindow() {
 	});
 
 	ipcMain.on('hideWindow', (event, arg) => {
-		if (win.getPosition()[0] < width / 2 - 100) {
-			win.setPosition(0 - 170, win.getPosition()[1]);
-		} else {
-			win.setPosition(width - 30, win.getPosition()[1]);
-		}
+		win.setPosition(width - 30, win.getPosition()[1]);
 	});
 	ipcMain.on('showWindow', (event, arg) => {
-		if (win.getPosition()[0] < width / 2 - 100) {
-			win.setPosition(0, win.getPosition()[1]);
-		} else {
-			win.setPosition(width - 200, win.getPosition()[1]);
-		}
+		win.setPosition(width - 200, win.getPosition()[1]);
 	});
 	win.loadURL('http://localhost:3000');
 }

@@ -54,13 +54,13 @@ function Player() {
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
-		$audioPlayer.current.volume = value / 100;
+		$audioPlayer.current.volume = value / 300;
 		localStorage.setItem('currentVolume', value);
 	};
 
 	const toggleAudioPlay = () => {
 		$audioPlayer.current.play();
-		$audioPlayer.current.volume = value / 100;
+		$audioPlayer.current.volume = value / 300;
 		setIsPlaying(!isPlaying);
 		localStorage.setItem('currentSong', JSON.stringify(currentSong));
 		localStorage.setItem('currentSongIndex', currentSongIndex);
@@ -142,7 +142,7 @@ function Player() {
 	};
 
 	useEffect(() => {
-		$audioPlayer.current.volume = value / 100;
+		$audioPlayer.current.volume = value / 300;
 		$audioPlayer.current.pause();
 		$audioPlayer.current.load();
 		isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();
@@ -174,17 +174,6 @@ function Player() {
 		}
 	};
 
-	// useEffect(() => {
-	// 	if (isLoading) {
-	// 		document.getElementById('audio-container').style.pointerEvents = 'none';
-	// 		document.getElementById('audio-container').style.filter =
-	// 			'brightness(0.3)';
-	// 	} else {
-	// 		document.getElementById('audio-container').style.pointerEvents = 'auto';
-	// 		document.getElementById('audio-container').style.filter = 'brightness(1)';
-	// 	}
-	// }, [isLoading]);
-
 	return (
 		<div className="player">
 			<div className="title-container">
@@ -204,13 +193,6 @@ function Player() {
 						) : (
 							<FaPlay onClick={toggleAudioPlay} />
 						)}
-						{/* {isLoading ? (
-							<AiOutlineLoading3Quarters className="play-loading" />
-						) : isPlaying ? (
-							<FaPause onClick={toggleAudioPause} />
-						) : (
-							<FaPlay onClick={toggleAudioPlay} />
-						)} */}
 					</button>
 					<button onClick={() => skipSong()}>
 						<FaAngleDoubleRight />
@@ -224,7 +206,7 @@ function Player() {
 					<Slider
 						size="small"
 						aria-label="volume"
-						valueLabelDisplay="auto"
+						// valueLabelDisplay="auto"
 						value={value}
 						onChange={handleChange}
 					/>
