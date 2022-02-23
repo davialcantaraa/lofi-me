@@ -6,13 +6,22 @@
 
 :root {
 	--white: #fff;
-	--background: #000;
+	--background: #111;
 
-	--gray-100: rgb(112, 112, 112);
+	--gray-600: #707070;
+	--gray-700: #575757;
+	--gray-800: #252525;
+	--gray-900: #161616;
 
-	--red-100: #ff5555;
+	--purple: #9345d3;
+	--purple-100: #d65cff;
 
-	--purple-300: #7747b9;
+	--green: #00a375;
+	--green-200: #36e2b2;
+
+	--red: #fd585b;
+	--yellow: #ffb01f;
+	--blue: #248aff;
 }
 
 body {

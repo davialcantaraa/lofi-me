@@ -26,7 +26,7 @@
 			top: -40%;
 			right: -15%;
 
-			fill: var(--red-100);
+			fill: var(--red);
 		}
 
 		button {
@@ -40,7 +40,7 @@
 
 			transition: filter 0.2s;
 			&.active-playlist {
-				background: var(--purple-300);
+				background: var(--purple);
 				color: var(--white);
 			}
 			&:hover {
