@@ -1,23 +1,22 @@
+import { ErrorBoundary } from 'react-error-boundary';
+
 import Player from './components/Player';
 import Footer from './components/Footer';
 import HiddenWindowRight from './components/HiddenWindowRight';
-import HiddenWindowLeft from './components/HiddenWindowLeft';
-import { ErrorBoundary } from 'react-error-boundary';
 
 import { PlayingProvider } from './contexts/PlayingContext';
 
 import './styles/global.scss';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
 	localStorage.removeItem('currentSong');
-	localStorage.removeItem('currentSOngIndex');
+	localStorage.removeItem('currentSongIndex');
 	setTimeout(() => {
 		window.location.reload();
 	}, 3000);
 	return (
 		<div role="alert" className="wrapper error">
-			<AiOutlineLoading3Quarters className="loading" />
+			<Player />
 		</div>
 	);
 }
@@ -34,7 +33,6 @@ function App() {
 					</PlayingProvider>
 				</div>
 			</ErrorBoundary>
-			<HiddenWindowLeft />
 		</div>
 	);
 }
