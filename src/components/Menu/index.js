@@ -4,9 +4,8 @@ import { PlayingContext } from '../../contexts/PlayingContext';
 
 import './styles.scss';
 import { BsFillCloudRainHeavyFill } from 'react-icons/bs';
-import { AiFillFire } from 'react-icons/ai';
+// import { AiFillFire } from 'react-icons/ai';
 import { MdLocalFireDepartment } from 'react-icons/md';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { FaCity } from 'react-icons/fa';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';

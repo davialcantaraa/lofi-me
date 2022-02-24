@@ -8,6 +8,7 @@
 	--white: #fff;
 	--background: #111;
 
+	--gray-400: #909090;
 	--gray-600: #707070;
 	--gray-700: #575757;
 	--gray-800: #252525;
@@ -67,10 +68,6 @@ a {
 
 	&.error {
 		height: 100px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 1rem;
 	}
 }
 

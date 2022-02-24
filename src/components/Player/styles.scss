@@ -4,6 +4,26 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
+	.skeleton {
+		animation: skeleton-loading 1.5s linear infinite alternate;
+	}
+
+	.skeleton-container {
+		width: 100%;
+		height: 1.2rem;
+		border-radius: 0.2rem;
+	}
+
+	@keyframes skeleton-loading {
+		0% {
+			background: var(--gray-400);
+		}
+		100% {
+			background: var(--gray-700);
+		}
+	}
+
 	.title-container {
 		width: 90%;
 		gap: 1rem;

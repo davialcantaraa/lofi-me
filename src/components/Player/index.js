@@ -20,7 +20,7 @@ import { CgArrowsShrinkH } from 'react-icons/cg';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
-function Player() {
+function Player({ isError }) {
 	const previousVolume = parseInt(localStorage.getItem('currentVolume'));
 	const previousSong = localStorage.getItem(JSON.stringify('currentSong'));
 	const previousSongIndex = localStorage.getItem('currentSongIndex');
@@ -36,6 +36,7 @@ function Player() {
 	const [value, setValue] = useState(previousVolume || 50);
 	const [isOpen, setIsOpen] = useState(false);
 	const $audioPlayer = useRef(null);
+	const audioControlRef = useRef(null);
 
 	useEffect(() => {
 		async function getData(previousPlaylist) {
@@ -174,47 +175,88 @@ function Player() {
 		}
 	};
 
+	useEffect(() => {
+		isLoading ? setIsPlaying(false) : setIsPlaying(true);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isLoading]);
+
+	useEffect(() => {
+		if (isLoading) {
+			audioControlRef.current.style.pointerEvents = 'none';
+			audioControlRef.current.style.filter = 'brightness(0.3)';
+		} else {
+			audioControlRef.current.style.pointerEvents = 'auto';
+			audioControlRef.current.style.filter = 'brightness(1)';
+		}
+	}, [isLoading]);
+
 	return (
-		<div className="player">
-			<div className="title-container">
-				<p>{isLoading ? 'Loading...' : currentSong.title}</p>
-				<button id="hideWindowButton" onClick={toggleMenuClose}>
-					<CgArrowsShrinkH />
-				</button>
-			</div>
-			<div id="audio-container">
-				<div>
-					<button onClick={() => skipSong(false)}>
-						<FaAngleDoubleLeft />
-					</button>
-					<button id="play-pause-button">
-						{isPlaying ? (
-							<FaPause onClick={toggleAudioPause} />
-						) : (
-							<FaPlay onClick={toggleAudioPlay} />
-						)}
-					</button>
-					<button onClick={() => skipSong()}>
-						<FaAngleDoubleRight />
-					</button>
-					<button onClick={handleRandomize}>
-						<FaRandom size={15} />
-					</button>
+		<>
+			<div className="player">
+				<div className="title-container">
+					{isError ? (
+						<div className="skeleton skeleton-container"></div>
+					) : (
+						<p>{isLoading ? 'loading...' : currentSong.title}</p>
+					)}
+					{isError ? (
+						<button
+							className="skeleton skeleton-container"
+							style={{ width: '30%' }}
+						></button>
+					) : (
+						<button id="hideWindowButton" onClick={toggleMenuClose}>
+							<CgArrowsShrinkH />
+						</button>
+					)}
 				</div>
-				<Box className="volume-container" sx={{ width: 200 }}>
-					<FaVolumeUp size={20} />
-					<Slider
-						size="small"
-						aria-label="volume"
-						// valueLabelDisplay="auto"
-						value={value}
-						onChange={handleChange}
-					/>
-					<button>
-						<FaAngleDown onClick={toggleMenu} id="openMenuButton" />
-						<FaAngleUp onClick={toggleMenu} id="closeMenuButton" />
-					</button>
-				</Box>
+				{isError ? (
+					<div
+						id="audio-container"
+						style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+					>
+						<div className="skeleton skeleton-container"></div>
+						<div
+							className="volume-container skeleton skeleton-container"
+							sx={{ width: 200 }}
+						></div>
+					</div>
+				) : (
+					<div id="audio-container" ref={audioControlRef}>
+						<div>
+							<button onClick={() => skipSong(false)}>
+								<FaAngleDoubleLeft />
+							</button>
+							<button id="play-pause-button">
+								{isPlaying ? (
+									<FaPause onClick={toggleAudioPause} />
+								) : (
+									<FaPlay onClick={toggleAudioPlay} />
+								)}
+							</button>
+							<button onClick={() => skipSong()}>
+								<FaAngleDoubleRight />
+							</button>
+							<button onClick={handleRandomize}>
+								<FaRandom size={15} />
+							</button>
+						</div>
+						<Box className="volume-container" sx={{ width: 200 }}>
+							<FaVolumeUp size={20} />
+							<Slider
+								size="small"
+								aria-label="volume"
+								// valueLabelDisplay="auto"
+								value={value}
+								onChange={handleChange}
+							/>
+							<button>
+								<FaAngleDown onClick={toggleMenu} id="openMenuButton" />
+								<FaAngleUp onClick={toggleMenu} id="closeMenuButton" />
+							</button>
+						</Box>
+					</div>
+				)}
 				{isLoading ? (
 					<>
 						<audio ref={$audioPlayer} id="player">
@@ -226,9 +268,9 @@ function Player() {
 						<source type="audio/mp3" src={currentSong.uri} />
 					</audio>
 				)}
+				<Menu isPlaying={isPlaying} />
 			</div>
-			<Menu isPlaying={isPlaying} />
-		</div>
+		</>
 	);
 }
 
