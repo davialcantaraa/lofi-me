@@ -64,9 +64,17 @@ a {
 	border-radius: 1rem;
 
 	position: relative;
+
+	&.error {
+		height: 100px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 1rem;
+	}
 }
 
-.play-loading {
+.loading {
 	animation: rotate 1s infinite ease;
 }
 @keyframes rotate {
