@@ -7,16 +7,17 @@ import HiddenWindowRight from './components/HiddenWindowRight';
 import { PlayingProvider } from './contexts/PlayingContext';
 
 import './styles/global.scss';
+import LoadingPlayer from './components/Player/LoadingPlayer';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
-	localStorage.removeItem('currentSong');
-	localStorage.removeItem('currentSongIndex');
+	// localStorage.removeItem('currentSong');
+	// localStorage.removeItem('currentSongIndex');
 	setTimeout(() => {
 		window.location.reload();
 	}, 3000);
 	return (
 		<div role="alert" className="wrapper error">
-			<Player />
+			<LoadingPlayer />
 		</div>
 	);
 }
