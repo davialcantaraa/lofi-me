@@ -33,6 +33,7 @@
 		"electron": "electron .",
 		"start": "react-scripts start",
 		"web": "cd web && next dev",
+		"web-build": "cd web && next build",
 		"package": "npx electron-packager . --icon assets/iconTemplate.ico --out=packages",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
