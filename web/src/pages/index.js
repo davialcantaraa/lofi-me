@@ -134,7 +134,6 @@ export default function Home() {
 				</p>
 			</section>
 			<section className={`${styles.preview} ${styles.features}`}>
-				{/* <BsFillCaretDownFill size={60} className={styles.goDown} /> */}
 				<section>
 					<div>
 						<h1>simple features</h1>
@@ -242,7 +241,7 @@ export default function Home() {
 					</div>
 				</section>
 			</section>
-			<Footer />
+			{/* <Footer /> */}
 		</>
 	);
 }
