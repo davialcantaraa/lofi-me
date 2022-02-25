@@ -1,6 +1,8 @@
 .container {
 	background: var(--background);
-	// height: fit-content;
+	> section {
+		width: 90%;
+	}
 
 	.playlistContainer {
 		height: 10rem;
@@ -62,8 +64,6 @@
 
 			h3 {
 				color: var(--gray-900);
-				white-space: nowrap;
-				text-overflow: ellipsis;
 			}
 
 			a {
@@ -122,5 +122,125 @@
 		&:hover {
 			color: var(--green-200);
 		}
+	}
+}
+
+.mobilePlaylistContainer {
+	display: none;
+	width: 80%;
+	height: fit-content;
+	background: var(--purple);
+	border-radius: 1rem;
+	// display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.playlistTextContainer {
+		padding: 2rem 0;
+		width: 90%;
+	}
+
+	.playlistImageContainer {
+		border-radius: 1rem 1rem 0 0;
+		padding: 0;
+		height: 15rem;
+		width: 100%;
+
+		background-image: url('/lofigirl.jpg');
+		background-size: cover;
+	}
+
+	transition: 0.3s ease;
+	animation: appear 0.4s ease;
+
+	@keyframes appear {
+		from {
+			opacity: 0;
+			transform: translateY(-100px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	&:hover {
+		filter: brightness(90%);
+
+		> div {
+			> div {
+				background: var(--white);
+				color: var(--background);
+			}
+		}
+	}
+
+	&:nth-child(2) {
+		margin-top: 2.5rem;
+	}
+
+	&:nth-child(6) {
+		.playlistImageContainer {
+			background-image: url('/lofifruits.jpg');
+		}
+	}
+	&:nth-child(7) {
+		.playlistImageContainer {
+			background-image: url('/sleepygirl.jpg');
+		}
+	}
+
+	> div {
+		gap: 0.5rem;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		h3 {
+			color: var(--gray-900);
+		}
+
+		a {
+			color: var(--white);
+			position: relative;
+			&:after {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				content: '';
+				height: 3px;
+				background: var(--green-200);
+				width: 0;
+				transition: width 0.4s ease;
+			}
+			&:hover:after {
+				width: 100%;
+			}
+		}
+
+		> div {
+			width: fit-content;
+			border-radius: 0.4rem;
+			padding: 5px;
+			font-size: 0.9rem;
+			background: var(--background);
+			color: var(--white);
+
+			transition: 0.3s ease;
+		}
+	}
+}
+
+@media (max-width: 720px) {
+	.container {
+		> section {
+			gap: 4rem;
+		}
+	}
+	.playlistContainer {
+		display: none !important;
+	}
+	.mobilePlaylistContainer {
+		display: flex;
 	}
 }

@@ -64,6 +64,55 @@ export default function Playlists() {
 							</div>
 							<div className={playlistStyles.playlistImageContainer}></div>
 						</div>
+
+						<div className={playlistStyles.mobilePlaylistContainer}>
+							<div className={playlistStyles.playlistImageContainer}></div>
+							<div className={playlistStyles.playlistTextContainer}>
+								<div>
+									<p>Sleepy</p>
+								</div>
+								<h3>lofi hip hop radio - beats to sleep/chill to</h3>
+								<a
+									target="_blank"
+									href="https://www.youtube.com/playlist?list=PLofht4PTcKYkwt9NTxtpfw8VPllgfe-sm"
+									rel="noreferrer"
+								>
+									see all songs here
+								</a>
+							</div>
+						</div>
+						<div className={playlistStyles.mobilePlaylistContainer}>
+							<div className={playlistStyles.playlistImageContainer}></div>
+							<div className={playlistStyles.playlistTextContainer}>
+								<div>
+									<p>Sleepy</p>
+								</div>
+								<h3>lofi hip hop radio - beats to sleep/chill to</h3>
+								<a
+									target="_blank"
+									href="https://www.youtube.com/playlist?list=PLofht4PTcKYkwt9NTxtpfw8VPllgfe-sm"
+									rel="noreferrer"
+								>
+									see all songs here
+								</a>
+							</div>
+						</div>
+						<div className={playlistStyles.mobilePlaylistContainer}>
+							<div className={playlistStyles.playlistImageContainer}></div>
+							<div className={playlistStyles.playlistTextContainer}>
+								<div>
+									<p>Sleepy</p>
+								</div>
+								<h3>lofi hip hop radio - beats to sleep/chill to</h3>
+								<a
+									target="_blank"
+									href="https://www.youtube.com/playlist?list=PLofht4PTcKYkwt9NTxtpfw8VPllgfe-sm"
+									rel="noreferrer"
+								>
+									see all songs here
+								</a>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section className={styles.preview}>

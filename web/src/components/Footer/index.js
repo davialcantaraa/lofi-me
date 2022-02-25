@@ -3,6 +3,8 @@ import { BsGithub, BsHeartFill } from 'react-icons/bs';
 import { IoMail } from 'react-icons/io5';
 import { SiKofi } from 'react-icons/si';
 import Form from './Form';
+import GitHubButton from 'react-github-button';
+import 'react-github-button/assets/style.css';
 
 function Footer() {
 	return (
@@ -12,7 +14,7 @@ function Footer() {
 					<BsGithub size={40} />
 					<h3>star & contribute</h3>
 					<div className={styles.iframeContainer}>
-						<iframe
+						{/* <iframe
 							src="https://ghbtns.com/github-btn.html?user=divinurised&repo=lofi-me&type=star&count=true&size=large"
 							frameborder="0"
 							scrolling="0"
@@ -27,7 +29,19 @@ function Footer() {
 							width="170"
 							height="30"
 							title="GitHub"
-						></iframe>
+						></iframe> */}
+						<GitHubButton
+							type="stargazers"
+							size="large"
+							namespace="divinurised"
+							repo="lofi-me"
+						/>
+						<GitHubButton
+							type="forks"
+							size="large"
+							namespace="divinurised"
+							repo="lofi-me"
+						/>
 					</div>
 					<p>contributions is always welcome</p>
 				</div>
