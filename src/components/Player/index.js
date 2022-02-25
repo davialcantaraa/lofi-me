@@ -155,8 +155,8 @@ function Player() {
 			await changePlaylist('relax');
 			setIsLoading(false);
 		});
-		document.getElementById('jazz').addEventListener('click', async () => {
-			await changePlaylist('jazz');
+		document.getElementById('focus').addEventListener('click', async () => {
+			await changePlaylist('focus');
 			setIsLoading(false);
 		});
 		document.getElementById('sleepy').addEventListener('click', async () => {

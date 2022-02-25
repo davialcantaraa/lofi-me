@@ -38,8 +38,8 @@ function Menu() {
 						relax
 					</button>
 				</Tooltip>
-				<Tooltip placement="top" title="jazzy beats">
-					<button id="jazz">jazz</button>
+				<Tooltip placement="top" title="focus beats">
+					<button id="focus">focus</button>
 				</Tooltip>
 				<Tooltip placement="top" title="sleepy beats">
 					<button id="sleepy">sleepy</button>

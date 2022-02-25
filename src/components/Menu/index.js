@@ -49,11 +49,11 @@ function Menu() {
 	useEffect(() => {
 		if (isPlaying) {
 			$rainPlayer.current.play();
-			$rainPlayer.current.volume = rainValue / 300;
+			$rainPlayer.current.volume = rainValue / 100;
 			$cityPlayer.current.play();
-			$cityPlayer.current.volume = cityValue / 300;
+			$cityPlayer.current.volume = cityValue / 100;
 			$firePlayer.current.play();
-			$firePlayer.current.volume = fireValue / 300;
+			$firePlayer.current.volume = fireValue / 100;
 			document.getElementById('bgVolume').style.pointerEvents = 'auto';
 			document.getElementById('bgVolume').style.filter = 'brightness(1)';
 		} else {
@@ -82,7 +82,7 @@ function Menu() {
 
 	const handleChangeRain = (event, newValue) => {
 		setRainValue(newValue);
-		$rainPlayer.current.volume = rainValue / 300;
+		$rainPlayer.current.volume = rainValue / 100;
 		localStorage.setItem('currentRainVolume', rainValue);
 		if (rainValue === 0) {
 			$rainPlayer.current.pause();
@@ -93,7 +93,7 @@ function Menu() {
 
 	const handleChangeCity = (event, newValue) => {
 		setCityValue(newValue);
-		$cityPlayer.current.volume = cityValue / 300;
+		$cityPlayer.current.volume = cityValue / 100;
 		localStorage.setItem('currentCityVolume', cityValue);
 		if (cityValue === 0) {
 			$cityPlayer.current.pause();
@@ -104,7 +104,7 @@ function Menu() {
 
 	const handleChangeFire = (event, newValue) => {
 		setFireValue(newValue);
-		$firePlayer.current.volume = fireValue / 300;
+		$firePlayer.current.volume = fireValue / 100;
 		localStorage.setItem('currentFireVolume', fireValue);
 		if (fireValue === 0) {
 			$firePlayer.current.pause();
@@ -156,19 +156,19 @@ function Menu() {
 					id="relax"
 				>
 					{/* <AiFillFire className="trend" size={20} id="relax" /> */}
-					Relax
+					relax
 				</button>
 				<button
-					className={previousPlaylist === 'jazz' ? 'active-playlist' : null}
-					id="jazz"
+					className={previousPlaylist === 'focus' ? 'active-playlist' : null}
+					id="focus"
 				>
-					Jazz
+					focus
 				</button>
 				<button
 					className={previousPlaylist === 'sleepy' ? 'active-playlist' : null}
 					id="sleepy"
 				>
-					Sleepy
+					sleepy
 				</button>
 			</div>
 

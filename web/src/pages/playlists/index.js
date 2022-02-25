@@ -19,7 +19,7 @@ export default function Playlists() {
 						<div className={playlistStyles.playlistContainer}>
 							<div>
 								<div>
-									<p>Relax</p>
+									<p>relax</p>
 								</div>
 								<h3>lofi hip hop radio - beats to relax/study to</h3>
 								<a
@@ -35,9 +35,9 @@ export default function Playlists() {
 						<div className={playlistStyles.playlistContainer}>
 							<div>
 								<div>
-									<p>Jazz</p>
+									<p>focus</p>
 								</div>
-								<h3>Jazz Fruits Music 🎺 - Lofi Hip Hop/Jazz Beats</h3>
+								<h3>Study Session - lofi beats to focus/work to</h3>
 								<a
 									target="_blank"
 									href="https://www.youtube.com/playlist?list=PL6fhs6TSspZs8DY0KMvEmsbGFCZrg3n_T"
@@ -51,7 +51,7 @@ export default function Playlists() {
 						<div className={playlistStyles.playlistContainer}>
 							<div>
 								<div>
-									<p>Sleepy</p>
+									<p>sleepy</p>
 								</div>
 								<h3>lofi hip hop radio - beats to sleep/chill to</h3>
 								<a
