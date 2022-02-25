@@ -175,20 +175,27 @@ function Player() {
 		}
 	};
 
-	useEffect(() => {
-		isLoading ? setIsPlaying(false) : setIsPlaying(true);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isLoading]);
+	// useEffect(() => {
+	// 	isLoading ? setIsPlaying(false) : setIsPlaying(true);
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, [isLoading]);
+
+	// useEffect(() => {
+	// 	if (isLoading) {
+	// 		audioControlRef.current.style.pointerEvents = 'none';
+	// 		audioControlRef.current.style.filter = 'brightness(0.3)';
+	// 	} else {
+	// 		audioControlRef.current.style.pointerEvents = 'auto';
+	// 		audioControlRef.current.style.filter = 'brightness(1)';
+	// 	}
+	// }, [isLoading]);
 
 	useEffect(() => {
-		if (isLoading) {
-			audioControlRef.current.style.pointerEvents = 'none';
-			audioControlRef.current.style.filter = 'brightness(0.3)';
-		} else {
-			audioControlRef.current.style.pointerEvents = 'auto';
-			audioControlRef.current.style.filter = 'brightness(1)';
-		}
-	}, [isLoading]);
+		$audioPlayer.current.addEventListener('suspend', () => {
+			skipSong();
+		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [$audioPlayer]);
 
 	return (
 		<>
