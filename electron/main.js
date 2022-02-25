@@ -95,6 +95,9 @@ function createWindow() {
 	ipcMain.on('openWebsite', (event, arg) => {
 		shell.openExternal('https://lofi.me');
 	});
+	ipcMain.on('openSupport', (event, arg) => {
+		shell.openExternal('https://ko-fi.com/divinurised');
+	});
 
 	ipcMain.on('closeMenu', (event, arg) => {
 		win.setResizable(true);

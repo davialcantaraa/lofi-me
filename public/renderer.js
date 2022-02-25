@@ -7,6 +7,7 @@ window.onload = function () {
 	const hiddenWindowRight = document.getElementById('hiddenWindowRight');
 	const openGithubButton = document.getElementById('openGithubButton');
 	const openWebSiteButton = document.getElementById('openWebSiteButton');
+	const openSupportButton = document.getElementById('openSupportButton');
 
 	openMenuButton.addEventListener('click', function () {
 		ipcRenderer.send('openMenu');
@@ -29,6 +30,9 @@ window.onload = function () {
 	});
 	openWebSiteButton.addEventListener('click', function () {
 		ipcRenderer.send('openWebsite');
+	});
+	openSupportButton.addEventListener('click', function () {
+		ipcRenderer.send('openSupport');
 	});
 
 	ipcRenderer.on('removeButtons', (event, arg) => {

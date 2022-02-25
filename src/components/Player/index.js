@@ -55,13 +55,13 @@ function Player() {
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
-		$audioPlayer.current.volume = value / 300;
+		$audioPlayer.current.volume = value / 100;
 		localStorage.setItem('currentVolume', value);
 	};
 
 	const toggleAudioPlay = () => {
 		$audioPlayer.current.play();
-		$audioPlayer.current.volume = value / 300;
+		$audioPlayer.current.volume = value / 100;
 		setIsPlaying(!isPlaying);
 		localStorage.setItem('currentSong', JSON.stringify(currentSong));
 		localStorage.setItem('currentSongIndex', currentSongIndex);
@@ -143,7 +143,7 @@ function Player() {
 	};
 
 	useEffect(() => {
-		$audioPlayer.current.volume = value / 300;
+		$audioPlayer.current.volume = value / 100;
 		$audioPlayer.current.pause();
 		$audioPlayer.current.load();
 		isPlaying ? $audioPlayer.current.play() : $audioPlayer.current.pause();

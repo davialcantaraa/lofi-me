@@ -5,6 +5,7 @@
 	display: none;
 	background: var(--background);
 	margin-top: 10px;
+	user-select: none;
 	svg {
 		fill: var(--white);
 	}

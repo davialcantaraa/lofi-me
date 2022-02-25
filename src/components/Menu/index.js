@@ -116,7 +116,7 @@ function Menu() {
 	return (
 		<div transition={{ delay: 1 }} className="menu" id="toggler">
 			<div>
-				<p>Background noises</p>
+				<p>background noises</p>
 				<div className="background-sounds-container" id="bgVolume">
 					<Box className="volume-container" sx={{ width: 200 }}>
 						<BsFillCloudRainHeavyFill />

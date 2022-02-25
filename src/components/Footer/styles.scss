@@ -2,8 +2,7 @@
 	display: none;
 	justify-content: center;
 
-	padding: 0.3rem 0.5rem;
-	border-top: 0.5px solid var(--gray-600);
+	padding: 0.2rem 0.5rem 0.5rem;
 
 	font-size: 0.7rem;
 	font-weight: 400;
@@ -16,19 +15,29 @@
 
 		margin-top: 2px;
 		> div {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
 			svg {
 				cursor: pointer;
 
 				filter: brightness(0.5);
-				transition: filter 0.2s;
+				transition: all 0.2s;
 				&:hover {
 					filter: brightness(1);
+					&:first-child {
+						color: var(--red);
+					}
+					&:nth-child(2) {
+						color: var(--yellow);
+					}
 				}
 			}
 		}
 	}
 	p {
 		cursor: pointer;
+		user-select: none;
 
 		filter: brightness(0.5);
 		transition: filter 0.2s;
