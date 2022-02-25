@@ -14,9 +14,9 @@ const trayIcon = resolve(__dirname, '../', 'assets', 'iconTemplateWhite.png');
 
 function createWindow() {
 	let width = screen.getPrimaryDisplay().bounds.width;
-
-	const store = new Store();
 	const tray = new Tray(trayIcon);
+	const store = new Store();
+
 	const win = new BrowserWindow({
 		width: 200,
 		height: 100,
@@ -35,7 +35,7 @@ function createWindow() {
 
 	var loading = new BrowserWindow({
 		width: 500,
-		height: 300,
+		height: 200,
 		transparent: true,
 		frame: false,
 		alwaysOnTop: true,
@@ -46,7 +46,6 @@ function createWindow() {
 	loading.center();
 	setTimeout(function () {
 		loading.close();
-		win.center();
 		win.show();
 	}, 5000);
 
@@ -74,7 +73,7 @@ function createWindow() {
 		},
 	]);
 
-	tray.setToolTip('Lofi.me');
+	tray.setToolTip('lofi me');
 	tray.setContextMenu(contextMenu);
 
 	tray.on('click', () => {
@@ -85,7 +84,7 @@ function createWindow() {
 		store.get('positionX') > width - 200 ? width - 200 : store.get('positionX'),
 		store.get('positionY')
 	);
-	win.on('move', (event) => {
+	win.on('move', () => {
 		store.set('positionX', win.getPosition()[0]);
 		store.set('positionY', win.getPosition()[1]);
 	});
@@ -102,7 +101,7 @@ function createWindow() {
 	});
 
 	ipcMain.on('hideWindow', (event, arg) => {
-		win.setPosition(width - 30, win.getPosition()[1]);
+		win.setPosition(width - 40, win.getPosition()[1]);
 	});
 	ipcMain.on('showWindow', (event, arg) => {
 		win.setPosition(width - 200, win.getPosition()[1]);
