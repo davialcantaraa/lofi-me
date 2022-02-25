@@ -23,7 +23,7 @@ function Footer() {
 		<>
 			<div id="footer">
 				<div>
-					<p>☕Lofi me</p>
+					<p id="openWebSiteButton">☕Lofi me</p>
 					<div>
 						{/* <BsHeartFill onClick={toggleSupport} /> */}
 						<BsGithub id="openGithubButton" />

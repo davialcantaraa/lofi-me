@@ -92,6 +92,9 @@ function createWindow() {
 	ipcMain.on('openGithub', (event, arg) => {
 		shell.openExternal('https://github.com/divinurised/lofi-me');
 	});
+	ipcMain.on('openWebsite', (event, arg) => {
+		shell.openExternal('https://lofi.me');
+	});
 
 	ipcMain.on('closeMenu', (event, arg) => {
 		win.setResizable(true);
