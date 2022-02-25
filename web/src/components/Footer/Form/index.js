@@ -1,33 +1,12 @@
+import { useRef } from 'react';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
 import styles from './styles.module.scss';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { MdOutlineError, MdCheckCircle } from 'react-icons/md';
-
-const toastErrorIcon = () => {
-	return <MdOutlineError size={40} />;
-};
-const toastSuccessIcon = () => {
-	return <MdCheckCircle size={40} />;
-};
-
-const toastOptions = {
-	errorOption: {
-		className: styles.toastError,
-		progressClassName: styles.toastErrorProgress,
-		icon: toastErrorIcon,
-	},
-	successOption: {
-		className: styles.toastSuccess,
-		progressClassName: styles.toastSuccessProgress,
-		icon: toastSuccessIcon,
-	},
-};
 
 function Form() {
 	const mailchimpURL = process.env.NEXT_PUBLIC_MAILCHIMP_URL;
 	// eslint-disable-next-line no-useless-escape
 	const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	const messageRef = useRef(null);
 
 	const formPreventDefault = (e) => {
 		e.preventDefault();
@@ -36,23 +15,12 @@ function Form() {
 	const CustomInput = ({ status, message, onValidated }) => {
 		let email;
 		const submit = async () => {
-			if (email.value.match(mailFormat)) {
-				const sendMail = async () => {
-					email &&
-						email.value.indexOf('@') > -1 &&
-						(await onValidated({
-							EMAIL: email.value,
-						}));
-				};
-				await sendMail();
-				status === 'error' &&
-					toast.error('this e-mail is already subscribed, try another one');
-				status === 'success' && toast.success('done!');
-				status = null;
-			} else {
-				toast.error('invalid email', toastOptions.errorOption);
-				status = null;
-			}
+			email.value.match(mailFormat);
+			email &&
+				email.value.indexOf('@') > -1 &&
+				(await onValidated({
+					EMAIL: email.value,
+				}));
 		};
 
 		return (
@@ -66,8 +34,22 @@ function Form() {
 					<button type="submit" onClick={submit}>
 						Submit
 					</button>
+					{status === 'sending' && (
+						<p ref={messageRef} className={styles.sending}>
+							sending...
+						</p>
+					)}
+					{status === 'success' && (
+						<p ref={messageRef} className={styles.success}>
+							done!
+						</p>
+					)}
+					{status === 'error' && (
+						<p ref={messageRef} className={styles.error}>
+							this e-mail is already subscribed
+						</p>
+					)}
 				</form>
-				<div style={{ display: 'none' }}></div>
 			</>
 		);
 	};
@@ -84,7 +66,6 @@ function Form() {
 					/>
 				)}
 			/>
-			<ToastContainer limit={1} autoClose={2000} />
 		</>
 	);
 }
