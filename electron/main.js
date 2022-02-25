@@ -89,6 +89,10 @@ function createWindow() {
 		store.set('positionY', win.getPosition()[1]);
 	});
 
+	ipcMain.on('openGithub', (event, arg) => {
+		shell.openExternal('https://github.com/divinurised/lofi-me');
+	});
+
 	ipcMain.on('closeMenu', (event, arg) => {
 		win.setResizable(true);
 		win.setSize(200, 100, true);

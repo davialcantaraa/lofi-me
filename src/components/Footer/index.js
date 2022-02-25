@@ -18,6 +18,7 @@ function Footer() {
 	// 	}
 	// 	setIsSupportOpen(!isSupportOpen);
 	// };
+
 	return (
 		<>
 			<div id="footer">
@@ -25,7 +26,7 @@ function Footer() {
 					<p>☕Lofi me</p>
 					<div>
 						{/* <BsHeartFill onClick={toggleSupport} /> */}
-						<BsGithub />
+						<BsGithub id="openGithubButton" />
 					</div>
 				</div>
 			</div>
