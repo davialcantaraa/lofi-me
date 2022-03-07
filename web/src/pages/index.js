@@ -57,7 +57,7 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>☕lofi me</title>
+				<title>☕ lofi me</title>
 			</Head>
 			<main className={styles.main}>
 				<div className={styles.container}>
