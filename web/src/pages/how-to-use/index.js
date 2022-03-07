@@ -91,7 +91,7 @@ function HowToUse() {
 								<h1>grabbing window</h1>
 							</div>
 							<p>
-								you can grab window just by clicking and holding the song title
+								you can grab window just by clicking and holding the song title.
 							</p>
 						</div>
 						<div>
@@ -99,10 +99,7 @@ function HowToUse() {
 								<CgArrowsShrinkH size={30} />
 								<h1>hiding window</h1>
 							</div>
-							<p>
-								this button will hide the window to left or right, depending on
-								its position on screen
-							</p>
+							<p>this button will hide the window to right.</p>
 						</div>
 						<div>
 							<div>
@@ -110,8 +107,8 @@ function HowToUse() {
 								<h1>if the window disappeared</h1>
 							</div>
 							<p>
-								click in the icon in your taskbar and then clicl 'reset
-								position'
+								click in the icon in your taskbar and then click 'reset
+								position'.
 							</p>
 						</div>
 					</section>
