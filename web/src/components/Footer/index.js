@@ -48,7 +48,7 @@ function Footer() {
 				<div>
 					<IoMail size={40} />
 					<h3>stay in touch</h3>
-					<div className={styles.formContainer}>
+					<div className={styles.formContainer} id="newsletter">
 						<Form />
 					</div>
 				</div>

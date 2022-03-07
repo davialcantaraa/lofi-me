@@ -48,7 +48,7 @@
 			border-radius: 1rem;
 			box-shadow: var(--purple) 0px 0px 2px;
 
-			&:nth-child(2) {
+			&.sourceButton {
 				border: 1px solid var(--green);
 				box-shadow: var(--green) 0px 0px 2px;
 			}
@@ -61,7 +61,7 @@
 				background: var(--purple);
 				color: var(--background);
 
-				&:nth-child(2) {
+				&.sourceButton {
 					background: var(--green);
 				}
 			}

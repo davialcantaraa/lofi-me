@@ -40,7 +40,7 @@ export default function Playlists() {
 								<h3>Study Session - lofi beats to focus/work to</h3>
 								<a
 									target="_blank"
-									href="https://www.youtube.com/playlist?list=PL6fhs6TSspZs8DY0KMvEmsbGFCZrg3n_T"
+									href="https://www.youtube.com/playlist?list=PLofht4PTcKYki_6M4TCWftA2SIcdD0x7h"
 									rel="noreferrer"
 								>
 									see all songs here

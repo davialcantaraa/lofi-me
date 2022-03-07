@@ -72,10 +72,16 @@ export default function Home() {
 							<BsWindows size={25} />
 							download
 						</button>
-						<button>
-							<BsGithub size={25} />
-							source
-						</button>
+						<a
+							href="https://github.com/divinurised/lofi-me"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<button className={styles.sourceButton}>
+								<BsGithub size={25} />
+								source
+							</button>
+						</a>
 					</div>
 				</div>
 			</main>
@@ -186,7 +192,7 @@ export default function Home() {
 					<div>
 						<h1>upcoming features</h1>
 						<p>stay in touch! give us your e-mail </p>
-						<a href="/">here</a>
+						<a href="#newsletter">here</a>
 						<p>.</p>
 					</div>
 				</section>
@@ -225,13 +231,31 @@ export default function Home() {
 							<h3>themes</h3>
 							<ul>
 								<li>
-									<a href="/">dracula</a>
+									<a
+										target="_blank"
+										rel=" noreferrer"
+										href="https://github.com/dracula/dracula-theme"
+									>
+										dracula
+									</a>
 								</li>
 								<li>
-									<a href="/">omni</a>
+									<a
+										target="_blank"
+										href="https://github.com/getomni/omni"
+										rel="noreferrer"
+									>
+										omni
+									</a>
 								</li>
 								<li>
-									<a href="/">aura</a>
+									<a
+										target="_blank"
+										href="https://github.com/daltonmenezes/aura-theme"
+										rel="noreferrer"
+									>
+										aura
+									</a>
 								</li>
 							</ul>
 							<a href="/" className={styles.upcomingAnchor}>
