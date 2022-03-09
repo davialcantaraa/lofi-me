@@ -1,49 +1,27 @@
 {
 	"name": "lofi-me",
 	"version": "0.1.0",
-	"main": "electron/main.js",
+	"main": "packages/electron/main.js",
 	"private": "true",
 	"workspaces": {
 		"packages": [
-			"web"
+			"packages/*"
 		]
 	},
-	"exclude": [
-		"./web",
-		"./lofi-me-server",
-		"./electron",
-		"./assets"
-	],
-	"dependencies": {
-		"@emotion/react": "^11.7.1",
-		"@emotion/styled": "^11.6.0",
-		"@mui/icons-material": "^5.2.5",
-		"@mui/material": "^5.2.6",
-		"@testing-library/jest-dom": "^5.14.1",
-		"@testing-library/react": "^12.0.0",
-		"@testing-library/user-event": "^13.2.1",
-		"axios": "^0.24.0",
-		"electron-store": "^8.0.1",
-		"react": "^17.0.2",
-		"react-dom": "^17.0.2",
-		"react-error-boundary": "^3.1.4",
-		"react-icons": "^4.3.1",
-		"react-scripts": "5.0.0",
-		"sass": "^1.45.1",
-		"web-vitals": "^2.1.0"
-	},
-	"devDependencies": {
-		"electron": "^16.0.6"
-	},
 	"scripts": {
-		"electron": "electron .",
-		"start": "react-scripts start",
-		"web": "cd web && next dev",
-		"web-build": "cd web && next build",
-		"package": "npx electron-packager . --icon assets/iconTemplate.ico --out=packages",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"app-start": "lerna run start",
+		"app-build": "lerna run build",
+		"app-test": "lerna run test",
+		"app-eject": "lerna run eject",
+		"electron-dev": "lerna run electron",
+		"electron-build": "lerna run electron-build",
+		"web-dev": "lerna run web",
+		"web-build": "lerna run web-build",
+		"server-dev": "lerna run dev",
+		"diff": "lerna diff"
+	},
+	"dependencies": {
+		"lerna": "^4.0.0"
 	},
 	"eslintConfig": {
 		"extends": [

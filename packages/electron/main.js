@@ -116,7 +116,7 @@ function createWindow() {
 	ipcMain.on('showWindow', (event, arg) => {
 		win.setPosition(width - 200, win.getPosition()[1]);
 	});
-	win.loadURL(process.env.MAIN_APP || 'http://localhost:3000');
+	win.loadURL('http://localhost:3000');
 }
 
 app.whenReady().then(() => {

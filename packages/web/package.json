@@ -3,6 +3,10 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"license": "MIT",
+	"scripts": {
+		"web": "next dev",
+		"web-build": "next build"
+	},
 	"dependencies": {
 		"@emotion/react": "^11.8.1",
 		"@emotion/styled": "^11.8.1",
