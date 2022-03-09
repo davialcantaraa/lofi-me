@@ -9,16 +9,16 @@
 		]
 	},
 	"scripts": {
-		"app-start": "lerna run start",
-		"app-build": "lerna run build",
-		"app-test": "lerna run test",
-		"app-eject": "lerna run eject",
-		"electron-dev": "lerna run electron",
-		"electron-build": "lerna run electron-build",
-		"web-dev": "lerna run web",
-		"web-build": "lerna run web-build",
-		"server-dev": "lerna run dev",
-		"diff": "lerna diff"
+		"app-start": "lerna run start --stream",
+		"app-build": "lerna run build --stream",
+		"app-test": "lerna run test --stream",
+		"app-eject": "lerna run eject --stream",
+		"electron-dev": "lerna run electron --stream",
+		"electron-build": "lerna run electron-build --stream",
+		"web-dev": "lerna run web --stream",
+		"web-build": "lerna run web-build --stream",
+		"server-dev": "lerna run dev --stream",
+		"diff": "lerna dif --streamf"
 	},
 	"dependencies": {
 		"lerna": "^4.0.0"
