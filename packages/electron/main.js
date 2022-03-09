@@ -10,7 +10,7 @@ const {
 const Store = require('electron-store');
 const { resolve } = require('path');
 
-const trayIcon = resolve(__dirname, '../', 'assets', 'iconTemplateWhite.png');
+const trayIcon = resolve(__dirname, './', 'assets', 'iconTemplateWhite.png');
 
 function createWindow() {
 	let width = screen.getPrimaryDisplay().bounds.width;
@@ -80,10 +80,17 @@ function createWindow() {
 		tray.popUpContextMenu();
 	});
 
-	win.setPosition(
-		store.get('positionX') > width - 200 ? width - 200 : store.get('positionX'),
-		store.get('positionY')
-	);
+	if (store) {
+		win.setPosition(
+			store.get('positionX') > width - 200
+				? width - 200
+				: store.get('positionX'),
+			store.get('positionY')
+		);
+	} else {
+		win.center();
+	}
+
 	win.on('move', () => {
 		store.set('positionX', win.getPosition()[0]);
 		store.set('positionY', win.getPosition()[1]);
@@ -116,7 +123,7 @@ function createWindow() {
 	ipcMain.on('showWindow', (event, arg) => {
 		win.setPosition(width - 200, win.getPosition()[1]);
 	});
-	win.loadURL('http://localhost:3000');
+	win.loadURL('https://localhost:3000');
 }
 
 app.whenReady().then(() => {

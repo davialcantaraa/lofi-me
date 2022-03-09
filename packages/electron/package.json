@@ -2,14 +2,15 @@
 	"name": "@lofi-me/electron",
 	"version": "0.1.0",
 	"main": "index.js",
+	"license": "MIT",
 	"dependencies": {
 		"electron-store": "^8.0.1"
+	},
+	"devDependencies": {
+		"electron": "^16.0.6"
 	},
 	"scripts": {
 		"electron": "electron .",
 		"electron-build": "npx electron-packager . lofi-me --out=dist --icon=assets/iconTemplate.ico --platform=win32 --arch=x64 --overwrite --ignore=main.js"
-	},
-	"devDependencies": {
-		"electron": "^16.0.6"
 	}
 }
