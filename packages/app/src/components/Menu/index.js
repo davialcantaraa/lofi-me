@@ -174,8 +174,6 @@ function Menu() {
 
 			{isLoading ? (
 				<>
-					{/* <AiOutlineLoading3Quarters className="play-loading" /> */}
-
 					<audio loop ref={$rainPlayer} id="player"></audio>
 					<audio loop ref={$cityPlayer} id="player"></audio>
 					<audio loop ref={$firePlayer} id="player"></audio>
