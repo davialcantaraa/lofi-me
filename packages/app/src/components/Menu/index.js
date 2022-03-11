@@ -113,6 +113,17 @@ function Menu() {
 		}
 	};
 
+	window.addEventListener('load', () => {
+		const element = document.getElementById('category-container');
+		element.addEventListener('wheel', (event) => {
+			console.log('askldj');
+			event.preventDefault();
+			element.scrollBy({
+				left: event.deltaY < 0 ? -60 : 60,
+			});
+		});
+	});
+
 	return (
 		<div transition={{ delay: 1 }} className="menu" id="toggler">
 			<div>
@@ -150,7 +161,7 @@ function Menu() {
 					</Box>
 				</div>
 			</div>
-			<div className="category-container">
+			<div className="category-container" id="category-container">
 				<button
 					className={previousPlaylist === 'relax' ? 'active-playlist' : null}
 					id="relax"
@@ -169,6 +180,24 @@ function Menu() {
 					id="sleepy"
 				>
 					sleepy
+				</button>
+				<button
+					className={previousPlaylist === 'sleepy' ? 'active-playlist' : null}
+					id="sleepy"
+				>
+					Anime
+				</button>
+				<button
+					className={previousPlaylist === 'sleepy' ? 'active-playlist' : null}
+					id="sleepy"
+				>
+					Games
+				</button>
+				<button
+					className={previousPlaylist === 'sleepy' ? 'active-playlist' : null}
+					id="sleepy"
+				>
+					Piano
 				</button>
 			</div>
 

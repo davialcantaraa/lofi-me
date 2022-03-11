@@ -6,6 +6,7 @@
 	background: var(--background);
 	margin-top: 10px;
 	user-select: none;
+	position: relative;
 	svg {
 		fill: var(--white);
 	}
@@ -15,11 +16,25 @@
 			margin-top: 10px;
 		}
 	}
+
+	::-webkit-scrollbar {
+		display: none;
+	}
+
+	::-webkit-scrollbar-button {
+		display: none;
+	}
+
 	.category-container {
 		display: flex;
 		justify-content: space-between;
 
+		width: 110%;
+		gap: 0.5rem;
+		overflow-x: scroll;
+		scroll-behavior: smooth;
 		margin-top: 10px;
+		position: relative;
 
 		.trend {
 			position: absolute;
