@@ -26,15 +26,35 @@
 	}
 
 	.category-container {
+		width: 110%;
+		margin-top: 10px;
+
 		display: flex;
 		justify-content: space-between;
-
-		width: 110%;
+		align-items: center;
 		gap: 0.5rem;
+		position: relative;
+
 		overflow-x: scroll;
 		scroll-behavior: smooth;
-		margin-top: 10px;
-		position: relative;
+
+		transition: all 0.3s ease;
+		transform-origin: right;
+
+		&.active {
+			transform: scale(1) !important;
+			position: static !important;
+		}
+		&.disabled {
+			transform: scale(0);
+			position: absolute;
+		}
+
+		> div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 
 		.trend {
 			position: absolute;
@@ -53,6 +73,7 @@
 
 			font-size: 0.9rem;
 			color: var(--background);
+			white-space: nowrap;
 
 			transition: filter 0.2s;
 			&.active-playlist {
@@ -61,6 +82,10 @@
 			}
 			&:hover {
 				filter: brightness(0.7);
+			}
+			&.multiple {
+				background: var(--yellow);
+				color: var(--white);
 			}
 		}
 	}

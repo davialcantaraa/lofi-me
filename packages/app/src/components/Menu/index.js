@@ -3,7 +3,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { PlayingContext } from '../../contexts/PlayingContext';
 
 import './styles.scss';
-import { BsFillCloudRainHeavyFill } from 'react-icons/bs';
+import { BsFillCloudRainHeavyFill, BsX } from 'react-icons/bs';
 // import { AiFillFire } from 'react-icons/ai';
 import { MdLocalFireDepartment } from 'react-icons/md';
 import { FaCity } from 'react-icons/fa';
@@ -11,6 +11,22 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
 import api from '../../services/api';
+import PlaylistButton from './PlaylistButton';
+
+const playlists = [
+	{
+		name: 'anime',
+		type: 'multiple',
+		content: ['haikyuu', 'shingeki no kyojin'],
+	},
+	{
+		name: 'games',
+		type: 'multiple',
+		content: ['genshin impact', 'world of warcraft', 'league of legends'],
+	},
+];
+
+const content = playlists.content;
 
 function Menu() {
 	const [noises, setNoises] = useState([]);
@@ -115,10 +131,18 @@ function Menu() {
 
 	window.addEventListener('load', () => {
 		const element = document.getElementById('category-container');
+		const element2 = document.getElementById('category-container2');
 		element.addEventListener('wheel', (event) => {
 			console.log('askldj');
 			event.preventDefault();
 			element.scrollBy({
+				left: event.deltaY < 0 ? -60 : 60,
+			});
+		});
+		element2.addEventListener('wheel', (event) => {
+			console.log('askldj');
+			event.preventDefault();
+			element2.scrollBy({
 				left: event.deltaY < 0 ? -60 : 60,
 			});
 		});
@@ -162,45 +186,41 @@ function Menu() {
 				</div>
 			</div>
 			<div className="category-container" id="category-container">
-				<button
-					className={previousPlaylist === 'relax' ? 'active-playlist' : null}
-					id="relax"
-				>
-					{/* <AiFillFire className="trend" size={20} id="relax" /> */}
-					relax
-				</button>
-				<button
-					className={previousPlaylist === 'focus' ? 'active-playlist' : null}
-					id="focus"
-				>
-					focus
-				</button>
-				<button
-					className={previousPlaylist === 'sleepy' ? 'active-playlist' : null}
-					id="sleepy"
-				>
-					sleepy
-				</button>
-				<button
-					className={previousPlaylist === 'sleepy' ? 'active-playlist' : null}
-					id="sleepy"
-				>
-					Anime
-				</button>
-				<button
-					className={previousPlaylist === 'sleepy' ? 'active-playlist' : null}
-					id="sleepy"
-				>
-					Games
-				</button>
-				<button
-					className={previousPlaylist === 'sleepy' ? 'active-playlist' : null}
-					id="sleepy"
-				>
-					Piano
-				</button>
+				<PlaylistButton name="relax" previousPlaylist={previousPlaylist} />
+				<PlaylistButton name="focus" previousPlaylist={previousPlaylist} />
+				<PlaylistButton name="sleepy" previousPlaylist={previousPlaylist} />
+				<PlaylistButton name="piano" previousPlaylist={previousPlaylist} />
+				<PlaylistButton
+					name="anime"
+					previousPlaylist={previousPlaylist}
+					type="multiple"
+				/>
+				<PlaylistButton
+					name="games"
+					previousPlaylist={previousPlaylist}
+					type="multiple"
+				/>
 			</div>
-
+			<div className={`category-container disabled`} id="category-container2">
+				<div>
+					<BsX size={20} />
+				</div>
+				<PlaylistButton
+					name="world of warcraft"
+					previousPlaylist={previousPlaylist}
+					type="multiple"
+				/>
+				<PlaylistButton
+					name="genshin impact"
+					previousPlaylist={previousPlaylist}
+					type="multiple"
+				/>
+				<PlaylistButton
+					name="league of legends"
+					previousPlaylist={previousPlaylist}
+					type="multiple"
+				/>
+			</div>
 			{isLoading ? (
 				<>
 					<audio loop ref={$rainPlayer} id="player"></audio>
