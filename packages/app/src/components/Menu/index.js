@@ -13,23 +13,9 @@ import Slider from '@mui/material/Slider';
 import api from '../../services/api';
 import PlaylistButton from './PlaylistButton';
 
-const playlists = [
-	{
-		name: 'anime',
-		type: 'multiple',
-		content: ['haikyuu', 'shingeki no kyojin'],
-	},
-	{
-		name: 'games',
-		type: 'multiple',
-		content: ['genshin impact', 'world of warcraft', 'league of legends'],
-	},
-];
-
-const content = playlists.content;
-
 function Menu() {
 	const [noises, setNoises] = useState([]);
+	const [playlists, setPlaylists] = useState([]);
 	const [isLoading, setisLoading] = useState(true);
 	const previousPlaylist = localStorage.getItem('currentPlaylist') || 'relax';
 
@@ -40,6 +26,14 @@ function Menu() {
 			setisLoading(false);
 		}
 		getData();
+	}, []);
+
+	useEffect(() => {
+		async function getPlaylistData() {
+			const response = await api.get('playlists');
+			setPlaylists(response.data);
+		}
+		getPlaylistData();
 	}, []);
 
 	const $rainPlayer = useRef(null);
@@ -186,20 +180,13 @@ function Menu() {
 				</div>
 			</div>
 			<div className="category-container" id="category-container">
-				<PlaylistButton name="relax" previousPlaylist={previousPlaylist} />
-				<PlaylistButton name="focus" previousPlaylist={previousPlaylist} />
-				<PlaylistButton name="sleepy" previousPlaylist={previousPlaylist} />
-				<PlaylistButton name="piano" previousPlaylist={previousPlaylist} />
-				<PlaylistButton
-					name="anime"
-					previousPlaylist={previousPlaylist}
-					type="multiple"
-				/>
-				<PlaylistButton
-					name="games"
-					previousPlaylist={previousPlaylist}
-					type="multiple"
-				/>
+				{playlists.map((playlist) => (
+					<PlaylistButton
+						name={playlist.name}
+						previousPlaylist={previousPlaylist}
+						type={playlist.type}
+					/>
+				))}
 			</div>
 			<div className={`category-container disabled`} id="category-container2">
 				<div>
