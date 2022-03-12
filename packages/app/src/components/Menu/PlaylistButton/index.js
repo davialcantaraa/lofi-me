@@ -1,5 +1,3 @@
-import { BsX } from 'react-icons/bs';
-
 function PlaylistButton({ name, previousPlaylist, type }) {
 	window.addEventListener('load', () => {
 		if (type === 'multiple') {
