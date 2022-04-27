@@ -10,7 +10,26 @@ const {
 const Store = require('electron-store');
 const { resolve } = require('path');
 
-const trayIcon = resolve(__dirname, './', 'assets', 'iconTemplateWhite.png');
+const appExe = resolve(__dirname, '..', '..', 'lofi-me.exe');
+
+const trayIcon = resolve(__dirname, './', 'assets', 'iconTemplate.png');
+const githubIcon = resolve(
+	__dirname,
+	'./',
+	'assets',
+	'trayIcons',
+	'github.png'
+);
+const heartIcon = resolve(__dirname, './', 'assets', 'trayIcons', 'heart.png');
+const undoIcon = resolve(__dirname, './', 'assets', 'trayIcons', 'undo.png');
+const quitIcon = resolve(__dirname, './', 'assets', 'trayIcons', 'quit.png');
+const reloadIcon = resolve(
+	__dirname,
+	'./',
+	'assets',
+	'trayIcons',
+	'reload.png'
+);
 
 function createWindow() {
 	let width = screen.getPrimaryDisplay().bounds.width;
@@ -30,6 +49,7 @@ function createWindow() {
 		webPreferences: {
 			nodeIntegration: true,
 			contextIsolation: false,
+			devTools: false,
 		},
 	});
 
@@ -50,19 +70,35 @@ function createWindow() {
 	}, 5000);
 
 	const contextMenu = Menu.buildFromTemplate([
-		{ label: 'Support' },
 		{
 			label: 'Reset position',
 			click: () => {
 				win.center();
 				win.webContents.send('removeButtons');
 			},
+			icon: undoIcon,
 		},
+		{
+			label: 'Reload app',
+			click: () => {
+				win.reload();
+			},
+			icon: reloadIcon,
+		},
+		{ type: 'separator' },
 		{
 			label: 'Source',
 			click: async () => {
 				await shell.openExternal('https://github.com/divinurised/lofi-me');
 			},
+			icon: githubIcon,
+		},
+		{
+			label: 'Support',
+			click: async () => {
+				await shell.openExternal('https://ko-fi.com/divinurised');
+			},
+			icon: heartIcon,
 		},
 		{
 			label: 'Quit',
@@ -70,6 +106,7 @@ function createWindow() {
 				app.isQuiting = true;
 				app.quit();
 			},
+			icon: quitIcon,
 		},
 	]);
 
@@ -80,7 +117,7 @@ function createWindow() {
 		tray.popUpContextMenu();
 	});
 
-	if (store) {
+	if (store.get('positionX') !== undefined) {
 		win.setPosition(
 			store.get('positionX') > width - 200
 				? width - 200
@@ -123,7 +160,35 @@ function createWindow() {
 	ipcMain.on('showWindow', (event, arg) => {
 		win.setPosition(width - 200, win.getPosition()[1]);
 	});
-	win.loadURL('https://localhost:3000');
+	win.loadURL('https://lofi-me-app.netlify.app');
+
+	const lockWindow = app.requestSingleInstanceLock();
+
+	if (!lockWindow) {
+		app.quit();
+	} else {
+		app.on('second-instance', (event, commandLine, workingDirectory) => {
+			if (win) {
+				if (win.isMinimized()) win.restore();
+				win.focus();
+			}
+		});
+		app.on('ready', () => {});
+	}
+
+	// No internet connection
+	if (
+		app.getLoginItemSettings().openAtLogin ||
+		app.getLoginItemSettings().wasOpenedAtLogin
+	) {
+		setTimeout(() => {
+			win.reload();
+		}, 60 * 1000); // 1 minute
+	}
+
+	if (app.getLoginItemSettings().wasOpenedAtLogin) {
+		win.webContents.send('hideWindow');
+	}
 }
 
 app.whenReady().then(() => {
@@ -139,6 +204,11 @@ app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
 		app.quit();
 	}
+});
+
+app.setLoginItemSettings({
+	openAtLogin: true,
+	path: appExe,
 });
 
 if (process.platform === 'darwin') {
