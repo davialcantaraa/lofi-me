@@ -8,7 +8,6 @@
 
 <div align="center">
 
-[![version](https://img.shields.io/github/package-json/v/divinurised/lofi-me?color=9345d3&style=for-the-badge)](https://www.npmjs.com/package/@unform/core)<space><space>
 [![support](https://img.shields.io/badge/support%20on-Ko--fi-9345d3?style=for-the-badge&logoColor=white&logo=ko-fi)](https://ko-fi.com/divinurised)
 
 </div>
@@ -25,11 +24,11 @@ Download the latest version from [releases page](https://github.com/divinurised/
 
 # Overview
 
-Listen to lofi while coding, studying, working, gaming and etc. Stay focused and improve your productivity.
+Listen to lofi while coding, studying, working, gaming, etc. Stay focused and improve your productivity.
 
-No more worries about browser RAM usage, no more multiple tabs to listen lofi, hide the window, pause and control the volume whenever you want.
+No more worries about browser RAM usage, no more multiple tabs to listen to lofi, hide the window, pause, and control the volume whenever you want.
 
-Choose between 3 popular lofi [playlists](https://lofi-me.vercel.app) from youtube. Create your comfortable environment with some background noises.
+Choose between 3 popular lofi [playlists](https://lofi-me.vercel.app) from youtube. Create a comfortable environment with some background noises.
 
 # Usage
 
@@ -58,7 +57,7 @@ Choose between 3 popular lofi [playlists](https://lofi-me.vercel.app) from youtu
 
 # Contributing
 
-> Contributions are always welcome, but always **ask first**, — please — before work on a PR.
+> Contributions are always welcome, but always **ask first**, — please — before working on a PR.
 
 Ways that you can contribute:
 
@@ -79,9 +78,30 @@ Take a look at the [contribution guidelines](https://github.com/divinurised/lofi
 
 Before contributing to this repository, please read the [code of conduct.](https://github.com/divinurised/lofi-me/CODE_OF_CONDUCT.md)
 
-## Have an idea?
+# Main techs
 
-We’re using [GitHub Discussions](https://github.com/divinurised/lofi-me/discussions) to create conversations around **lofi me**. It is a place for our community to connect with each other around ideas, questions, issues, and suggestions.
+### App
+
+- [Electron](https://www.electronjs.org/)
+- [ReactJS](https://pt-br.reactjs.org/)
+- [Material UI](https://mui.com/pt/)
+- [Axios](https://axios-http.com/)
+- [Sass](https://sass-lang.com/)
+
+### Website
+
+- [NextJS](https://nextjs.org/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Sass](https://sass-lang.com/)
+
+### Server
+
+- [NodeJS](https://nodejs.org/en/)
+- [Express](https://expressjs.com/pt-br/)
+
+### Others
+
+- [Lerna](https://lerna.js.org/)
 
 # Supporting
 
@@ -95,7 +115,6 @@ if somehow we help you, consider following the steps:
 
 👤 Davi Alcântara
 
-- Twitter: [@divinurised](https://twitter.com/divinurised)
 - Github: [@divinurised](https://github.com/divinurised)
 - LinkedIn: [@divinurised](https://linkedin.com/in/divinurised)
 
