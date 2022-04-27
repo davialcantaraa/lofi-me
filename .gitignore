@@ -28,7 +28,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # repos
-/packages/server
+# /packages/server
 
 # electron
 packages/electron/electron.js
