@@ -12,6 +12,7 @@
 	"scripts": {
 		"electron": "electron .",
 		"electron-package-win": "npx electron-packager . lofi-me --out=dist --icon=assets/iconTemplate.ico --platform=win32 --arch=x64 --overwrite --ignore=main.js --prune",
+		"electron-package-win-32": "npx electron-packager . lofi-me --out=dist --icon=assets/iconTemplate.ico --platform=win32 --arch=ia32 --overwrite --ignore=main.js --prune",
 		"electron-package-mac": "npx electron-packager . lofi-me --out=dist --icon=assets/iconTemplate.icns --platform=darwin --arch=x64 --overwrite --ignore=main.js --prune",
 		"electron-package-linux": "npx electron-packager . lofi-me --out=dist --icon=assets/iconTemplate.png --platform=linux --arch=x64 --overwrite --ignore=main.js --prune"
 	}
