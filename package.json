@@ -2,43 +2,30 @@
 	"name": "lofi-me",
 	"version": "0.1.0",
 	"main": "packages/electron/main.js",
-	"private": "true",
+	"license": "MIT",
+	"private": true,
 	"workspaces": {
 		"packages": [
 			"packages/*"
 		]
 	},
 	"scripts": {
-		"app-start": "lerna run start --stream",
-		"app-build": "lerna run build --stream",
-		"app-test": "lerna run test --stream",
-		"app-eject": "lerna run eject --stream",
-		"electron-dev": "lerna run electron --stream",
-		"electron-build": "lerna run electron-build --stream",
-		"web-dev": "lerna run web --stream",
-		"web-build": "lerna run web-build --stream",
-		"server-dev": "lerna run dev --stream",
-		"diff": "lerna dif --streamf"
+		"app-start": "lerna run start --scope=@lofi-me/app --stream",
+		"app-build": "lerna run build --scope=@lofi-me/app --stream",
+		"app-test": "lerna run test --scope=@lofi-me/app --stream",
+		"app-eject": "lerna run eject --scope=@lofi-me/app --stream",
+		"electron-dev": "lerna run electron --scope=@lofi-me/electron --stream",
+		"electron-package-win": "lerna run electron-package-win --scope=@lofi-me/electron --stream",
+		"electron-package-win-32": "lerna run electron-package-win-32 --scope=@lofi-me/electron --stream",
+		"electron-package-mac": "lerna run electron-package-mac --scope=@lofi-me/electron --stream",
+		"electron-package-linux": "lerna run electron-package-linux --scope=@lofi-me/electron --stream",
+		"web-dev": "lerna run web --scope=@lofi-me/web --stream",
+		"web-build": "lerna run web-build --scope=@lofi-me/web --stream",
+		"server-dev": "lerna run dev --scope=@lofi-me/server --stream",
+		"diff": "lerna dif --stream",
+		"new-version": "lerna version --conventional-commits --yes"
 	},
-	"dependencies": {
+	"devDependencies": {
 		"lerna": "^4.0.0"
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
 	}
 }
