@@ -15,6 +15,9 @@
 # Preview
 
 <p align="center">
+  <img alt="preview" src="./.github/preview-3.gif" >
+</p>
+<p align="center">
   <img alt="preview" src="./.github/preview-2.png" >
 </p>
 
