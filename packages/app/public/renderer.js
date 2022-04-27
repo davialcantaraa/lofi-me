@@ -38,4 +38,8 @@ window.onload = function () {
 	ipcRenderer.on('removeButtons', (event, arg) => {
 		hiddenWindowRight.style.display = 'none';
 	});
+	ipcRenderer.on('hideWindow', (event, arg) => {
+		ipcRenderer.send('hideWindow');
+		hiddenWindowRight.style.display = 'flex';
+	});
 };
