@@ -7,7 +7,7 @@ function About() {
 	return (
 		<>
 			<Head>
-				<title>☕lofi me | about</title>
+				<title>lofi me | about</title>
 			</Head>
 			<main>
 				<section className={`${styles.preview} ${aboutStyles.container}`}>
@@ -20,44 +20,35 @@ function About() {
 					<section className={aboutStyles.text}>
 						<h1>Origin Story</h1>
 						<p>
-							lofi sempre fez parte da minha vida, lembro de voltar pra casa nas
-							aulas do ensino médio e colocar{' '}
-							<span>playlists de lofi pra tocar </span>
-							enquanto passava a tarde toda{' '}
-							<span>jogando ou conversando com meus amigos no skype.</span>
+							lofi has always been a part of my life, I remember coming home
+							from high school and putting on
+							<span> lofi playlists </span>
+							while I spent all afternoon
+							<span> playing games or chatting with my friends on skype.</span>
 						</p>
 						<p>
-							Sempre fiquei feliz por lofi fazer parte não só da comunidade
-							gamer mas também da <span>comunidade de programadores</span>, de
-							certa forma esses mundos estão interligados, é muito bom fazer
-							parte dessa comunidade!
+							I've always been happy for lofi to be a part of not only the gamer
+							community but also the <span> programmers community</span>, in a
+							way these worlds are interconnected, it's great to be part of this
+							community!
 						</p>
 						<p>
-							<strong>Dezembro 21th, 2021</strong> - foi um ano produtivo, eu
-							estava de férias e um pouco entediado pra falar a verdade, então
-							decidi praticar alguns <span>conhecimentos em programação</span>,
-							como sempre, <span>ouvindo lofi</span>. Porém eu tava cansado de
-							sempre precisar deixar uma{' '}
-							<span>aba do youtube aberta no meu navegador</span>, ou até mesmo
-							<span> conectado em algum canal do discord</span>.
+							<strong>December 21th, 2021</strong> - It was a productive year, I
+							was on vacation and a little bored to be honest, so I decided to
+							practice some <span>programming skills</span>, as usual,{' '}
+							<span> listening to lofi</span>. But I was tired of always having
+							to leave a <span> youtube tab open in my browser</span>,{' '}
+							<span> or even connected to a discord channel</span>.
 						</p>
 						<p>
-							Então eu decidi criar{' '}
-							<span>
-								um app que supra essa necessidade, onde não preciso me preocupar
-								com abas no navegar consumindo minha memória RAM, ou até mesmo
-								ficar preso a canais no discord
-							</span>
-							. Seria um projeto simples, eu poderia mantê-lo para uso pessoal,
-							porém talvez seria uma ótima opção para praticar meus
-							conhecimentos e <span>compartilhar amigos e a comunidade</span>,
-							então coloquei algumas <span>perfumarias rs</span>...
+							So I decided to create <span> an app that meets this need</span>,
+							where I don't have to worry about browser tabs consuming my RAM,
+							or even being stuck with discord channels. It would be a simple
+							project, I could keep it for personal use, but maybe it would be a
+							great option to practice my knowledge and share with friends and
+							the community, so I put some things lol...
 						</p>
-						<p>
-							Espero que o app seja <span>útil para você</span> da mesma forma
-							que está sendo <span>útil pra mim</span>.
-						</p>
-						<p>Se de algum modo te ajudei, considere fazer uma doação.</p>
+						<p>I hope the app is as useful to you as it is to me.</p>
 					</section>
 				</section>
 				<Footer />

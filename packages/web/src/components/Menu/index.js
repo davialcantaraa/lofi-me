@@ -1,18 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useRef, useState } from 'react';
-import styles from './styles.module.scss';
-import useOutsideClick from '../../hooks/useOutsideClick';
-
-import { RiCommandLine } from 'react-icons/ri';
-import {
-	BsGithub,
-	BsPatchQuestionFill,
-	BsFillPersonFill,
-	BsFillFileMusicFill,
-	BsHouseDoorFill,
-	BsHeartFill,
-} from 'react-icons/bs';
 import Link from 'next/link';
+import { useRef, useState } from 'react';
+import {
+	BsFillFileMusicFill,
+	BsFillPersonFill,
+	BsGithub,
+	BsHeartFill,
+	BsHouseDoorFill,
+	BsPatchQuestionFill,
+} from 'react-icons/bs';
+import { RiCommandLine } from 'react-icons/ri';
+import useOutsideClick from '../../hooks/useOutsideClick';
+import styles from './styles.module.scss';
 
 function Menu() {
 	const menuRef = useRef(null);
@@ -62,7 +61,12 @@ function Menu() {
 						</Link>
 					</li>
 					<li>
-						<a href="/asd" onClick={toggleMenu} className={styles.support}>
+						<a
+							href="https://ko-fi.com/divinurised"
+							onClick={toggleMenu}
+							className={styles.support}
+							target="_blank"
+						>
 							<BsHeartFill />
 							<p>support</p>
 						</a>

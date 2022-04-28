@@ -7,7 +7,7 @@ export default function Playlists() {
 	return (
 		<>
 			<Head>
-				<title>☕lofi me | playlists</title>
+				<title>lofi me | playlists</title>
 			</Head>
 			<main>
 				<section className={`${styles.preview} ${playlistStyles.container}`}>
@@ -121,7 +121,9 @@ export default function Playlists() {
 							<div className={playlistStyles.linkContainer}>
 								<h1>do you have any playlist suggestions?</h1>
 								<p>tell us your idea </p>
-								<a href="/">here</a>
+								<a href="https://github.com/divinurised/lofi-me/blob/main/CONTRIBUTING.md">
+									here
+								</a>
 								<p>.</p>
 							</div>
 						</div>

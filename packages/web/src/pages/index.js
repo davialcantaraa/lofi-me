@@ -1,20 +1,22 @@
-import { useEffect, useRef } from 'react';
-import Head from 'next/head';
-import malarkey from 'malarkey';
-import styles from '../styles/home.module.scss';
-import Player from '../components/Player/Player';
 import { motion } from 'framer-motion';
-import Footer from '../components/Footer';
-import { BsGithub, BsWindows, BsFileMusicFill } from 'react-icons/bs';
+import malarkey from 'malarkey';
+import Head from 'next/head';
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+import { BsApple, BsFileMusicFill, BsGithub, BsWindows } from 'react-icons/bs';
+import { CgArrowsShrinkH, CgPlayList } from 'react-icons/cg';
+import { FaLinux } from 'react-icons/fa';
+import { FiChevronsLeft } from 'react-icons/fi';
 import { GiVampireDracula } from 'react-icons/gi';
 import { SiSupabase } from 'react-icons/si';
-import { FiChevronsLeft } from 'react-icons/fi';
-import { CgArrowsShrinkH, CgPlayList } from 'react-icons/cg';
-import Link from 'next/link';
+import Footer from '../components/Footer';
+import Player from '../components/Player/Player';
+import styles from '../styles/home.module.scss';
 
 export default function Home() {
 	const constraintsRef = useRef(null);
 	const showWindowButton = useRef(null);
+	const [userOS, setUserOS] = useState('win');
 
 	useEffect(() => {
 		const element = document.querySelector('.typewriter');
@@ -54,6 +56,17 @@ export default function Home() {
 		document.getElementById('showWindow').style.display = 'none';
 	};
 
+	useEffect(() => {
+		if (window.navigator.platform.includes('linux')) {
+			setUserOS('linux');
+		}
+		if (window.navigator.platform.includes('mac')) {
+			setUserOS('mac');
+		}
+	}, []);
+
+	console.log(userOS);
+
 	return (
 		<>
 			<Head>
@@ -69,7 +82,13 @@ export default function Home() {
 					</p>
 					<div className={styles.githubContainer}>
 						<button>
-							<BsWindows size={25} />
+							{userOS === 'linux' ? (
+								<FaLinux size={25} />
+							) : userOS === 'mac' ? (
+								<BsApple size={25} />
+							) : (
+								<BsWindows size={25} />
+							)}
 							download
 						</button>
 						<a
@@ -136,7 +155,9 @@ export default function Home() {
 					</motion.div>
 				</section>
 				<p className={styles.disclaimer}>
-					this is just an example, <a href="/">download</a> for all the features
+					this is just an example,{' '}
+					<a href="https://github.com/divinurised/lofi-me/releases">download</a>{' '}
+					for all the features
 				</p>
 			</section>
 			<section className={`${styles.preview} ${styles.features}`}>
@@ -206,7 +227,10 @@ export default function Home() {
 								<li>anime lofi</li>
 								<li>games lofi</li>
 							</ul>
-							<a href="/" className={styles.upcomingAnchor}>
+							<a
+								href="https://github.com/divinurised/lofi-me/blob/main/CONTRIBUTING.md"
+								className={styles.upcomingAnchor}
+							>
 								contribute here
 							</a>
 						</div>
@@ -220,7 +244,10 @@ export default function Home() {
 								<li>ocean</li>
 								<li>forest</li>
 							</ul>
-							<a href="/" className={styles.upcomingAnchor}>
+							<a
+								href="https://github.com/divinurised/lofi-me/blob/main/CONTRIBUTING.md"
+								className={styles.upcomingAnchor}
+							>
 								contribute here
 							</a>
 						</div>
@@ -233,7 +260,7 @@ export default function Home() {
 								<li>
 									<a
 										target="_blank"
-										rel=" noreferrer"
+										rel="noreferrer"
 										href="https://github.com/dracula/dracula-theme"
 									>
 										dracula
@@ -258,7 +285,10 @@ export default function Home() {
 									</a>
 								</li>
 							</ul>
-							<a href="/" className={styles.upcomingAnchor}>
+							<a
+								href="https://github.com/divinurised/lofi-me/blob/main/CONTRIBUTING.md"
+								className={styles.upcomingAnchor}
+							>
 								contribute here
 							</a>
 						</div>

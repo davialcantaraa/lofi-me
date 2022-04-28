@@ -1,14 +1,13 @@
-import { useRef } from 'react';
-import Head from 'next/head';
 import { motion } from 'framer-motion';
+import Head from 'next/head';
+import { useRef } from 'react';
+import { BsCursorFill, BsExclamationTriangleFill } from 'react-icons/bs';
+import { CgArrowsShrinkH } from 'react-icons/cg';
 import { FiChevronsLeft } from 'react-icons/fi';
+import Footer from '../../components/Footer';
 import Player from '../../components/Player/Player';
 import styles from '../../styles/home.module.scss';
 import howToUseStyles from './styles.module.scss';
-
-import { CgArrowsShrinkH } from 'react-icons/cg';
-import { BsCursorFill, BsExclamationTriangleFill } from 'react-icons/bs';
-import Footer from '../../components/Footer';
 
 function HowToUse() {
 	const constraintsRef = useRef(null);
@@ -23,7 +22,7 @@ function HowToUse() {
 	return (
 		<>
 			<Head>
-				<title>☕lofi me | how to use</title>
+				<title>lofi me | how to use</title>
 			</Head>
 			<main>
 				<section className={styles.preview}>
@@ -79,8 +78,11 @@ function HowToUse() {
 						</motion.div>
 					</section>
 					<p className={styles.disclaimer}>
-						this is just an example, <a href="/">download</a> for all the
-						features
+						this is just an example,{' '}
+						<a href="https://github.com/divinurised/lofi-me/releases">
+							download
+						</a>{' '}
+						for all the features
 					</p>
 				</section>
 				<section className={`${styles.preview} ${howToUseStyles.usageSection}`}>
