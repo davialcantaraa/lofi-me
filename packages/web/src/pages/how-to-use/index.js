@@ -79,7 +79,11 @@ function HowToUse() {
 					</section>
 					<p className={styles.disclaimer}>
 						this is just an example,{' '}
-						<a href="https://github.com/divinurised/lofi-me/releases">
+						<a
+							href="https://github.com/divinurised/lofi-me/releases"
+							target="_blank"
+							ref="noreferrer"
+						>
 							download
 						</a>{' '}
 						for all the features

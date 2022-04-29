@@ -81,16 +81,22 @@ export default function Home() {
 						<span>.</span>
 					</p>
 					<div className={styles.githubContainer}>
-						<button>
-							{userOS === 'linux' ? (
-								<FaLinux size={25} />
-							) : userOS === 'mac' ? (
-								<BsApple size={25} />
-							) : (
-								<BsWindows size={25} />
-							)}
-							download
-						</button>
+						<a
+							href="https://github.com/divinurised/lofi-me/releases"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<button>
+								{userOS === 'linux' ? (
+									<FaLinux size={25} />
+								) : userOS === 'mac' ? (
+									<BsApple size={25} />
+								) : (
+									<BsWindows size={25} />
+								)}
+								download
+							</button>
+						</a>
 						<a
 							href="https://github.com/divinurised/lofi-me"
 							target="_blank"
@@ -156,7 +162,13 @@ export default function Home() {
 				</section>
 				<p className={styles.disclaimer}>
 					this is just an example,{' '}
-					<a href="https://github.com/divinurised/lofi-me/releases">download</a>{' '}
+					<a
+						href="https://github.com/divinurised/lofi-me/releases"
+						target="_blank"
+						ref="noreferrer"
+					>
+						download
+					</a>{' '}
 					for all the features
 				</p>
 			</section>
