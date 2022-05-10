@@ -82,7 +82,7 @@ function HowToUse() {
 						<a
 							href="https://github.com/divinurised/lofi-me/releases"
 							target="_blank"
-							ref="noreferrer"
+							rel="noreferrer"
 						>
 							download
 						</a>{' '}

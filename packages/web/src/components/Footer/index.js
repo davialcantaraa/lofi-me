@@ -1,10 +1,10 @@
-import styles from './styles.module.scss';
+import GitHubButton from 'react-github-button';
+import 'react-github-button/assets/style.css';
 import { BsGithub, BsHeartFill } from 'react-icons/bs';
 import { IoMail } from 'react-icons/io5';
 import { SiKofi } from 'react-icons/si';
 import Form from './Form';
-import GitHubButton from 'react-github-button';
-import 'react-github-button/assets/style.css';
+import styles from './styles.module.scss';
 
 function Footer() {
 	return (
@@ -47,8 +47,8 @@ function Footer() {
 							rel="noreferrer"
 						>
 							donate
+							<SiKofi />
 						</a>
-						<SiKofi />
 					</button>
 				</div>
 			</footer>
